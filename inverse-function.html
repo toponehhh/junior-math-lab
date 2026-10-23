@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>反比例函数与图像 · y = k/x</title>
+<style>
+:root{--ink:#212529;--bg:#f7f8fa;--card:#fff;--line:#e9ecef;--blue:#1971c2;--red:#d9480f;--green:#0ca678;--purple:#7048e8;--muted:#868e96}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:880px;margin:0 auto;padding:22px 16px 56px}
+h1{font-size:21px;margin:0 0 4px}
+.sub{color:#495057;font-size:13.5px;margin:0 0 18px}
+h2{font-size:17px;margin:30px 0 10px;padding-left:10px;border-left:4px solid var(--blue)}
+h2 .n{display:inline-block;background:var(--blue);color:#fff;border-radius:6px;font-size:13px;padding:1px 8px;margin-right:8px;vertical-align:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 1px 3px rgba(16,24,40,.05);margin:10px 0}
+.formula{font-family:"Cambria Math","Times New Roman",serif;font-size:22px;text-align:center;padding:8px;background:#f8f9fa;border-radius:8px;border:1px solid var(--line)}
+.p{margin:8px 0}
+b.hl{background:#fff3bf;padding:0 3px;border-radius:3px}
+table{border-collapse:collapse;font-size:13.5px;margin:10px auto;background:#fff}
+th,td{border:1px solid #dee2e6;padding:5px 14px;text-align:center}
+th{background:#f1f3f5;font-weight:600}
+.pos{color:var(--red);font-weight:600}
+.neg{color:var(--blue);font-weight:600}
+svg{display:block;width:100%;height:auto;background:#fff;border-radius:8px}
+.grid line{stroke:#eef1f4;stroke-width:1}
+.axis{stroke:#495057;stroke-width:1.6}
+svg text{font-family:"Segoe UI","Microsoft YaHei",sans-serif}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;font-size:13px;margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:26px;height:0;border-top:3px solid;border-radius:2px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:640px){.duo{grid-template-columns:1fr}}
+.note{font-size:13px;color:#495057;margin-top:8px;text-align:center}
+/* 交互区 */
+.ictl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}
+.ictl input[type=range]{flex:1;min-width:200px;accent-color:var(--green);cursor:pointer}
+.kval{font-family:"Cambria Math","Times New Roman",serif;font-size:20px;font-weight:600;color:var(--green)}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+@media (max-width:640px){.qa{grid-template-columns:1fr}}
+.qa .q{background:#f8f9fa;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13.5px}
+.qa .q b{display:block;margin-bottom:2px}
+.warn{background:#fff5f5;border:1px solid #ffc9c9;border-radius:8px;padding:10px 14px;font-size:13.5px;margin-top:8px}
+.warn b{color:#c92a2a}
+.warn ul{margin:6px 0 0;padding-left:18px}
+.warn li{margin:4px 0}
+.foot{font-size:12.5px;color:var(--muted);margin-top:24px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <h1>反比例函数与图像</h1>
+ <p class="sub">y = k/x（k ≠ 0）—— 从"积不变"出发，用描点法认识双曲线。</p>
+
+ <!-- 一、定义 -->
+ <h2><span class="n">一</span>什么是反比例函数</h2>
+ <div class="card">
+  <div class="formula">y = <span style="color:var(--green);font-weight:600">k</span>/x&nbsp;&nbsp;（k ≠ 0）&nbsp;&nbsp;⇔&nbsp;&nbsp;x · y = <span style="color:var(--green);font-weight:600">k</span></div>
+  <p class="p">两个变量 <b>x</b> 和 <b>y</b>，只要它们的<b class="hl">乘积恒等于一个不为 0 的常数 k</b>，y 就叫做 x 的反比例函数。记住这句话：<b class="hl">积不变，就是反比例</b>。</p>
+  <p class="p" style="margin-bottom:4px">生活里到处都是"积不变"：</p>
+  <table>
+   <tr><th>场景</th><th>不变的积</th><th>关系式</th></tr>
+   <tr><td>长方形面积固定为 12</td><td>长 × 宽 = 12</td><td>y = 12/x</td></tr>
+   <tr><td>总路程 60 km 走完</td><td>速度 × 时间 = 60</td><td>v = 60/t</td></tr>
+   <tr><td>30 颗糖分给 x 个人</td><td>人数 × 每人颗数 = 30</td><td>y = 30/x</td></tr>
+   <tr><td>全班 45 人分组</td><td>组数 × 每组人数 = 45</td><td>y = 45/x</td></tr>
+  </table>
+  <p class="p" style="margin-top:10px">注意：<b>x = 0 时无意义</b>（分母不能为 0），所以图像永远不会碰到 y 轴。</p>
+ </div>
+
+ <!-- 二、描点法 -->
+ <h2><span class="n">二</span>描点法画 y = 6/x</h2>
+ <div class="card">
+  <p class="p">先列表取点（正负各取几个，x 越大 y 越小）：当 x = 6 时 y = 1，x = 1 时 y = 6……</p>
+  <table>
+   <tr><th>x</th><td>…</td><td>−12</td><td>−6</td><td>−3</td><td>−2</td><td>−1</td><td></td><td>1</td><td>2</td><td>3</td><td>6</td><td>12</td><td>…</td></tr>
+   <tr><th>y = 6/x</th><td>…</td><td>−0.5</td><td>−1</td><td>−2</td><td>−3</td><td>−6</td><td></td><td class="pos">6</td><td class="pos">3</td><td class="pos">2</td><td class="pos">1</td><td class="pos">0.5</td><td>…</td></tr>
+  </table>
+  <div id="gPts" style="margin-top:10px"></div>
+  <p class="note">每一个乘积都是 6：1×6、2×3、3×2、6×1……（−1）×（−6）= 6 也成立！</p>
+ </div>
+
+ <!-- 三、k>0 家族 -->
+ <h2><span class="n">三</span>k &gt; 0：图像在一、三象限</h2>
+ <div class="card">
+  <div id="gPos"></div>
+  <div class="legend">
+   <span><i style="border-color:#1971c2"></i>y = 6/x</span>
+   <span><i style="border-color:#0ca678"></i>y = 3/x</span>
+   <span><i style="border-color:#f59f00"></i>y = 1/x</span>
+  </div>
+  <p class="note">三条曲线形状相同，只是"胖瘦"不同：|k| 越大，曲线离原点越<b>远</b>。</p>
+ </div>
+
+ <!-- 四、k<0 家族 -->
+ <h2><span class="n">四</span>k &lt; 0：图像在二、四象限</h2>
+ <div class="card">
+  <div id="gNeg"></div>
+  <div class="legend">
+   <span><i style="border-color:#1971c2"></i>y = −6/x</span>
+   <span><i style="border-color:#7048e8"></i>y = −3/x</span>
+   <span><i style="border-color:#e64980"></i>y = −1/x</span>
+  </div>
+  <p class="note">和 k &gt; 0 的图像对比：正好是绕原点旋转 180° 的样子。</p>
+ </div>
+
+ <!-- 五、性质总结 -->
+ <h2><span class="n">五</span>五大性质（背下来）</h2>
+ <div class="card">
+  <table style="width:100%">
+   <tr><th>k 的符号</th><th>图像位置</th><th>在每个象限内的增减性</th></tr>
+   <tr><td class="pos">k &gt; 0</td><td>一、三象限</td><td>y 随 x 增大而<b>减小</b></td></tr>
+   <tr><td class="neg">k &lt; 0</td><td>二、四象限</td><td>y 随 x 增大而<b>增大</b></td></tr>
+  </table>
+  <div class="qa">
+   <div class="q"><b>① 两支永不分离</b>双曲线有两支，分别位于两个象限。</div>
+   <div class="q"><b>② 贴近两轴永不相交</b>x 越大曲线越贴近 x 轴（y→0），x 越接近 0 越贴近 y 轴，但永远碰不到。</div>
+   <div class="q"><b>③ 关于原点对称</b>把图像绕原点旋转 180°，自己和自己重合。</div>
+   <div class="q"><b>④ |k| 决定"胖瘦"</b>|k| 越大离原点越远；过 (1, k) 点可快速定位。</div>
+  </div>
+ </div>
+
+ <!-- 六、交互探索 -->
+ <h2><span class="n">六</span>动手试：拖动 k，再拖曲线上的点</h2>
+ <div class="card">
+  <div class="ictl">
+   <span>k =</span><span class="kval" id="kv">6</span>
+   <input type="range" id="ks" min="-12" max="12" step="0.5" value="6">
+   <span style="font-size:12.5px;color:var(--muted)">（k ≠ 0，滑到 0 附近会自动跳过）</span>
+  </div>
+  <div id="gIct"></div>
+  <p class="note" id="ictNote"></p>
+  <p class="note" style="color:#0ca678;font-weight:600" id="prodNote">在图上按住拖动：无论点拖到哪里，x × y 永远等于 k。</p>
+ </div>
+
+ <!-- 七、易错点 -->
+ <h2><span class="n">七</span>易错点提醒</h2>
+ <div class="card warn">
+  <b>⚠ 考试最容易在这里丢分：</b>
+  <ul>
+   <li><b>增减性必须限定"在每个象限内"</b>。反例：y = 6/x 中，x 从 −1 变到 1，y 从 −6 变到 6——x 变大，y 也变大了！跨象限不能直接比较。</li>
+   <li><b>x = 0 无意义</b>，写解析式或取值范围时别忘 k ≠ 0、x ≠ 0。</li>
+   <li><b>判断是不是反比例函数</b>，看 xy 是否恒等于同一个非零常数。y = 6/x、xy = 6、y = 6x⁻¹ 是同一个函数的三种写法。</li>
+   <li><b>"k 越大离原点越远"应该说 |k|</b>：k = −6 的图像比 k = 1 的离原点远（|−6| &gt; |1|）。</li>
+   <li>双曲线<b>不是一条直线弯过来</b>的，两支是分开的——画图时别用一条线硬连过去。</li>
+  </ul>
+ </div>
+
+ <div class="foot">纯原生 HTML · 零外部依赖 · 七年级（下）反比例函数预习/复习用</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var NS='http://www.w3.org/2000/svg';
+function mkGraph(sel,W,H,UX,UY){
+ var svgEl=document.querySelector(sel);
+ var host=svgEl;
+ var svg=document.createElementNS(NS,'svg');
+ svg.setAttribute('viewBox','0 0 '+W+' '+H);
+ host.appendChild(svg);
+ var OX=W/2,OY=H/2;
+ function X(x){return OX+x*UX;}
+ function Y(y){return OY-y*UY;}
+ function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a){e.setAttribute(k,a[k]);}(p||svg).appendChild(e);return e;}
+ var g=el('g',{class:'grid'});
+ var nx=Math.floor(OX/UX),ny=Math.floor(OY/UY),i;
+ for(i=-nx;i<=nx;i++){el('line',{x1:X(i),y1:0,x2:X(i),y2:H},g);}
+ for(i=-ny;i<=ny;i++){el('line',{x1:0,y1:Y(i),x2:W,y2:Y(i)},g);}
+ var defs=el('defs',{});
+ var mk2=el('marker',{id:'a'+Math.random().toString(36).slice(2,7),viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'},defs);
+ el('path',{d:'M0,0 L10,5 L0,10 z',fill:'#495057'},mk2);
+ el('line',{class:'axis',x1:0,y1:Y(0),x2:W-2,y2:Y(0),'marker-end':'url(#'+mk2.id+')'});
+ el('line',{class:'axis',x1:X(0),y1:H-2,x2:X(0),y2:2,'marker-end':'url(#'+mk2.id+')'});
+ var t;
+ for(i=-nx;i<=nx;i+=2){if(i!==0){t=el('text',{x:X(i),y:Y(0)+13,'font-size':10,'text-anchor':'middle',fill:'#868e96'});t.textContent=i;}}
+ for(i=-ny;i<=ny;i+=2){if(i!==0){t=el('text',{x:X(0)-5,y:Y(i)+3,'font-size':10,'text-anchor':'end',fill:'#868e96'});t.textContent=i;}}
+ t=el('text',{x:X(0)-5,y:Y(0)+13,'font-size':11,'text-anchor':'end',fill:'#495057'});t.textContent='O';
+ return {svg:svg,el:el,X:X,Y:Y,W:W,H:H};
+}
+function hyperbolaD(gr,k,UX,UY){
+ var W=gr.W,H=gr.H,xmax=gr.X(0)/UX-0.3,ymax=gr.Y(0)/UY-0.3;
+ var x0=Math.max(0.12,Math.abs(k)/ymax);
+ function branch(sign){
+  var d='',first=true;
+  var x=x0;
+  while(x<=xmax){
+   var y=sign*k/x;
+   var sx=gr.X(x),sy=gr.Y(y);
+   if(sy<-6||sy>H+6)break;
+   d+=(first?'M':'L')+sx.toFixed(1)+','+sy.toFixed(1);
+   first=false;
+   x+=(x<1?0.02:0.06);
+  }
+  return d;
+ }
+ return branch(1)+' '+branch(-1);
+}
+/* ---------- 2. 描点法 y=6/x ---------- */
+(function(){
+ var gr=mkGraph('#gPts',560,460,26,24);
+ var d=hyperbolaD(gr,6,26,24);
+ gr.el('path',{d:d,fill:'none',stroke:'#1971c2','stroke-width':2.6,'stroke-linecap':'round'});
+ var pts=[[1,6],[2,3],[3,2],[6,1],[12,0.5],[-1,-6],[-2,-3],[-3,-2],[-6,-1],[-12,-0.5]];
+ pts.forEach(function(p,i){
+  gr.el('circle',{cx:gr.X(p[0]),cy:gr.Y(p[1]),r:4.5,fill:'#fff',stroke:'#d9480f','stroke-width':2});
+  var t=gr.el('text',{x:gr.X(p[0])+7,y:gr.Y(p[1])-7,'font-size':10.5,fill:'#d9480f'});
+  t.textContent='('+p[0]+', '+p[1]+')';
+ });
+})();
+/* ---------- 3/4. 家族图 ---------- */
+function family(sel,list,UX,UY){
+ var gr=mkGraph(sel,560,460,UX,UY);
+ list.forEach(function(it){
+  gr.el('path',{d:hyperbolaD(gr,it.k,UX,UY),fill:'none',stroke:it.c,'stroke-width':2.6,'stroke-linecap':'round'});
+ });
+}
+family('#gPos',[{k:6,c:'#1971c2'},{k:3,c:'#0ca678'},{k:1,c:'#f59f00'}],26,24);
+family('#gNeg',[{k:-6,c:'#1971c2'},{k:-3,c:'#7048e8'},{k:-1,c:'#e64980'}],26,24);
+/* ---------- 6. 交互探索 ---------- */
+(function(){
+ var gr=mkGraph('#gIct',560,460,26,24);
+ var UX=26,UY=24;
+ var path=gr.el('path',{fill:'none',stroke:'#0ca678','stroke-width':3,'stroke-linecap':'round'});
+ var dot=gr.el('circle',{r:6.5,fill:'#0ca678',stroke:'#fff','stroke-width':2,cursor:'grab'});
+ var lbl=gr.el('text',{'font-size':13,fill:'#0ca678','font-weight':600});
+ var pt={x:2,y:3};
+ function draw(){
+  var k=state.k;
+  path.setAttribute('d',hyperbolaD(gr,k,UX,UY));
+  pt.y=k/pt.x;
+  dot.setAttribute('cx',gr.X(pt.x));dot.setAttribute('cy',gr.Y(pt.y));
+  lbl.setAttribute('x',gr.X(pt.x)+11);lbl.setAttribute('y',gr.Y(pt.y)+(pt.y>0?-9:17));
+  var fx=(Math.round(pt.x*100)/100),fy=(Math.round(pt.y*100)/100);
+  lbl.textContent='('+fx+', '+fy+')';
+  document.getElementById('prodNote').textContent='当前点：x × y = '+fx+' × '+fy+' = '+(Math.round(fx*fy*100)/100)+'（约等于 k = '+(Math.round(k*10)/10)+'，舍入误差）';
+ }
+ var state={k:6};
+ function updNote(){
+  var k=state.k;
+  document.getElementById('kv').textContent=(Math.round(k*10)/10);
+  var q=k>0?'一、三象限，每个象限内 y 随 x 增大而减小':'二、四象限，每个象限内 y 随 x 增大而增大';
+  document.getElementById('ictNote').textContent='k = '+(Math.round(k*10)/10)+'：'+q+'；|k| = '+(Math.round(Math.abs(k)*10)/10)+'，曲线离原点'+(Math.abs(k)>4?'较远':'较近')+'。';
+  draw();
+ }
+ /* 拖动点 */
+ var dragging=false;
+ function move(ev){
+  if(!dragging)return;
+  var r=gr.svg.getBoundingClientRect();
+  var sx=(ev.clientX-r.left)/r.width*560, sy=(ev.clientY-r.top)/r.height*460;
+  var x=(sx-280)/UX;
+  if(Math.abs(x)<0.25)return;
+  if(Math.abs(x)>9.5)x=x>0?9.5:-9.5;
+  pt.x=Math.round(x*20)/20;
+  draw();
+ }
+ dot.addEventListener('pointerdown',function(e){dragging=true;dot.setAttribute('cursor','grabbing');e.preventDefault();});
+ window.addEventListener('pointerup',function(){dragging=false;dot.setAttribute('cursor','grab');});
+ window.addEventListener('pointermove',move);
+ /* k 滑块 */
+ document.getElementById('ks').addEventListener('input',function(){
+  var v=parseFloat(this.value);
+  if(Math.abs(v)<0.5)v=v>=0?0.5:-0.5;
+  state.k=v;updNote();
+ });
+ updNote();
+})();
+})();
+</script>
+</body>
+</html>

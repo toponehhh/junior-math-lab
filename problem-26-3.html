@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>第 26 题（3）示意图 · 等腰直角三角形 MNO</title>
+<style>
+:root{--ink:#212529;--bg:#f7f8fa;--card:#fff;--line:#e9ecef;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:880px;margin:0 auto;padding:22px 16px 44px}
+h1{font-size:19px;margin:0 0 6px;line-height:1.45}
+.sub{color:#495057;font-size:13.5px;margin:0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 12px}
+.btn{--c:#343a40;border:1.5px solid var(--c);color:var(--c);background:#fff;border-radius:999px;
+ padding:4px 14px;font-size:13.5px;cursor:pointer;font-family:inherit;line-height:1.5}
+.btn:hover{background:#f1f3f5}
+.btn.active{background:var(--c);color:#fff;border-color:var(--c)}
+.sep{width:1px;height:22px;background:#dee2e6;margin:0 2px}
+.chk{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:#495057;cursor:pointer;user-select:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:0 1px 3px rgba(16,24,40,.05)}
+#svg{display:block;width:100%;height:auto}
+.grid line{stroke:#eef1f4;stroke-width:1}
+#svg.hide-grid .grid{display:none}
+#svg.hide-coords tspan.coords{display:none}
+.caption{margin:10px 4px 0;font-size:13.5px;color:#495057;min-height:52px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:16px;background:#fff}
+th,td{border:1px solid #dee2e6;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f1f3f5;font-weight:600;white-space:nowrap}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:#f8f9fa}
+tbody tr.sel{background:#f1f3f5}
+.badge{display:inline-block;background:#d3f0e4;color:#087f5b;border-radius:999px;padding:1px 9px;font-size:12px;margin-left:6px;white-space:nowrap}
+.foot{font-size:13px;color:#495057;margin-top:16px}
+.foot ol{margin:6px 0 0;padding-left:20px}
+.foot li{margin:3px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <h1>第 26 题（3）示意图：△MNO 为等腰直角三角形，∠NMO = 90°</h1>
+ <p class="sub">抛物线 y = −x² + 2x + 3（过 A(−1, 0)、B(3, 0)、C(0, 3)，对称轴 x = 1，顶点 (1, 4)）。M 在对称轴上，N 在抛物线上，且 MN = MO、MN ⊥ MO —— 满足条件的 N 共有 4 个，恰好分布在四个象限。</p>
+
+ <div class="controls">
+  <button class="btn active" data-mode="all">全部 4 种</button>
+  <button class="btn" data-mode="1" style="--c:#d9480f">① N₁</button>
+  <button class="btn" data-mode="2" style="--c:#7048e8">② N₂</button>
+  <button class="btn" data-mode="3" style="--c:#0ca678">③ N₃</button>
+  <button class="btn" data-mode="4" style="--c:#1971c2">④ N₄</button>
+  <span class="sep"></span>
+  <label class="chk"><input type="checkbox" id="ckGrid" checked>网格</label>
+  <label class="chk"><input type="checkbox" id="ckCoords" checked>M / N 坐标</label>
+ </div>
+
+ <div class="card"><svg id="svg" viewBox="0 0 700 750" role="img" aria-label="坐标系中抛物线与四个等腰直角三角形 MNO 的示意图"></svg></div>
+ <div class="caption" id="caption"></div>
+
+ <table>
+  <thead>
+   <tr><th>情况</th><th>点 M（在对称轴 x = 1 上）</th><th>点 N（在抛物线上）</th><th>代回抛物线所得方程</th></tr>
+  </thead>
+  <tbody>
+   <tr data-mode="1"><td style="color:#d9480f;font-weight:600">① 第一象限</td><td>M₁ (1, (√21 − 1)/2) ≈ (1, 1.79)</td><td>N₁ ((1 + √21)/2, (√21 − 3)/2) ≈ (2.79, 0.79)</td><td>m² + m − 5 = 0</td></tr>
+   <tr data-mode="2"><td style="color:#7048e8;font-weight:600">② 第三象限</td><td>M₂ (1, −(√21 + 1)/2) ≈ (1, −2.79)</td><td>N₂ ((1 − √21)/2, −(√21 + 3)/2) ≈ (−1.79, −3.79)</td><td>m² + m − 5 = 0</td></tr>
+   <tr data-mode="3"><td style="color:#0ca678;font-weight:600">③ 第二象限<span class="badge">上文已证明</span></td><td>M₃ (1, (√13 − 1)/2) ≈ (1, 1.30)</td><td>N₃ ((3 − √13)/2, (√13 + 1)/2) ≈ (−0.30, 2.30)</td><td>m² + m − 3 = 0</td></tr>
+   <tr data-mode="4"><td style="color:#1971c2;font-weight:600">④ 第四象限</td><td>M₄ (1, −(√13 + 1)/2) ≈ (1, −2.30)</td><td>N₄ ((3 + √13)/2, (1 − √13)/2) ≈ (3.30, −1.30)</td><td>m² + m − 3 = 0</td></tr>
+  </tbody>
+ </table>
+
+ <div class="foot">
+  <ol>
+   <li>∠NMO 是直角 ⇒ 直角边是 MN 与 MO（NO 是斜边），必须同时满足 MN = MO 且 MN ⊥ MO。图中 M 处的小方形是直角记号，MN、MO 中点处的单短线记号表示这两条直角边相等。</li>
+   <li>「横竖互换」找 N：M(1, m) 到 O 是「横 1、竖 m」（按长度说），横竖互换后 M→N 只可能是 (m, −1) 或 (−m, 1)——这两种与 M→O 垂直；另外两种组合 (−m, −1)、(m, 1) 不垂直，舍去。单独查看某种情况时，图中虚线展示的正是这组「互换」。</li>
+   <li>把 N(1+m, m−1) 与 N(1−m, m+1) 分别代回 y = −x² + 2x + 3，得 m² + m − 5 = 0 与 m² + m − 3 = 0，各两个根，所以共 4 个 N 点。点击上方按钮或表格行可切换查看。</li>
+  </ol>
+ </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var NS='http://www.w3.org/2000/svg';
+var svg=document.getElementById('svg');
+var U=70, OX=280, OY=390;
+function X(x){return OX+x*U;}
+function Y(y){return OY-y*U;}
+function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a){e.setAttribute(k,a[k]);}(p||svg).appendChild(e);return e;}
+function txt(x,y,s,a,p){var e=el('text',Object.assign({x:x,y:y,'font-size':13},a||{}),p);e.textContent=s;return e;}
+function line(a,p){return el('line',a,p);}
+
+/* ---------- 网格 ---------- */
+var grid=el('g',{class:'grid'});
+var i,v;
+for(i=-3;i<=5;i++){line({x1:X(i),y1:Y(4.6),x2:X(i),y2:Y(-4.6)},grid);}
+for(i=-4;i<=4;i++){line({x1:X(-3),y1:Y(i),x2:X(5),y2:Y(i)},grid);}
+
+/* ---------- 坐标轴（带箭头） ---------- */
+var axis=el('g',{stroke:'#212529','stroke-width':1.6});
+line({x1:X(-3.2),y1:Y(0),x2:X(5.35),y2:Y(0)},axis);
+el('polygon',{points:X(5.35)+','+Y(0)+' '+(X(5.35)-11)+','+(Y(0)-5.5)+' '+(X(5.35)-11)+','+(Y(0)+5.5),fill:'#212529',stroke:'none'},axis);
+line({x1:X(0),y1:Y(-4.85),x2:X(0),y2:Y(4.85)},axis);
+el('polygon',{points:X(0)+','+Y(4.85)+' '+(X(0)-5.5)+','+(Y(4.85)+11)+' '+(X(0)+5.5)+','+(Y(4.85)+11),fill:'#212529',stroke:'none'},axis);
+txt(X(5.3),Y(0)-11,'x',{'text-anchor':'end','font-size':15,'font-style':'italic',fill:'#212529',stroke:'none'},axis);
+txt(X(0)+13,Y(4.72),'y',{'font-size':15,'font-style':'italic',fill:'#212529',stroke:'none'},axis);
+
+/* 轴上刻度数字（避开已标注的 A、B、C、O、对称轴） */
+[-3,-2,2,4,5].forEach(function(v){txt(X(v),Y(0)+16,(v<0?'−':'')+Math.abs(v),{'text-anchor':'middle',fill:'#868e96','font-size':11});});
+[-4,-3,-2,-1,1,2,4].forEach(function(v){txt(X(0)-9,Y(v)+4,(v<0?'−':'')+Math.abs(v),{'text-anchor':'end',fill:'#868e96','font-size':11});});
+
+/* ---------- 对称轴 ---------- */
+line({x1:X(1),y1:Y(4.5),x2:X(1),y2:Y(-4.5),stroke:'#98a2b3','stroke-width':1.3,'stroke-dasharray':'7 5'});
+txt(X(1)+9,Y(4.42),'对称轴 x = 1',{fill:'#868e96','font-size':12.5});
+txt(X(1)+9,Y(4.42)+15,'（过顶点 (1, 4)）',{fill:'#adb5bd','font-size':11.5});
+
+/* ---------- 抛物线 y = −x² + 2x + 3 ---------- */
+var d='';
+for(var x=-1.95;x<=3.951;x+=0.05){var yv=-x*x+2*x+3;d+=(d?' L':'M')+X(x).toFixed(1)+' '+Y(yv).toFixed(1);}
+el('path',{d:d,fill:'none',stroke:'#495057','stroke-width':2.6,'stroke-linecap':'round','stroke-linejoin':'round'});
+txt(X(-2.85),Y(4.15),'y = −x² + 2x + 3',{fill:'#495057','font-size':14,'font-weight':600});
+
+/* ---------- A、B、C ---------- */
+function dot(p,r,fill,extra){el('circle',Object.assign({cx:X(p[0]),cy:Y(p[1]),r:r||3.6,fill:fill||'#212529'},extra||{}));}
+dot([-1,0]); txt(X(-1)-8,Y(0)+34,'A (−1, 0)',{'text-anchor':'end'});
+dot([3,0]);  txt(X(3)+10,Y(0)+32,'B (3, 0)');
+dot([0,3]);  txt(X(0)-10,Y(3)-8,'C (0, 3)',{'text-anchor':'end'});
+
+/* ---------- 四种情况 ---------- */
+var S21=Math.sqrt(21),S13=Math.sqrt(13);
+var CASES=[
+ {id:'1',color:'#d9480f',sub:'₁',name:'①',
+  M:[1,(S21-1)/2],N:[(1+S21)/2,(S21-3)/2],
+  mOff:{dx:12,dy:4},nOff:{dx:10,dy:5},
+  mCoord:'(1, 1.79)',nCoord:'(2.79, 0.79)',
+  caption:'m = (√21 − 1)/2 ≈ 1.79。M→O = (−1, −m)，即「向左 1、向下 m」；横竖互换 ⇒ M→N = (m, −1)，即「向右 m、向下 1」，故 N(1+m, m−1)。代回抛物线得 m² + m − 5 = 0（取正根）。'},
+ {id:'2',color:'#7048e8',sub:'₂',name:'②',
+  M:[1,-(S21+1)/2],N:[(1-S21)/2,-(S21+3)/2],
+  mOff:{dx:12,dy:34},nOff:{dx:-10,dy:5,anchor:'end'},
+  mCoord:'(1, −2.79)',nCoord:'(−1.79, −3.79)',
+  caption:'m = −(√21 + 1)/2 ≈ −2.79。M→O = (−1, −m) = (−1, 2.79)，即「向左 1、向上 2.79」；横竖互换 ⇒ M→N = (m, −1) = (−2.79, −1)，即「向左 2.79、向下 1」，N(1+m, m−1)。代回抛物线同样得 m² + m − 5 = 0（取负根）。'},
+ {id:'3',color:'#0ca678',sub:'₃',name:'③',
+  M:[1,(S13-1)/2],N:[(3-S13)/2,(S13+1)/2],
+  mOff:{dx:12,dy:14},nOff:{dx:-10,dy:-8,anchor:'end'},
+  mCoord:'(1, 1.30)',nCoord:'(−0.30, 2.30)',
+  caption:'m = (√13 − 1)/2 ≈ 1.30，即上文已证明的一种。M→O = (−1, −m)「左 1、下 m」；横竖互换并反向 ⇒ M→N = (−m, 1)「左 m、上 1」，N(1−m, m+1)。代回抛物线得 m² + m − 3 = 0（取正根）。'},
+ {id:'4',color:'#1971c2',sub:'₄',name:'④',
+  M:[1,-(S13+1)/2],N:[(3+S13)/2,(1-S13)/2],
+  mOff:{dx:-10,dy:30,anchor:'end'},nOff:{dx:10,dy:5},
+  mCoord:'(1, −2.30)',nCoord:'(3.30, −1.30)',
+  caption:'m = −(√13 + 1)/2 ≈ −2.30。M→O = (−1, −m) = (−1, 2.30)「左 1、上 2.30」；横竖互换并反向 ⇒ M→N = (−m, 1) = (2.30, 1)「右 2.30、上 1」，N(1−m, m+1)。代回抛物线同样得 m² + m − 3 = 0（取负根）。'}
+];
+
+function nrm(v){var l=Math.hypot(v[0],v[1]);return [v[0]/l,v[1]/l];}
+
+var triLayer=el('g',{});
+CASES.forEach(function(c){
+ var g=el('g',{},triLayer); c.group=g;
+ var hg=el('g',{class:'helpers',style:'display:none'},g); c.helpers=hg;
+
+ /* 「横竖互换」辅助虚线：M→O 与 M→N 各自的横、竖分量 */
+ var hd={stroke:c.color,'stroke-width':1.3,'stroke-dasharray':'5 4',opacity:.8};
+ line(Object.assign({x1:X(c.M[0]),y1:Y(c.M[1]),x2:X(0),y2:Y(c.M[1])},hd),hg);          /* M→(0,m) 横 */
+ line(Object.assign({x1:X(0),y1:Y(c.M[1]),x2:X(0),y2:Y(0)},hd),hg);                    /* (0,m)→O 竖 */
+ line(Object.assign({x1:X(c.M[0]),y1:Y(c.M[1]),x2:X(c.N[0]),y2:Y(c.M[1])},hd),hg);      /* M→(xN,m) 横 */
+ line(Object.assign({x1:X(c.N[0]),y1:Y(c.M[1]),x2:X(c.N[0]),y2:Y(c.N[1])},hd),hg);      /* (xN,m)→N 竖 */
+ function hl(x,y,s,anchor){txt(x,y,s,{fill:c.color,'font-size':12.5,'font-style':'italic','text-anchor':anchor||'middle',opacity:.95},hg);}
+ hl(X(0.5),Y(c.M[1])-8,'1');
+ hl(X(0)+11,Y(c.M[1]/2)+4,'|m|','start');
+ hl(X((1+c.N[0])/2),Y(c.M[1])+17,'|m|');
+ hl(X(c.N[0])+11,Y((c.M[1]+c.N[1])/2)+4,'1','start');
+
+ /* 三角形三边：MO、MN 为直角边，NO 为斜边 */
+ var sw={stroke:c.color,'stroke-width':2.4,'stroke-linecap':'round'};
+ line(Object.assign({x1:X(c.M[0]),y1:Y(c.M[1]),x2:X(0),y2:Y(0)},sw),g);
+ line(Object.assign({x1:X(c.M[0]),y1:Y(c.M[1]),x2:X(c.N[0]),y2:Y(c.N[1])},sw),g);
+ line({x1:X(c.N[0]),y1:Y(c.N[1]),x2:X(0),y2:Y(0),stroke:c.color,'stroke-width':1.5,opacity:.85},g);
+
+ /* M 处的直角记号 */
+ var uO=nrm([-c.M[0],-c.M[1]]), uN=nrm([c.N[0]-c.M[0],c.N[1]-c.M[1]]), s=15;
+ var mx=X(c.M[0]), my=Y(c.M[1]);
+ var p1=[mx+uO[0]*s,my-uO[1]*s], p3=[mx+uN[0]*s,my-uN[1]*s], p2=[p1[0]+uN[0]*s,p1[1]-uN[1]*s];
+ el('polyline',{points:p1[0]+','+p1[1]+' '+p2[0]+','+p2[1]+' '+p3[0]+','+p3[1],fill:'none',stroke:c.color,'stroke-width':1.5},g);
+
+ /* MN、MO 中点处的等边记号（单短线） */
+ function tick(a,b){
+  var mid=[(a[0]+b[0])/2,(a[1]+b[1])/2], t=nrm([b[0]-a[0],b[1]-a[1]]), pp=[-t[1],t[0]], L=5.5;
+  line({x1:X(mid[0])+pp[0]*L,y1:Y(mid[1])-pp[1]*L,x2:X(mid[0])-pp[0]*L,y2:Y(mid[1])+pp[1]*L,stroke:c.color,'stroke-width':2.2},g);
+ }
+ tick(c.M,[0,0]); tick(c.M,c.N);
+
+ /* M、N 两点及标注 */
+ dot(c.M,4.6,c.color,{stroke:'#fff','stroke-width':1.6}); g.appendChild(svg.lastChild);
+ dot(c.N,4.6,c.color,{stroke:'#fff','stroke-width':1.6}); g.appendChild(svg.lastChild);
+ function pl(off,nameS,coordS,p){
+  var t=el('text',{x:X(p[0])+off.dx,y:Y(p[1])+off.dy,'text-anchor':off.anchor||'start',fill:c.color,'font-size':13},g);
+  var a=el('tspan',{'font-weight':700},t); a.textContent=nameS;
+  var b=el('tspan',{class:'coords','font-size':11.5,'font-weight':400,opacity:.85},t); b.textContent=' '+coordS;
+ }
+ pl(c.mOff,'M'+c.sub,c.mCoord,c.M);
+ pl(c.nOff,'N'+c.sub,c.nCoord,c.N);
+});
+
+/* ---------- 原点 O（最后画，压在三角形边之上） ---------- */
+dot([0,0],3.8,'#212529',{stroke:'#fff','stroke-width':1.4});
+txt(X(0)-12,Y(0)+19,'O',{'text-anchor':'end','font-weight':600});
+
+/* ---------- 交互 ---------- */
+var mode='all';
+var capEl=document.getElementById('caption');
+var DEFAULT_CAP='当前同时显示 4 种情况，恰好分布在四个象限。M 处的小方形是直角记号（∠NMO = 90°），MN、MO 上的单短线记号表示两条直角边相等。点击上方按钮或表格行可单独查看某种情况，并显示「横竖互换」辅助虚线——M→O 与 M→N 的横、竖移动量正好对调（1 与 m 互换）。';
+function setMode(m){
+ mode=m;
+ CASES.forEach(function(c){
+  c.group.style.display=(mode==='all'||mode===c.id)?'':'none';
+  c.helpers.style.display=(mode===c.id)?'':'none';
+ });
+ document.querySelectorAll('button[data-mode]').forEach(function(b){
+  b.classList.toggle('active',b.dataset.mode===mode);
+ });
+ document.querySelectorAll('tbody tr').forEach(function(r){
+  r.classList.toggle('sel',r.dataset.mode===mode);
+ });
+ if(mode==='all'){capEl.textContent=DEFAULT_CAP;}
+ else{
+  var c=CASES.filter(function(k){return k.id===mode;})[0];
+  capEl.innerHTML='<b style="color:'+c.color+'">情况 '+c.name+'　</b>'+c.caption;
+ }
+}
+document.querySelectorAll('[data-mode]').forEach(function(b){
+ b.addEventListener('click',function(){setMode(b.dataset.mode);});
+});
+document.getElementById('ckGrid').addEventListener('change',function(){svg.classList.toggle('hide-grid',!this.checked);});
+document.getElementById('ckCoords').addEventListener('change',function(){svg.classList.toggle('hide-coords',!this.checked);});
+setMode('all');
+/* 支持 URL 锚点直接定位某种情况，如 ...html#3 */
+var h=String(location.hash||'').replace('#','');
+if(h==='1'||h==='2'||h==='3'||h==='4'){setMode(h);}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>抛物线平移演示器 · y = a(x−h)² + k</title>
+<style>
+:root{--ink:#212529;--bg:#f7f8fa;--card:#fff;--line:#e9ecef;--blue:#1971c2;--red:#d9480f;--green:#0ca678;--muted:#868e96}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:22px 16px 48px}
+h1{font-size:20px;margin:0 0 4px}
+.sub{color:#495057;font-size:13.5px;margin:0 0 16px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:14px;align-items:start}
+@media (max-width:780px){.layout{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:0 1px 3px rgba(16,24,40,.05)}
+.formula{font-family:"Cambria Math","Times New Roman",serif;font-size:24px;text-align:center;
+ padding:10px 8px;background:#f8f9fa;border-radius:8px;border:1px solid var(--line);margin-bottom:10px}
+.formula .fa{color:var(--blue);font-weight:600}
+.formula .fh{color:var(--red);font-weight:600}
+.formula .fk{color:var(--green);font-weight:600}
+.readout{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
+.ro{background:#f8f9fa;border:1px solid var(--line);border-radius:8px;padding:6px 8px;text-align:center}
+.ro .k{font-size:11.5px;color:var(--muted)}
+.ro .v{font-size:15px;font-weight:600;margin-top:1px}
+.hint{text-align:center;font-size:13px;color:var(--red);min-height:20px;margin-bottom:6px}
+#svg{display:block;width:100%;height:auto;background:#fff;border-radius:8px}
+.grid line{stroke:#eef1f4;stroke-width:1}
+.axis{stroke:#495057;stroke-width:1.6}
+#svg text{font-family:"Segoe UI","Microsoft YaHei",sans-serif}
+.ctl{margin:14px 0 6px}
+.ctl .lab{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:2px}
+.ctl .lab b{font-family:"Cambria Math","Times New Roman",serif;font-size:15px}
+.c-a b{color:var(--blue)}.c-h b{color:var(--red)}.c-k b{color:var(--green)}
+input[type=range]{width:100%;accent-color:#495057;cursor:pointer}
+.exs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.btn{border:1.5px solid #343a40;color:#343a40;background:#fff;border-radius:999px;
+ padding:5px 10px;font-size:13px;cursor:pointer;font-family:inherit;line-height:1.45;text-align:left}
+.btn:hover{background:#f1f3f5}
+.btn small{display:block;color:var(--muted);font-size:11.5px;font-family:"Cambria Math","Times New Roman",serif}
+.anim{width:100%;border:1.5px solid var(--green);color:var(--green);background:#fff;border-radius:999px;
+ padding:7px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:600;margin-top:12px}
+.anim:hover{background:#ebfbee}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;color:#495057;cursor:pointer;user-select:none;margin-top:10px}
+.tip{background:#fff9db;border:1px solid #ffe066;border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:14px}
+.tip b{color:#e67700}
+.tip ul{margin:6px 0 0;padding-left:18px}
+.tip li{margin:3px 0}
+.foot{font-size:12.5px;color:var(--muted);margin-top:18px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <h1>抛物线平移演示器</h1>
+ <p class="sub">顶点式 y = a(x − h)² + k —— 拖动右侧三个滑块，看抛物线、顶点、对称轴和公式怎样同步变化。</p>
+
+ <div class="layout">
+  <div class="card">
+   <div class="formula" id="fml">y = x²</div>
+   <div class="readout">
+    <div class="ro"><div class="k">顶点</div><div class="v" id="roV">(0, 0)</div></div>
+    <div class="ro"><div class="k">对称轴</div><div class="v" id="roA">x = 0</div></div>
+    <div class="ro"><div class="k">开口</div><div class="v" id="roD">向上</div></div>
+   </div>
+   <div class="hint" id="hint">基准抛物线 y = x²，顶点在原点。</div>
+   <svg id="svg" viewBox="0 0 720 560" role="img" aria-label="抛物线平移交互图像"></svg>
+  </div>
+
+  <div class="card">
+   <div class="ctl c-a">
+    <div class="lab"><span><b>a</b>（开口方向与宽窄）</span><span id="vA">1</span></div>
+    <input type="range" id="sA" min="-3" max="3" step="0.1" value="1">
+   </div>
+   <div class="ctl c-h">
+    <div class="lab"><span><b>h</b>（左右平移）</span><span id="vH">0</span></div>
+    <input type="range" id="sH" min="-6" max="6" step="0.5" value="0">
+   </div>
+   <div class="ctl c-k">
+    <div class="lab"><span><b>k</b>（上下平移）</span><span id="vK">0</span></div>
+    <input type="range" id="sK" min="-5" max="5" step="0.5" value="0">
+   </div>
+
+   <div class="exs">
+    <button class="btn" data-a="1" data-h="0" data-k="0">① 基准<small>y = x²</small></button>
+    <button class="btn" data-a="1" data-h="3" data-k="1">② 右移3 上移1<small>y = (x−3)² + 1</small></button>
+    <button class="btn" data-a="1" data-h="-5" data-k="-4">③ 左移5 下移4<small>y = (x+5)² − 4</small></button>
+    <button class="btn" data-a="-1" data-h="-2" data-k="3">④ 开口向下<small>y = −(x+2)² + 3</small></button>
+    <button class="btn" data-a="2" data-h="3" data-k="1">⑤ 开口变窄<small>y = 2(x−3)² + 1</small></button>
+    <button class="btn" data-a="0.5" data-h="4" data-k="-2">⑥ 开口变宽<small>y = 0.5(x−4)² − 2</small></button>
+   </div>
+
+   <button class="anim" id="btnAnim">▶ 播放平移动画（从 y = x² 出发）</button>
+   <label class="chk"><input type="checkbox" id="ckBase" checked>显示基准抛物线 y = x²（虚线）</label>
+
+   <div class="tip">
+    <b>平移口诀</b>
+    <ul>
+     <li><b>左加右减</b>：括号里 <b>x + 5</b> 是向<b>左</b>移 5；<b>x − 3</b> 是向<b>右</b>移 3（和直觉相反，最容易错！）</li>
+     <li><b>上加下减</b>：括号外 <b>+ k</b> 向上移 k；<b>− k</b> 向下移 k（顺着直觉）</li>
+     <li>|a| 越大开口越<b>窄</b>，|a| 越小开口越<b>宽</b>；a &lt; 0 开口向<b>下</b></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+
+ <div class="foot">纯原生 HTML · 零外部依赖 · 顶点 (h, k) 即图像最高 / 最低点</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var NS='http://www.w3.org/2000/svg';
+var svg=document.getElementById('svg');
+var U=40, OX=360, OY=320;
+var XMIN=-9, XMAX=9, YMIN=-6, YMAX=8;
+function X(x){return OX+x*U;}
+function Y(y){return OY-y*U;}
+function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a){e.setAttribute(k,a[k]);}(p||svg).appendChild(e);return e;}
+
+/* ---------- 网格 ---------- */
+var grid=el('g',{class:'grid'});
+var i;
+for(i=XMIN;i<=XMAX;i++){el('line',{x1:X(i),y1:Y(YMAX),x2:X(i),y2:Y(YMIN)},grid);}
+for(i=YMIN;i<=YMAX;i++){el('line',{x1:X(XMIN),y1:Y(i),x2:X(XMAX),y2:Y(i)},grid);}
+
+/* ---------- 坐标轴 ---------- */
+var defs=el('defs',{});
+var mk=el('marker',{id:'arw',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'},defs);
+el('path',{d:'M0,0 L10,5 L0,10 z',fill:'#495057'},mk);
+el('line',{class:'axis',x1:X(XMIN),y1:Y(0),x2:X(XMAX),y2:Y(0),'marker-end':'url(#arw)'});
+el('line',{class:'axis',x1:X(0),y1:Y(YMIN),x2:X(0),y2:Y(YMAX),'marker-end':'url(#arw)'});
+var t;
+for(i=-8;i<=8;i+=2){if(i!==0){t=el('text',{x:X(i),y:Y(0)+16,'font-size':11,'text-anchor':'middle',fill:'#868e96'});t.textContent=i;}}
+for(i=-4;i<=6;i+=2){if(i!==0){t=el('text',{x:X(0)-6,y:Y(i)+4,'font-size':11,'text-anchor':'end',fill:'#868e96'});t.textContent=i;}}
+t=el('text',{x:X(0)-8,y:Y(0)+16,'font-size':12,'text-anchor':'end',fill:'#495057'});t.textContent='O';
+t=el('text',{x:X(XMAX)-2,y:Y(0)-8,'font-size':13,'font-style':'italic',fill:'#495057'});t.textContent='x';
+t=el('text',{x:X(0)+10,y:Y(YMAX)+16,'font-size':13,'font-style':'italic',fill:'#495057'});t.textContent='y';
+
+/* ---------- 基准抛物线 y=x²（虚线参考） ---------- */
+var base=el('path',{fill:'none',stroke:'#adb5bd','stroke-width':1.8,'stroke-dasharray':'6 5','stroke-linecap':'round'});
+var baseLbl=el('text',{x:X(2.75),y:Y(7.2),'font-size':12,fill:'#adb5bd','font-style':'italic'});
+baseLbl.textContent='y = x²';
+
+/* ---------- 当前抛物线 / 对称轴 / 顶点 / 轨迹 ---------- */
+var trail=el('path',{fill:'none',stroke:'#0ca678','stroke-width':1.5,'stroke-dasharray':'3 4',opacity:.8});
+var curve=el('path',{fill:'none',stroke:'#1971c2','stroke-width':3,'stroke-linecap':'round'});
+var axisV=el('line',{stroke:'#fa5252','stroke-width':1.6,'stroke-dasharray':'4 4',opacity:.85});
+var axisLbl=el('text',{'font-size':12.5,fill:'#fa5252','text-anchor':'middle'});
+var vtx=el('circle',{r:6,fill:'#0ca678',stroke:'#fff','stroke-width':2});
+var vtxLbl=el('text',{'font-size':13,fill:'#0ca678','font-weight':600});
+
+var st={a:1,h:0,k:0};
+
+function fmt(n){
+ if(Math.abs(n-Math.round(n))<1e-9)return String(Math.round(n));
+ return String(Math.round(n*10)/10);
+}
+function formulaHTML(a,h,k){
+ var s='y = ';
+ if(Math.abs(a-1)>1e-9){
+  s+='<span class="fa">'+(Math.abs(a+1)<1e-9?'−':fmt(a))+'</span>';
+ }
+ if(Math.abs(h)>1e-9){
+  s+='<span class="fx">(x</span><span class="fh">'+(h>0?' − ':' + ')+fmt(Math.abs(h))+'</span><span class="fx">)²</span>';
+ }else{
+  s+='<span class="fx">x²</span>';
+ }
+ if(Math.abs(k)>1e-9){
+  s+='<span class="fk">'+(k>0?' + ':' − ')+fmt(Math.abs(k))+'</span>';
+ }
+ return s;
+}
+function parabolaPath(a,h,k){
+ var segs=[],seg=null,step=0.06;
+ for(var x=XMIN;x<=XMAX+1e-9;x+=step){
+  var sy=Y(a*(x-h)*(x-h)+k);
+  if(sy>=-6&&sy<=566){
+   if(seg===null)seg=[];
+   seg.push([X(x),sy]);
+  }else{
+   if(seg&&seg.length>1)segs.push(seg);
+   seg=null;
+  }
+ }
+ if(seg&&seg.length>1)segs.push(seg);
+ var d='';
+ for(var i=0;i<segs.length;i++){
+  for(var j=0;j<segs[i].length;j++){
+   d+=(j?'L':'M')+segs[i][j][0].toFixed(1)+','+segs[i][j][1].toFixed(1);
+  }
+ }
+ return d;
+}
+function render(){
+ var a=st.a,h=st.h,k=st.k,showBase=document.getElementById('ckBase').checked;
+ curve.setAttribute('d',parabolaPath(a,h,k));
+ base.setAttribute('display',showBase?'':'none');
+ baseLbl.setAttribute('display',showBase?'':'none');
+ axisV.setAttribute('x1',X(h));axisV.setAttribute('x2',X(h));
+ axisV.setAttribute('y1',Y(YMIN));axisV.setAttribute('y2',Y(YMAX));
+ axisLbl.setAttribute('x',X(h));axisLbl.setAttribute('y',Y(YMAX)+14);
+ axisLbl.textContent='x = '+fmt(h);
+ vtx.setAttribute('cx',X(h));vtx.setAttribute('cy',Y(k));
+ vtxLbl.setAttribute('x',X(h)+10);vtxLbl.setAttribute('y',Y(k)+(a>0?18:-10));
+ vtxLbl.textContent='('+fmt(h)+', '+fmt(k)+')';
+
+ document.getElementById('fml').innerHTML=formulaHTML(a,h,k);
+ document.getElementById('roV').textContent='('+fmt(h)+', '+fmt(k)+')';
+ document.getElementById('roA').textContent='x = '+fmt(h);
+ document.getElementById('roD').textContent=a>0?'向上':'向下';
+ document.getElementById('vA').textContent=fmt(a);
+ document.getElementById('vH').textContent=fmt(h);
+ document.getElementById('vK').textContent=fmt(k);
+
+ var hint='';
+ if(Math.abs(h)>1e-9)hint+=h>0?'x − '+fmt(h)+'：向右平移 '+fmt(h)+' 个单位':'x + '+fmt(-h)+'：向左平移 '+fmt(-h)+' 个单位';
+ if(Math.abs(k)>1e-9)hint+=(hint?'；':'')+(k>0?'向上平移 '+fmt(k)+' 个单位':'向下平移 '+fmt(-k)+' 个单位');
+ document.getElementById('hint').textContent=hint||'基准抛物线 y = x²，顶点在原点。';
+}
+
+/* ---------- 滑块 ---------- */
+function readSliders(){
+ var a=parseFloat(document.getElementById('sA').value);
+ if(Math.abs(a)<0.1)a=a>=0?0.1:-0.1;
+ st.a=a;
+ st.h=parseFloat(document.getElementById('sH').value);
+ st.k=parseFloat(document.getElementById('sK').value);
+ trail.setAttribute('d','');
+ render();
+}
+['sA','sH','sK'].forEach(function(id){
+ document.getElementById(id).addEventListener('input',readSliders);
+});
+document.getElementById('ckBase').addEventListener('change',render);
+
+/* ---------- 平移动画：从 y=x² 平滑运动到目标 (th, tk) ---------- */
+var animId=null;
+function playAnimTo(th,tk){
+ if(animId)cancelAnimationFrame(animId);
+ var t0=null,DUR=1400,pts=[[0,0]];
+ function ease(t){return t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+ function frame(ts){
+  if(t0===null)t0=ts;
+  var t=Math.min(1,(ts-t0)/DUR),e=ease(t);
+  st.h=th*e;st.k=tk*e;
+  pts.push([st.h,st.k]);
+  var d='';
+  for(var j=0;j<pts.length;j++)d+=(j?'L':'M')+X(pts[j][0]).toFixed(1)+','+Y(pts[j][1]).toFixed(1);
+  trail.setAttribute('d',d);
+  document.getElementById('sH').value=st.h;
+  document.getElementById('sK').value=st.k;
+  render();
+  if(t<1){animId=requestAnimationFrame(frame);}
+  else{
+   st.h=th;st.k=tk;
+   document.getElementById('sH').value=th;
+   document.getElementById('sK').value=tk;
+   render();animId=null;
+  }
+ }
+ animId=requestAnimationFrame(frame);
+}
+document.getElementById('btnAnim').addEventListener('click',function(){
+ var th=st.h,tk=st.k;
+ if(Math.abs(th)<1e-9&&Math.abs(tk)<1e-9){th=3;tk=1;}
+ playAnimTo(th,tk);
+});
+
+/* ---------- 示例按钮：先到位再从基准演示运动过程 ---------- */
+Array.prototype.forEach.call(document.querySelectorAll('.exs .btn'),function(b){
+ b.addEventListener('click',function(){
+  document.getElementById('sA').value=b.getAttribute('data-a');
+  var a=parseFloat(b.getAttribute('data-a'));
+  if(Math.abs(a)<0.1)a=a>=0?0.1:-0.1;
+  st.a=a;
+  playAnimTo(parseFloat(b.getAttribute('data-h')),parseFloat(b.getAttribute('data-k')));
+ });
+});
+
+render();
+})();
+</script>
+</body>
+</html>
