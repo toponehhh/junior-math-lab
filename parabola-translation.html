@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <title>抛物线平移演示器 · y = a(x−h)² + k</title>
 <style>
 :root{--ink:#212529;--bg:#f7f8fa;--card:#fff;--line:#e9ecef;--blue:#1971c2;--red:#d9480f;--green:#0ca678;--muted:#868e96}
@@ -50,6 +50,8 @@ input[type=range]{width:100%;accent-color:#495057;cursor:pointer}
 .tip li{margin:3px 0}
 .foot{font-size:12.5px;color:var(--muted);margin-top:18px;text-align:center}
 </style>
+<script>(function(){try{var q=(location.search||'').match(/[?&]theme=(dark|light)/);var t=q?q[1]:(localStorage.getItem('jml-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();</script>
+<script src="theme.js" defer></script>
 </head>
 <body>
 <div class="wrap">

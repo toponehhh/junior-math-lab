@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <meta name="description" content="初中数学可视化演示实验室：抛物线平移、反比例函数、压轴题图解与可打印练习页">
 <title>初中数学演示实验室</title>
 <style>
@@ -47,6 +47,8 @@ a.tile:hover .arrow{text-decoration:underline}
 footer{margin-top:48px;text-align:center;color:#8296a9;font-size:12.5px;line-height:2}
 footer .sep{margin:0 8px}
 </style>
+<script>(function(){try{var q=(location.search||'').match(/[?&]theme=(dark|light)/);var t=q?q[1]:(localStorage.getItem('jml-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();</script>
+<script src="theme.js" defer></script>
 </head>
 <body>
 <div class="wrap">

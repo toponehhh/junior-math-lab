@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-page="a4">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <title>绝对值练习（第 3、4 题）· A4 整理版</title>
 <style>
 :root{--ink:#1a1a1a;--muted:#8a9199;--line:#2b2f33;--accent:#1f4e79;}
@@ -75,7 +75,16 @@ i{font-style:italic;font-family:"Times New Roman",serif;padding:0 .5px}
 .fig .cap{font-size:9pt;color:var(--muted);margin-top:1mm}
 .dots{margin:1mm 0 1mm 1.5mm}
 .dots p{margin:.6mm 0}
+/* ---------- 暗黑模式（仅屏显；打印恒为白纸黑字） ---------- */
+html[data-page=a4][data-theme=dark] body{background:#0d1117}
+html[data-page=a4][data-theme=dark] .page{background:#ecece6;box-shadow:0 6px 26px rgba(0,0,0,.65)}
+@media print{
+ html[data-page=a4][data-theme=dark] body{background:#fff}
+ html[data-page=a4][data-theme=dark] .page{background:#fff;box-shadow:none}
+}
 </style>
+<script>(function(){try{var q=(location.search||'').match(/[?&]theme=(dark|light)/);var t=q?q[1]:(localStorage.getItem('jml-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();</script>
+<script src="theme.js" defer></script>
 </head>
 <body>
 <div class="page">
