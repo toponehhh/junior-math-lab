@@ -10,7 +10,7 @@
 | [parabola-translation.html](parabola-translation.html) | 抛物线平移演示器：a/h/k 滑块、顶点/对称轴/公式实时联动、6 个示例、平移动画 |
 | [inverse-function.html](inverse-function.html) | 反比例函数与图像：积不变定义、描点法、k 正负两族双曲线、k 滑块与拖点交互、易错点 |
 | [problem-26-3.html](problem-26-3.html) | 二次函数压轴题（第 26 题(3)）图解：等腰直角三角形 MNO 的 4 种情况 |
-| [absolute-value-a4.html](absolute-value-a4.html) | 绝对值练习（第 3、4 题）A4 打印版 |
+| [absolute-value-a4.html](absolute-value-a4.html) | 绝对值练习（第 3、4 题）A4 打印版，附参考答案与逐步解析（含数轴示意图、选项陷阱拆解） |
 
 ## 本地查看
 

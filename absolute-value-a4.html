@@ -53,6 +53,28 @@ h1 .tag{font-size:9pt;color:#fff;background:var(--accent);padding:1px 8px;border
 footer{display:flex;justify-content:space-between;font-size:9pt;color:var(--muted);margin-top:5mm;border-top:.6pt solid #d5dae0;padding-top:2.5mm}
 footer .pn{letter-spacing:1px}
 i{font-style:italic;font-family:"Times New Roman",serif;padding:0 .5px}
+/* ---------- 答案与解析页 ---------- */
+.anspg .qs{flex:1 1 auto}
+.anshead{display:flex;justify-content:center;gap:6mm;margin-top:1.5mm;flex-wrap:wrap}
+.ansbox{background:#eef3f8;border:.8pt solid #b9cade;border-radius:3px;padding:1mm 5mm;font-size:10.5pt}
+.ansbox b{color:var(--accent)}
+.sol{line-height:1.62;font-size:10.5pt}
+.sol p{margin:1.2mm 0;text-align:justify}
+.sol .m{font-family:"Times New Roman",serif;padding:0 .5px}
+.sol sub{font-size:70%}
+.stt{font-weight:700;color:var(--accent);font-family:"SimHei","Noto Sans SC","Microsoft YaHei",sans-serif}
+.kb{background:#f2f6fa;border-left:2.5pt solid var(--accent);padding:1.2mm 3mm;margin:1.8mm 0;border-radius:2px;line-height:1.58}
+.tp{background:#fdf1f0;border-left:2.5pt solid #c0392b;padding:1.2mm 3mm;margin:1.8mm 0;border-radius:2px;line-height:1.58}
+.kb .t,.tp .t{font-weight:700;font-family:"SimHei","Microsoft YaHei",sans-serif}
+.kb .t{color:var(--accent)}
+.tp .t{color:#c0392b}
+.vf{color:#0a8f70;font-weight:700}
+.xf{color:#c0392b;font-weight:700}
+.fig{margin:2.2mm 0;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:9pt;color:var(--muted);margin-top:1mm}
+.dots{margin:1mm 0 1mm 1.5mm}
+.dots p{margin:.6mm 0}
 </style>
 </head>
 <body>
@@ -95,10 +117,155 @@ i{font-style:italic;font-family:"Times New Roman",serif;padding:0 .5px}
  <div class="draft"><span class="lab">草稿区</span></div>
 
  <footer>
-  <span>整理自图片 · 题号沿用原卷 · 共 1 页</span>
+   <span>整理自图片 · 题号沿用原卷 · 共 3 页</span>
   <span class="pn">— 1 —</span>
  </footer>
 
-</div>
+ </div>
+
+<div class="page anspg">
+
+  <header>
+   <h1>参考答案与解析<span class="tag">第 3 题</span></h1>
+   <div class="anshead">
+    <span class="ansbox">第 3 题答案：<b>1011 个</b></span>
+    <span class="ansbox">第 4 题答案：<b>A（最小值为 c）</b></span>
+   </div>
+  </header>
+
+  <div class="qs">
+   <div class="q sol">
+    <p><span class="no">3.</span><b>答案：1011 个。</b></p>
+
+    <p><span class="stt">【思路】</span>绝对值的几何意义：<span class="m">|u−v|</span> 表示数轴上点 <i>u</i>、<i>v</i> 之间的距离，把“解绝对值方程”变成“在数轴上找位置”。</p>
+
+    <p><span class="stt">第 1 步 · 把两个绝对值翻译成距离。</span>把 <span class="m">2a</span> 看成数轴上的一个动点 T：<span class="m">|1−2a|=|2a−1|</span> 是 T 到定点 1 的距离；<span class="m">|2a+2020|=|2a−(−2020)|</span> 是 T 到定点 −2020 的距离。方程的含义：T 到 1 的距离 + T 到 −2020 的距离 = 2021。</p>
+
+    <p><span class="stt">第 2 步 · 算两个定点的间距。</span><span class="m">1−(−2020)=2021</span>，恰好等于方程右边的数！</p>
+
+    <p><span class="stt">第 3 步 · 距离和什么时候恰好等于 2021？</span>只有 T 夹在 −2020 与 1 之间（含两端）时，两段路首尾相接、不多不少；一旦跑到两点外侧，就得“折返”，距离和 = 2021 + 2×跑出去的长度 &gt; 2021。</p>
+
+    <div class="fig">
+     <svg viewBox="0 0 640 130" role="img" aria-label="数轴示意图：2a 在 -2020 与 1 之间">
+      <defs>
+       <marker id="arwA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2b2f33"/></marker>
+       <marker id="arwAl" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,0L0,5L10,10z" fill="#1f4e79"/></marker>
+       <marker id="arwAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1f4e79"/></marker>
+      </defs>
+      <line x1="18" y1="62" x2="620" y2="62" stroke="#2b2f33" stroke-width="1.6" marker-end="url(#arwA)"/>
+      <line x1="110" y1="62" x2="545" y2="62" stroke="#1f4e79" stroke-width="14" opacity="0.18" stroke-linecap="round"/>
+      <circle cx="110" cy="62" r="5" fill="#1f4e79"/>
+      <circle cx="545" cy="62" r="5" fill="#1f4e79"/>
+      <text x="110" y="88" font-size="13" text-anchor="middle" font-family="Times New Roman,serif" fill="#212529">−2020</text>
+      <text x="545" y="88" font-size="13" text-anchor="middle" font-family="Times New Roman,serif" fill="#212529">1</text>
+      <line x1="110" y1="38" x2="545" y2="38" stroke="#1f4e79" stroke-width="1.4" marker-start="url(#arwAl)" marker-end="url(#arwAr)"/>
+      <line x1="110" y1="40" x2="110" y2="54" stroke="#1f4e79" stroke-width="1" stroke-dasharray="2 2"/>
+      <line x1="545" y1="40" x2="545" y2="54" stroke="#1f4e79" stroke-width="1" stroke-dasharray="2 2"/>
+      <text x="327" y="28" font-size="12.5" text-anchor="middle" fill="#1f4e79">2a 的取值范围（含两端）</text>
+      <line x1="110" y1="104" x2="545" y2="104" stroke="#8a9199" stroke-width="1.2"/>
+      <line x1="110" y1="99" x2="110" y2="109" stroke="#8a9199" stroke-width="1.2"/>
+      <line x1="545" y1="99" x2="545" y2="109" stroke="#8a9199" stroke-width="1.2"/>
+      <text x="327" y="124" font-size="12.5" text-anchor="middle" fill="#495057">两定点相距 2021 —— 恰好等于方程右边的 2021</text>
+     </svg>
+     <div class="cap">图 1　2a 夹在 −2020 与 1 之间（含端点）时，两段距离之和恰好为 2021</div>
+    </div>
+
+    <p>所以 <span class="m">−2020 ≤ 2a ≤ 1</span>。</p>
+
+    <p><span class="stt">第 4 步 · 数整数个数。</span>两边除以 2：<span class="m">−1010 ≤ a ≤ 1/2</span>。整数 a 从 −1010 取到 0（1/2 不是整数，取到 0 为止），个数 = 0−(−1010)+1 = <b>1011 个</b>。</p>
+
+    <div class="kb"><span class="t">验算：</span>a=0：|1|+|2020|=2021 <span class="vf">✓</span>；a=−1010：|1+2020|+|0|=2021 <span class="vf">✓</span>；a=1：|−1|+|2022|=2023 <span class="xf">✗</span>；a=−1011：|2023|+|−2|=2025 <span class="xf">✗</span>。</div>
+
+    <p><span class="stt">【另解 · 零点分段】</span>两个零点：a=1/2（使 1−2a=0）、a=−1010（使 2a+2020=0）。</p>
+    <div class="dots">
+     <p>① 当 a ≥ 1/2：原式=(2a−1)+(2a+2020)=4a+2019，令它等于 2021 得 a=1/2，不是整数，舍去；</p>
+     <p>② 当 −1010 ≤ a &lt; 1/2：原式=(1−2a)+(2a+2020)=2021，<b>恒成立</b>——这一整段里的整数全部适合；</p>
+     <p>③ 当 a &lt; −1010：原式=(1−2a)+(−2a−2020)=−4a−2019，令它等于 2021 得 a=−1010，不在本段范围内，舍去。</p>
+    </div>
+    <p>综上：整数解为 −1010 ～ 0，共 <b>1011 个</b>（两种方法结果一致，互为印证）。</p>
+
+    <div class="tp"><span class="t">易错提醒：</span>① 端点 a=−1010 千万别丢——此时 |2a+2020|=0，它是整数解；② 个数 = 大数 − 小数 + 1，别忘了“+1”；③ 考场上先用几何意义“看穿”答案，再用零点分段验算，双保险。</div>
+   </div>
+  </div>
+
+  <footer>
+   <span>整理自图片 · 题号沿用原卷 · 共 3 页</span>
+   <span class="pn">— 2 —</span>
+  </footer>
+
+ </div>
+
+<div class="page anspg">
+
+  <header>
+   <h1>参考答案与解析<span class="tag">第 4 题</span></h1>
+   <div class="anshead">
+    <span class="ansbox">第 4 题答案：<b>A（最小值为 c）</b></span>
+   </div>
+  </header>
+
+  <div class="qs">
+   <div class="q sol">
+    <p><span class="no">4.</span><b>答案：A。</b></p>
+
+    <p><span class="stt">【思路】</span>“到三个点的距离和”模型：每个 <span class="m">|x−P|</span> 都是 x 到定点 P 的距离。三个距离之和，当 x 站在<b>中间那个点</b>上时最小，最小值 = 最右点 − 最左点（与中间点具体在哪无关）。</p>
+
+    <p><span class="stt">第 1 步 · 找出三个定点</span>（让每个绝对值内部等于 0 的 x 值）：</p>
+    <div class="dots">
+     <p>· <span class="m">|x−(a+b)/3|</span> → 定点 <span class="m">P<sub>2</sub>=(a+b)/3</span>；</p>
+     <p>· <span class="m">|x−(a+c)/2|</span> → 定点 <span class="m">P<sub>3</sub>=(a+c)/2</span>；</p>
+     <p>· <span class="m">|x+(c−a)/2|=|x−(a−c)/2|</span> → 定点 <span class="m">P<sub>1</sub>=(a−c)/2</span>。</p>
+    </div>
+
+    <p><span class="stt">第 2 步 · 给三个定点排序</span>（利用 a&lt;0&lt;b&lt;c）：</p>
+    <div class="dots">
+     <p>· <span class="m">P<sub>2</sub>−P<sub>1</sub>=(a+b)/3−(a−c)/2=(−a+2b+3c)/6&gt;0</span>（−a、2b、3c 全为正）→ P<sub>1</sub> 在 P<sub>2</sub> 左边；</p>
+     <p>· <span class="m">P<sub>3</sub>−P<sub>1</sub>=(a+c)/2−(a−c)/2=c&gt;0</span> → P<sub>1</sub> 在 P<sub>3</sub> 左边；</p>
+     <p>· <span class="m">P<sub>3</sub>−P<sub>2</sub>=(a+c)/2−(a+b)/3=(a+3c−2b)/6&gt;0</span>（因 b&lt;c，3c−2b&gt;c&gt;0）→ P<sub>2</sub> 在 P<sub>3</sub> 左边。</p>
+    </div>
+    <p>∴ 从左到右依次为 <span class="m">P<sub>1</sub>、P<sub>2</sub>、P<sub>3</sub></span>。</p>
+
+    <p><span class="stt">第 3 步 · 为什么 x 站在中间点 P<sub>2</sub> 处最小？</span>当 x 夹在 P<sub>1</sub>、P<sub>3</sub> 之间时，<span class="m">|x−P<sub>1</sub>|+|x−P<sub>3</sub>|=P<sub>3</sub>−P<sub>1</sub>=c</span>（定值），于是原式 = c + |x−P<sub>2</sub>| ≥ c，当且仅当 x=P<sub>2</sub> 时取等号；若 x 跑到 P<sub>1</sub>、P<sub>3</sub> 外侧，则 |x−P<sub>1</sub>|+|x−P<sub>3</sub>|&gt;c，原式更大。</p>
+
+    <div class="fig">
+     <svg viewBox="0 0 640 155" role="img" aria-label="数轴上三个定点，x 取中间点时距离和最小">
+      <defs>
+       <marker id="arwB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2b2f33"/></marker>
+       <marker id="arwDn" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,0L5,10z" fill="#0a8f70"/></marker>
+      </defs>
+      <line x1="18" y1="68" x2="620" y2="68" stroke="#2b2f33" stroke-width="1.6" marker-end="url(#arwB)"/>
+      <line x1="130" y1="68" x2="530" y2="68" stroke="#1f4e79" stroke-width="14" opacity="0.15" stroke-linecap="round"/>
+      <circle cx="130" cy="68" r="5" fill="#1f4e79"/>
+      <circle cx="530" cy="68" r="5" fill="#1f4e79"/>
+      <circle cx="330" cy="68" r="6.5" fill="#0a8f70" stroke="#ffffff" stroke-width="1.5"/>
+      <text x="330" y="32" font-size="12.5" text-anchor="middle" fill="#0a8f70" font-weight="bold">x 站在这里（中间点）距离和最小</text>
+      <line x1="330" y1="38" x2="330" y2="55" stroke="#0a8f70" stroke-width="1.4" marker-end="url(#arwDn)"/>
+      <text x="130" y="94" font-size="13" text-anchor="middle" font-family="Times New Roman,serif" fill="#212529">P<tspan dy="3" font-size="9.5">1</tspan><tspan dy="-3">=(a−c)/2</tspan></text>
+      <text x="330" y="94" font-size="13" text-anchor="middle" font-family="Times New Roman,serif" fill="#0a8f70" font-weight="bold">P<tspan dy="3" font-size="9.5">2</tspan><tspan dy="-3">=(a+b)/3</tspan></text>
+      <text x="530" y="94" font-size="13" text-anchor="middle" font-family="Times New Roman,serif" fill="#212529">P<tspan dy="3" font-size="9.5">3</tspan><tspan dy="-3">=(a+c)/2</tspan></text>
+      <line x1="130" y1="116" x2="530" y2="116" stroke="#c0392b" stroke-width="1.4"/>
+      <line x1="130" y1="111" x2="130" y2="121" stroke="#c0392b" stroke-width="1.4"/>
+      <line x1="530" y1="111" x2="530" y2="121" stroke="#c0392b" stroke-width="1.4"/>
+      <text x="330" y="140" font-size="13" text-anchor="middle" fill="#c0392b" font-weight="bold">P<tspan dy="3" font-size="9.5">3</tspan><tspan dy="-3">−P</tspan><tspan dy="3" font-size="9.5">1</tspan><tspan dy="-3">= c　←　这就是最小值</tspan></text>
+     </svg>
+     <div class="cap">图 2　x 站在中间点 P<sub>2</sub> 处，三个距离之和最小；最小值 = P<sub>3</sub>−P<sub>1</sub> = c</div>
+    </div>
+
+    <p><span class="stt">第 4 步 · 结论。</span>最小值 = <span class="m">P<sub>3</sub>−P<sub>1</sub>=(a+c)/2−(a−c)/2=c</span>，选 <b>A</b>。</p>
+
+    <div class="tp"><span class="t">选项陷阱：</span>C 项 <span class="m">(a+9c−2b)/6</span> 恰好是把 x 放在<b>最右点 P<sub>3</sub></b> 上算出的值（= c + (P<sub>3</sub>−P<sub>2</sub>) 那一段），并不是最小值——“站在端点”是这类题最常见的失分点。特值检验：取 a=−1、b=2、c=3，三个定点为 −2、1/3、1，最小值 = 1−(−2) = 3 = c <span class="vf">✓</span>；此时 B=5/3、C=11/3、D=8/3，全部排除。</div>
+
+    <div class="kb"><span class="t">模型推广：</span>到<b>奇数个</b>定点距离和最小 → x 取正中间那个点；到<b>偶数个</b>定点 → x 取中间两点之间任意位置（如 4 个点 P<sub>1</sub>～P<sub>4</sub> 的最小值 = (P<sub>4</sub>−P<sub>1</sub>)+(P<sub>3</sub>−P<sub>2</sub>)）。“找中间点”的思想在以后学函数与方案选择时还会反复出现。</div>
+
+    <div class="tp"><span class="t">易错提醒：</span>① 最小值只由最左、最右两个点决定，中间点只决定“x 站在哪”，不改变最小值大小；② <span class="m">|x+(c−a)/2|</span> 的定点是 <span class="m">(a−c)/2</span>（是负数），别误当成 (c−a)/2；③ 做题先把三个定点“钉”在数轴上排序，比硬算绝对值又快又稳。</div>
+   </div>
+  </div>
+
+  <footer>
+   <span>整理自图片 · 题号沿用原卷 · 共 3 页</span>
+   <span class="pn">— 3 —</span>
+  </footer>
+
+ </div>
 </body>
 </html>
