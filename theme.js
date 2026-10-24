@@ -57,7 +57,7 @@ if(!isA4){
  document.head.appendChild(st);
 }
 
-/* ---------- 切换按钮（所有页面，含 A4） ---------- */
+/* ---------- 切换按钮 + 返回主页按钮（所有页面，含 A4） ---------- */
 var bst=document.createElement('style');
 bst.textContent=
 '#themeToggle{position:fixed;top:14px;right:14px;z-index:9999;width:40px;height:40px;'+
@@ -68,8 +68,31 @@ bst.textContent=
 '#themeToggle:hover{transform:scale(1.08)}\n'+
 'html[data-theme=dark] #themeToggle{background:rgba(22,29,38,.9);color:#e9eef5;'+
 'border-color:rgba(143,153,168,.45)}\n'+
-'@media print{#themeToggle{display:none!important}}';
+'#homeLink{position:fixed;top:17px;right:64px;z-index:9999;display:inline-flex;align-items:center;'+
+'gap:5px;border-radius:999px;border:1px solid rgba(128,140,155,.5);'+
+'background:rgba(255,255,255,.9);color:#33404e;text-decoration:none;font-size:13px;'+
+'line-height:1;padding:7px 14px;box-shadow:0 2px 8px rgba(16,24,40,.18);font-family:inherit;'+
+'transition:transform .12s}\n'+
+'#homeLink:hover{transform:scale(1.04)}\n'+
+'html[data-theme=dark] #homeLink{background:rgba(22,29,38,.9);color:#e9eef5;'+
+'border-color:rgba(143,153,168,.45)}\n'+
+'@media (max-width:560px){#homeLink{top:63px;right:14px}}\n'+
+'@media print{#themeToggle,#homeLink{display:none!important}}';
 document.head.appendChild(bst);
+
+/* 返回主页链接（首页自身不显示） */
+if(!/\/(index\.html)?(\?.*)?(#.*)?$/.test(location.pathname+location.search)){
+ var hl=document.createElement('a');
+ hl.id='homeLink';hl.href='index.html';
+ hl.setAttribute('aria-label','返回主页');
+ hl.innerHTML='&#8592; 返回主页';
+ document.body.appendChild(hl);
+ /* 窄屏下链接换行到按钮下方，为两枚悬浮按钮让出顶部空间（打印不受影响） */
+ var pad=document.createElement('style');
+ pad.textContent='@media (max-width:560px){body{padding-top:100px}}'+
+  '@media print{body{padding-top:0!important}}';
+ document.head.appendChild(pad);
+}
 
 var btn=document.createElement('button');
 btn.id='themeToggle';btn.type='button';
