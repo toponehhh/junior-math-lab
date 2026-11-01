@@ -11,6 +11,7 @@
 | [inverse-function.html](inverse-function.html) | 反比例函数与图像：积不变定义、描点法、k 正负两族双曲线、k 滑块与拖点交互、易错点 |
 | [problem-26-3.html](problem-26-3.html) | 二次函数压轴题（第 26 题(3)）图解：等腰直角三角形 MNO 的 4 种情况 |
 | [absolute-value-a4.html](absolute-value-a4.html) | 绝对值练习（第 3、4 题）A4 打印版，附参考答案与逐步解析（含数轴示意图、选项陷阱拆解） |
+| [midterm-yangpu-2025.html](midterm-yangpu-2025.html) | 25学年七上期中卷（杨浦新教材）全卷 28 题逐题详解：答案速查＋四模块解析＋SVG 图解，已与老师参考答案核对 |
 | [theme.js](theme.js) | 全站共享主题脚本：亮/暗双主题切换按钮、localStorage 记忆、跟随系统、SVG 图形重着色 |
 
 ## 主题切换

@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>25学年七上数学期中卷（杨浦·新教材）· 全卷逐题详解</title>
+<script>(function(){try{var q=(location.search||'').match(/[?&]theme=(dark|light)/);var t=q?q[1]:(localStorage.getItem('jml-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();</script>
+<style>
+/* ================= 主题变量 ================= */
+:root{
+  --bg:#0b1220; --bg2:#0e1729; --card:#141d33; --card2:#182342;
+  --ink:#dbe4f5; --ink2:#9fb0cc; --line:#26324f;
+  --gold:#f5b942; --cyan:#4dd0b5; --red:#ff7a7a; --green:#6fd97f; --blue:#6db3ff;
+  --shadeA:rgba(245,185,66,.42); --shadeB:rgba(77,208,181,.30);
+  --gridc:rgba(110,140,190,.14);
+  --mono:'Cascadia Code','Consolas','Courier New',monospace;
+  --math:'Times New Roman','STIX Two Math','Cambria Math',serif;
+}
+:root[data-theme="light"]{
+  --bg:#f3f5fa; --bg2:#ffffff; --card:#ffffff; --card2:#eef2fa;
+  --ink:#1f2a44; --ink2:#5a6b8c; --line:#d5dcec;
+  --gold:#b07800; --cyan:#0d9488; --red:#d33a3a; --green:#2e9e44; --blue:#2563eb;
+  --shadeA:rgba(245,185,66,.45); --shadeB:rgba(77,208,181,.32);
+  --gridc:rgba(70,100,160,.15);
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme]){ --bg:#f3f5fa; --bg2:#ffffff; --card:#ffffff; --card2:#eef2fa;
+    --ink:#1f2a44; --ink2:#5a6b8c; --line:#d5dcec;
+    --gold:#b07800; --cyan:#0d9488; --red:#d33a3a; --green:#2e9e44; --blue:#2563eb;
+    --shadeA:rgba(245,185,66,.45); --shadeB:rgba(77,208,181,.32);
+    --gridc:rgba(70,100,160,.15);}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  line-height:1.7; font-size:15.5px; padding:0 0 60px;
+}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+
+/* ================= header ================= */
+header{
+  background:linear-gradient(160deg,var(--bg2) 0%,var(--card) 100%);
+  border-bottom:1px solid var(--line); padding:34px 0 26px; margin-bottom:26px;
+}
+.h-title{font-size:26px;font-weight:800;letter-spacing:.5px}
+.h-title small{display:block;font-size:14px;font-weight:500;color:var(--ink2);margin-top:6px;letter-spacing:1px}
+.h-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.h-meta span{
+  font-size:12.5px;color:var(--ink2);border:1px solid var(--line);
+  padding:3px 12px;border-radius:20px;background:var(--bg2);
+}
+.themebar{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px}
+.tbtn{
+  font-size:12.5px;color:var(--ink2);background:var(--bg2);border:1px solid var(--line);
+  padding:4px 14px;border-radius:8px;cursor:pointer;font-family:inherit;
+}
+.tbtn:hover{color:var(--ink);border-color:var(--cyan)}
+
+/* ================= 速查表 ================= */
+.sechead{
+  display:flex;align-items:center;gap:12px;margin:34px 0 14px;
+}
+.sechead .no{
+  background:var(--gold);color:#231803;font-weight:800;font-size:15px;
+  padding:2px 14px;border-radius:8px;white-space:nowrap;
+}
+.sechead h2{font-size:19px;font-weight:700}
+.sechead .pts{font-size:12.5px;color:var(--ink2);margin-left:auto}
+.quick{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.quick h3{font-size:14px;color:var(--gold);letter-spacing:2px;margin-bottom:12px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:8px}
+.qcell{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--card2);border:1px solid var(--line);border-radius:8px;
+  padding:5px 12px;font-size:13.5px;
+}
+.qcell b{color:var(--ink2);font-weight:600;font-size:12.5px}
+.qcell span{font-family:var(--math);font-weight:700;color:var(--gold);font-size:13px;white-space:normal;text-align:right;line-height:1.35;flex:1;min-width:0}
+.qnote{margin-top:12px;font-size:12.5px;color:var(--ink2)}
+.qnote b{color:var(--red)}
+
+/* ================= 题卡 ================= */
+.qcard{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px 16px;margin-bottom:18px;
+}
+.qtop{display:flex;gap:14px;align-items:flex-start}
+.qnum{
+  flex:none;width:38px;height:38px;border-radius:10px;
+  background:var(--card2);border:1.5px solid var(--gold);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:17px;
+}
+.qmain{flex:1;min-width:0}
+.qtext{font-size:15px;color:var(--ink)}
+.qtext .opts{margin-top:8px;display:grid;gap:5px}
+.qtext .opts span{
+  display:block;background:var(--card2);border:1px solid var(--line);
+  border-radius:8px;padding:4px 12px;font-family:var(--math);font-size:14.5px;
+}
+.qtext .opts span em{font-style:normal;font-family:inherit;font-weight:700;color:var(--cyan);margin-right:6px}
+.badge{
+  flex:none;align-self:flex-start;background:var(--gold);color:#231803;
+  font-weight:800;border-radius:9px;padding:4px 15px;font-size:15px;
+  font-family:var(--math);box-shadow:0 2px 10px rgba(245,185,66,.25);
+  max-width:170px;text-align:center;
+}
+.badge.gray{background:var(--card2);color:var(--ink2);border:1px solid var(--line);box-shadow:none;font-family:inherit;font-size:12.5px}
+
+/* 模块框 */
+.blk{margin-top:14px;border-radius:10px;padding:10px 14px 10px 16px;font-size:14px;position:relative}
+.blk .blab{
+  position:absolute;top:-9px;left:12px;font-size:11.5px;font-weight:700;letter-spacing:2px;
+  padding:1px 10px;border-radius:6px;background:var(--card);
+}
+.keys{border:1px solid var(--cyan);background:rgba(77,208,181,.06)}
+.keys .blab{color:var(--cyan)}
+.keys ul{margin:4px 0 0 18px}
+.keys li{margin:3px 0}
+.sol{border:1px solid var(--line);background:var(--card2)}
+.sol .blab{color:var(--blue)}
+.warn{border:1px solid var(--red);background:rgba(255,122,122,.06)}
+.warn .blab{color:var(--red)}
+.verify{border:1px solid var(--green);background:rgba(111,217,127,.06)}
+.verify .blab{color:var(--green)}
+
+/* 数学排版 */
+.mrow{
+  font-family:var(--math);font-size:15.5px;margin:6px 0;
+  padding-left:10px;border-left:2.5px solid var(--line);
+}
+.mrow.center{border-left:none;text-align:center;padding-left:0}
+.mrow .ans{color:var(--gold);font-weight:700}
+.mnote{font-size:12.5px;color:var(--ink2);font-family:inherit;margin:2px 0 4px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:-0.5em;margin:0 2px;line-height:1.05;font-size:.9em}
+.frac>span:first-child{border-bottom:1.3px solid currentColor;padding:0 3px}
+.frac>span:last-child{padding:0 3px}
+.hl{color:var(--gold);font-weight:700}
+.cy{color:var(--cyan);font-weight:700}
+.rd{color:var(--red);font-weight:700}
+.tag{display:inline-block;font-size:11.5px;color:var(--ink2);border:1px solid var(--line);border-radius:5px;padding:0 6px;margin-left:8px;vertical-align:1px}
+
+/* SVG 图 */
+.figbox{margin:14px 0 4px;text-align:center}
+.figbox svg{max-width:100%;height:auto;color:var(--ink)}
+.figcap{font-size:12.5px;color:var(--ink2);margin-top:6px}
+.fig-grid{stroke:var(--gridc);stroke-width:1}
+.f-out{fill:none;stroke:currentColor;stroke-width:2.6}
+.f-mid{fill:none;stroke:currentColor;stroke-width:1.6}
+.f-in{fill:none;stroke:currentColor;stroke-width:1.2}
+.f-dash{fill:none;stroke:currentColor;stroke-width:1.1;stroke-dasharray:5 4;opacity:.75}
+.f-shade{fill:var(--shadeA);stroke:none}
+.f-shade2{fill:var(--shadeB);stroke:none}
+.f-hi2{fill:rgba(109,179,255,.20);stroke:var(--blue);stroke-width:2;stroke-dasharray:6 4}
+.f-quad{fill:rgba(255,122,122,.10);stroke:var(--red);stroke-width:2.4}
+.f-tri1{fill:rgba(109,179,255,.22)}
+.f-tri2{fill:rgba(111,217,127,.22)}
+.f-tri3{fill:rgba(245,185,66,.25)}
+.f-tri4{fill:rgba(255,122,122,.20)}
+.f-pt{fill:currentColor}
+.f-lab{fill:currentColor;font-size:14px;font-weight:700}
+.f-labS{fill:currentColor;font-size:11px;font-weight:600}
+.f-dim{stroke:var(--cyan);stroke-width:1.2}
+.f-dimt{fill:var(--cyan);font-size:12.5px;font-weight:700}
+.f-note{fill:var(--ink2);font-size:11px}
+.f-circ{fill:var(--card);stroke:currentColor;stroke-width:1.3}
+.f-circH{fill:rgba(245,185,66,.30);stroke:var(--gold);stroke-width:2}
+.f-circL1{fill:rgba(109,179,255,.16);stroke:var(--blue);stroke-width:1}
+.f-circL2{fill:rgba(111,217,127,.16);stroke:var(--green);stroke-width:1}
+.f-num{fill:currentColor;font-size:12.5px;font-weight:600}
+.f-slant{stroke:var(--gold);stroke-width:2;stroke-dasharray:6 4;fill:none}
+.f-s1{stroke:var(--blue);stroke-width:1.2;fill:none;opacity:.55}
+.f-s2{stroke:var(--green);stroke-width:1.2;fill:none;opacity:.55}
+.f-s3{stroke:var(--gold);stroke-width:2.2;fill:none}
+
+/* 表格 */
+table.mini{border-collapse:collapse;margin:8px auto;font-size:13.5px;font-family:var(--math)}
+table.mini th,table.mini td{border:1px solid var(--line);padding:4px 14px;text-align:center}
+table.mini th{background:var(--card2);color:var(--ink2);font-weight:600;font-family:inherit;font-size:12.5px}
+
+footer{margin-top:40px;text-align:center;color:var(--ink2);font-size:12.5px;line-height:2;border-top:1px solid var(--line);padding-top:22px}
+
+/* ================= 打印恒白 ================= */
+@media print{
+  :root,:root[data-theme="dark"]{
+    --bg:#fff;--bg2:#fff;--card:#fff;--card2:#f4f6fb;--ink:#111;--ink2:#555;--line:#ccc;
+    --gold:#8a6100;--cyan:#0a7a6e;--red:#b30000;--green:#1a7a35;--blue:#1249a8;
+    --shadeA:rgba(120,120,120,.35);--shadeB:rgba(120,120,120,.25);--gridc:rgba(0,0,0,.10);
+  }
+  body{font-size:12px;padding:0}
+  .themebar{display:none}
+  .qcard{break-inside:avoid;border:1px solid #999}
+  .blk{break-inside:avoid}
+  header{border:1px solid #999;border-radius:8px}
+  .qcard .figbox{break-inside:avoid}
+}
+@media (max-width:640px){
+  .qtop{flex-wrap:wrap}
+  .badge{order:-1}
+  .h-title{font-size:21px}
+}
+</style>
+<script src="theme.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="h-title">2025 学年第一学期七年级数学期中质量调研卷 · 全卷逐题详解
+      <small>上海市杨浦区 · 沪教版新教材 · 2025 年 11 月</small>
+    </div>
+    <div class="h-meta">
+      <span>全卷 28 题</span><span>满分 100 分</span>      <span>考试时间 90 分钟</span>
+      <span>已与老师参考答案逐题核对 ✓</span>
+      <span>选择题 18 分</span><span>填空题 24 分</span><span>简答题 40 分</span><span>解答题 18 分</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ 答案速查 ============ -->
+<div class="quick">
+  <h3>答 案 速 查</h3>
+  <div class="qgrid">
+    <div class="qcell"><b>1</b><span>A</span></div>
+    <div class="qcell"><b>2</b><span>C</span></div>
+    <div class="qcell"><b>3</b><span>C</span></div>
+    <div class="qcell"><b>4</b><span>C</span></div>
+    <div class="qcell"><b>5</b><span>D</span></div>
+    <div class="qcell"><b>6</b><span>B</span></div>
+    <div class="qcell"><b>7</b><span>0</span></div>
+    <div class="qcell"><b>8</b><span>399.96</span></div>
+    <div class="qcell"><b>9</b><span>a = 1</span></div>
+    <div class="qcell"><b>10</b><span>−3/2</span></div>
+    <div class="qcell"><b>11</b><span>−3x²y+8x³y²</span></div>
+    <div class="qcell"><b>12</b><span>7x²y² − 1</span></div>
+    <div class="qcell"><b>13</b><span>(x−16)(x+2)</span></div>
+    <div class="qcell"><b>14</b><span>(a−b)²(x+ay−by)</span></div>
+    <div class="qcell"><b>15</b><span>±20</span></div>
+    <div class="qcell"><b>16</b><span>−(x+y)⁵</span></div>
+    <div class="qcell"><b>17</b><span>0、−2、−6</span></div>
+    <div class="qcell"><b>18</b><span>m(m+1)/2</span></div>
+    <div class="qcell"><b>19</b><span>交换律·结合律</span></div>
+    <div class="qcell"><b>20</b><span>a=−9, b=−3</span></div>
+    <div class="qcell"><b>21</b><span>(x±1)(y±1)</span></div>
+    <div class="qcell"><b>22</b><span>8</span></div>
+    <div class="qcell"><b>23</b><span>第①步出错</span></div>
+    <div class="qcell"><b>24</b><span>0</span></div>
+    <div class="qcell"><b>25</b><span>2017</span></div>
+    <div class="qcell"><b>26</b><span>−3</span></div>
+    <div class="qcell"><b>27</b><span>①平方差 ②2 ③(S₁+S₂)/2</span></div>
+    <div class="qcell"><b>28</b><span>②k=5 ③(x+1)(x−2)(x²−5)</span></div>
+  </div>
+  <p class="qnote">* 第 5 题：选项 A 的等号虽也成立，但按「因式分解必须<b>降次</b>」的阅卷口径判错（老师批注「没有降次」），标准答案 <b>D</b>。本页已与老师参考答案逐题核对一致。</p>
+</div>
+
+<!-- ============ 一、选择题 ============ -->
+<div class="sechead"><span class="no">一</span><h2>选择题（每题 3 分，共 18 分）</h2><span class="pts">第 1 ~ 6 题</span></div>
+
+<article class="qcard" id="q1">
+  <div class="qtop">
+    <span class="qnum">1</span>
+    <div class="qmain">
+      <div class="qtext"><p>下列计算结果正确的是（　）</p>
+        <div class="opts">
+          <span><em>A</em>(−x²y³)² = x⁴y⁶</span>
+          <span><em>B</em>(3a²b²)² = 6a⁴b⁴</span>
+          <span><em>C</em>(−x²)³ = −x⁵</span>
+          <span><em>D</em>2m³ · 3m² = 5m⁵</span>
+        </div>
+      </div>
+    </div>
+    <span class="badge">A</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li><b>积的乘方</b>：每个因式分别乘方——(ab)ⁿ = aⁿbⁿ，<b>系数也要乘方</b>；</li>
+      <li><b>幂的乘方</b>：底数不变、<b>指数相乘</b>——(aᵐ)ⁿ = aᵐⁿ；</li>
+      <li><b>单项式乘单项式</b>：系数相乘（乘！不是加），同底数幂指数相加。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">A：(−x²y³)² = (−1)²·(x²)²·(y³)² = <span class="ans">x⁴y⁶</span>　✓（负数的偶次幂是正数）</div>
+    <div class="mrow">B：3² = <span class="rd">9</span> ≠ 6，应为 9a⁴b⁴（系数要「平方」，不是「乘 2」）</div>
+    <div class="mrow">C：指数 2×3 = <span class="rd">6</span>，应为 −x⁶（幂的乘方指数相乘）</div>
+    <div class="mrow">D：系数 2×3 = <span class="rd">6</span> ≠ 5，应为 6m⁵（系数相乘，不是相加）</div>
+    <p class="mnote">B、C、D 恰好是三个「高频陷阱」：系数没平方、指数没相乘、系数拿去相加。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q2">
+  <div class="qtop">
+    <span class="qnum">2</span>
+    <div class="qmain">
+      <div class="qtext"><p>计算 (2/3)²⁰²⁵ · (−3/2)²⁰²⁶ 的结果是（　）</p>
+        <div class="opts">
+          <span><em>A</em>2/3</span><span><em>B</em>−2/3</span><span><em>C</em>3/2</span><span><em>D</em>−3/2</span>
+        </div>
+      </div>
+    </div>
+    <span class="badge">C</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li><b>偶次幂消负号</b>：2026 是偶数 → (−3/2)²⁰²⁶ = (3/2)²⁰²⁶；</li>
+      <li>底数 <b>2/3 与 3/2 互为倒数</b>，乘积为 1 —— 目标是「凑对子」；</li>
+      <li>指数 2025 与 2026 <b>差 1</b>：拆出一个 (3/2)¹，剩下的配对。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow center">(2/3)²⁰²⁵ · (−3/2)²⁰²⁶ = (2/3)²⁰²⁵ · (3/2)²⁰²⁶</div>
+    <div class="mrow center">= (2/3)²⁰²⁵ · (3/2)²⁰²⁵ · (3/2)¹　<span class="mnote">← 把 2026 拆成 2025 + 1</span></div>
+    <div class="mrow center">= [(2/3)·(3/2)]²⁰²⁵ · (3/2)　<span class="mnote">← 逆用「积的乘方」把底数先乘</span></div>
+    <div class="mrow center">= 1²⁰²⁵ · (3/2) = <span class="ans">3/2</span></div>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span>
+    <p>最容易错的是忘了负号的偶次幂，或者没注意到两个指数「差 1」而硬算到底。见到「底数互为倒数 + 指数差 1」，就按这个套路拆。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q3">
+  <div class="qtop">
+    <span class="qnum">3</span>
+    <div class="qmain">
+      <div class="qtext"><p>如果 A 是一个七次整式，B 也是一个七次整式，那么 A + B 一定是（　）</p>
+        <div class="opts">
+          <span><em>A</em>十四次整式</span><span><em>B</em>七次整式</span>
+          <span><em>C</em>不高于七次的整式</span><span><em>D</em>六次整式</span>
+        </div>
+      </div>
+    </div>
+    <span class="badge">C</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>整式<b>相加只合并同类项</b>，次数<b>不会升高</b>（升次是乘法干的事）；</li>
+      <li>两个「最高次项」<b>可能恰好抵消</b>，次数因此下降。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <p>举两个「试验用」的例子就全明白了：</p>
+    <div class="mrow">例 1：A = x⁷ + x，B = x⁷ − x → A + B = 2x⁷（还是七次）</div>
+    <div class="mrow">例 2：A = x⁷ + 1，B = −x⁷ → A + B = 1（抵消成常数，次数降没了）</div>
+    <p>所以「一定」成立的只有：<b>次数不超过七次</b> —— 选 <span class="ans">C</span>。</p>
+    <p class="mnote">排除：A「十四次」——加法不升次；B「一定七次」——可能抵消；D「六次」——也可能恰好不抵消。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q4">
+  <div class="qtop">
+    <span class="qnum">4</span>
+    <div class="qmain">
+      <div class="qtext"><p>如果 m ≠ n，那么下列等式中正确的是（　）</p>
+        <div class="opts">
+          <span><em>A</em>(m−n)² = −(m+n)²</span>
+          <span><em>B</em>(m−n)² = −(n−m)²</span>
+          <span><em>C</em>(m+n)(m−n) = (−m−n)(−m+n)</span>
+          <span><em>D</em>(−m−n)² = −(m−n)²</span>
+        </div>
+      </div>
+    </div>
+    <span class="badge">C</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li><b>特值法</b>最稳：取 m = 2、n = 1 代入逐个算，几秒钟锁定答案；</li>
+      <li>代数理由：C 的两个括号<b>同时添了负号</b>——(−m−n) = −(m+n)、(−m+n) = −(m−n)，两个都变号，乘积<b>不变</b>。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <p>取 m = 2、n = 1：</p>
+    <div class="mrow">A：左边 (2−1)² = 1，右边 −(2+1)² = −9　✗</div>
+    <div class="mrow">B：左边 1，右边 −(1−2)² = −1　✗（平方永远非负，两边一正一负）</div>
+    <div class="mrow">C：左边 3×1 = 3，右边 (−3)×(−1) = <span class="ans">3</span>　✓</div>
+    <div class="mrow">D：左边 (−3)² = 9，右边 −1　✗</div>
+    <p class="mnote">C 的本质：(−m−n)(−m+n) = [−(m+n)]·[−(m−n)] = (m+n)(m−n)，两个因式「双双变号」时乘积不变号。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q5">
+  <div class="qtop">
+    <span class="qnum">5</span>
+    <div class="qmain">
+      <div class="qtext"><p>下列各式因式分解正确的是（　）</p>
+        <div class="opts">
+          <span><em>A</em>2x + 2y = 2(x + y)</span>
+          <span><em>B</em>x² − 5x + 6 = x(x − 5) + 6</span>
+          <span><em>C</em>x² + 2x − 3 = x(x + 2 − 3/x)</span>
+          <span><em>D</em>x² + xy + ¼y² = (x + ½y)²</span>
+        </div>
+      </div>
+    </div>
+    <span class="badge">D</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>判断因式分解的两条<b>合格标准</b>：① 等号两边<b>相等</b>；② 右边是<b>几个整式的乘积</b>（不能露着加号、不能出现分式）；</li>
+      <li>老师的阅卷口径再加一条：<b>要「降次」</b>——分解后因式的次数要低于原多项式（老师对 A 的批注就是「没有降次」）；</li>
+      <li>「整式」允许<b>分数系数</b>——½y 是整式，别误以为系数必须是整数。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析（逐项体检）</span>
+    <div class="mrow">B：等号成立，但右边是「积 <b>+ 数</b>」——加号露在外面，不是乘积形式 → ✗（<b>假分解</b>）</div>
+    <div class="mrow">C：等号成立，但括号里出现 <b>3/x</b>，是分式不是整式 → ✗（<b>分式因式</b>）</div>
+    <div class="mrow">D：验算右边 (x + ½y)² = x² + 2·x·(½y) + (½y)² = x² + xy + ¼y²，等号成立；右边是「整式 × 整式」，且原式 2 次 → 因式 1 次，<b>降次了</b> → <span class="ans">正确，选 D ✓</span></div>
+    <div class="mrow">A：右边 = 2·(x+y)，等号也成立、也是整式的积——但 <b>没有降次</b>（原式 1 次，分解后还是 1 次），按阅卷口径不算正确的因式分解 → ✗（老师批注：没有降次）</div>
+    <p><b>结论：选 D（与老师参考答案一致）。</b>记牢这条阅卷口径：因式分解要「降次」。</p>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span>
+    <p>① 常见误判：以为 D「系数是分数就不算因式分解」——错！整式允许分数系数。② 严谨说明：按课本定义「把多项式化为几个整式的积」，A 的等号其实也成立（2 与 x+y 都是整式）——但考试口径以「降次」为准，<b>记住选 D</b>。两条判断标准（相等 + 整式的积）仍是基本功，「降次」是本题的裁决线。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q6">
+  <div class="qtop">
+    <span class="qnum">6</span>
+    <div class="qmain">
+      <div class="qtext"><p>已知 p = −m − n，q = mn，那么关于 x 的整式 x² + px + q 因式分解的结果是（　）</p>
+        <div class="opts">
+          <span><em>A</em>(x+m)(x+n)</span><span><em>B</em>(x−m)(x−n)</span>
+          <span><em>C</em>(x+m)(x−n)</span><span><em>D</em>(x−m)(x+n)</span>
+        </div>
+      </div>
+    </div>
+    <span class="badge">B</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>把 p、q <b>翻译回</b> m、n：p = −(m+n)，q = mn；</li>
+      <li><b>十字相乘</b>模型：x² − (m+n)x + mn = (x−m)(x−n)（两数之积 mn、之和 −(m+n)）。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow center">x² + px + q = x² − (m+n)x + mn</div>
+    <div class="mrow center">= (x − m)(x − n)　<span class="mnote">← (−m)·(−n) = mn，(−m)+(−n) = −(m+n)</span></div>
+    <p class="mnote">验算：把右边展开 x² − nx − mx + mn = x² − (m+n)x + mn，与原式完全一致 → 选 B。</p>
+  </div>
+</article>
+
+<!-- ============ 二、填空题 ============ -->
+<div class="sechead"><span class="no">二</span><h2>填空题（每题 2 分，共 24 分）</h2><span class="pts">第 7 ~ 18 题</span></div>
+
+<article class="qcard" id="q7">
+  <div class="qtop"><span class="qnum">7</span>
+    <div class="qmain"><div class="qtext"><p>化简：3x²y − x²y − z⁴ − 2yx² + z⁴ = ______</p></div></div>
+    <span class="badge">0</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul><li>合并同类项前先「认脸」：字母顺序不影响身份，<b>2yx² 就是 2x²y</b>；z⁴ 一正一负是一对。</li></ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">原式 = (3 − 1 − 2)x²y + (−1 + 1)z⁴ = 0·x²y + 0·z⁴ = <span class="ans">0</span></div>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span><p>别把 −2yx² 当成「新面孔」漏掉；三块 x²y 合起来系数 3−1−2 = 0，两块 z⁴ 也互相抵消，所以整题结果是 0。</p></div>
+</article>
+
+<article class="qcard" id="q8">
+  <div class="qtop"><span class="qnum">8</span>
+    <div class="qmain"><div class="qtext"><p>简便计算：19.8 × 20.2 = ______</p></div></div>
+    <span class="badge">399.96</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul><li>两个数<b>关于 20 对称</b>（一个少 0.2、一个多 0.2）→ <b>平方差公式</b>：(a−b)(a+b) = a² − b²。</li></ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow center">19.8 × 20.2 = (20 − 0.2)(20 + 0.2) = 20² − 0.2² = 400 − 0.04 = <span class="ans">399.96</span></div>
+    <p class="mnote">0.2² = 0.04（不是 0.4！小数点要移两位）。</p>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>399.96 ÷ 19.8 = 20.2 ✓（商恰为另一个因数）。</p></div>
+</article>
+
+<article class="qcard" id="q9">
+  <div class="qtop"><span class="qnum">9</span>
+    <div class="qmain"><div class="qtext"><p>若 (a−2)x²yᵃ⁺³ 是关于 x、y 的六次单项式，则 a = ______</p></div></div>
+    <span class="badge">a = 1</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul><li>单项式的次数 = <b>所有字母指数之和</b>；</li>
+    <li>别忘了检查<b>系数</b> a − 2 ≠ 0（系数为 0 就不是单项式了）。</li></ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">2 + (a + 3) = 6　→　a + 5 = 6　→　<span class="ans">a = 1</span></div>
+    <p class="mnote">检查：a = 1 时系数 a − 2 = −1 ≠ 0 ✓，合格。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q10">
+  <div class="qtop"><span class="qnum">10</span>
+    <div class="qmain"><div class="qtext"><p>如果单项式 3a²ᵐ⁻⁴b⁶ 和 −4a²b⁴ⁿ 是同类项，那么 n − m 的值是 ______</p></div></div>
+    <span class="badge">−3/2</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul><li>同类项 = <b>字母相同、相同字母的指数也相同</b>（与系数无关）→ 列两个等式。</li></ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">2m − 4 = 2 → m = 3；　4n = 6 → n = 3/2</div>
+    <div class="mrow">n − m = 3/2 − 3 = <span class="ans">−3/2</span></div>
+  </div>
+</article>
+
+<article class="qcard" id="q11">
+  <div class="qtop"><span class="qnum">11</span>
+    <div class="qmain"><div class="qtext"><p>计算：(¼x − ⅔x²y) · (−12xy) = ______</p></div></div>
+    <span class="badge">−3x²y + 8x³y²</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul><li><b>分配律</b>：单项式乘多项式，每项都乘到；</li>
+    <li>盯紧<b>符号</b>：⅔x²y 乘负数 → 变正。</li></ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">¼x·(−12xy) = −3x²y</div>
+    <div class="mrow">−⅔x²y·(−12xy) = +8x³y²　<span class="mnote">← ⅔×12 = 8，负负得正</span></div>
+    <div class="mrow center">原式 = <span class="ans">−3x²y + 8x³y²</span></div>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>系数：¼×(−12) = −3 ✓；⅔×12 = 8 ✓。字母：x·xy = x²y，x²y·xy = x³y² ✓。</p></div>
+</article>
+
+<article class="qcard" id="q12">
+  <div class="qtop"><span class="qnum">12</span>
+    <div class="qmain"><div class="qtext"><p>计算：(7x⁴y⁵ − x²y³) ÷ x²y³ = ______</p></div></div>
+    <span class="badge">7x²y² − 1</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul><li>多项式 ÷ 单项式 = <b>每一项分别除</b>再相减；</li>
+    <li><b>同底数幂相除指数相减</b>：aᵐ ÷ aⁿ = aᵐ⁻ⁿ；<b>相同的东西相除得 1</b>，不是 0！</li></ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">7x⁴y⁵ ÷ x²y³ = 7x²y²</div>
+    <div class="mrow">x²y³ ÷ x²y³ = <span class="hl">1</span>　<span class="mnote">← 最大失分点！</span></div>
+    <div class="mrow center">原式 = <span class="ans">7x²y² − 1</span></div>
+  </div>
+</article>
+
+<article class="qcard" id="q13">
+  <div class="qtop"><span class="qnum">13</span>
+    <div class="qmain"><div class="qtext"><p>因式分解：x² − 14x − 32 = ______</p></div></div>
+    <span class="badge">(x−16)(x+2)</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul><li><b>十字相乘</b>：找两个数，<b>积 = −32，和 = −14</b>；积是负 → 一正一负，和是负 → 负的那个绝对值大。</li></ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <p>把 −32 拆成「一正一负、负大正小、和为 −14」：</p>
+    <div class="mrow">(−16) × 2 = −32，(−16) + 2 = −14 ✓</div>
+    <div class="mrow center">x² − 14x − 32 = <span class="ans">(x − 16)(x + 2)</span></div>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>(x−16)(x+2) = x² + 2x − 16x − 32 = x² − 14x − 32 ✓。</p></div>
+</article>
+
+<article class="qcard" id="q14">
+  <div class="qtop"><span class="qnum">14</span>
+    <div class="qmain"><div class="qtext"><p>因式分解：x(a−b)² − y(b−a)³ = ______</p></div></div>
+    <span class="badge">(a−b)²(x+ay−by)</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>先<b>统一底数</b>：b − a = −(a − b)，而 <b>(b−a)³ = −(a−b)³</b>（奇次幂要变号）；</li>
+      <li>两项都有了公因式 (a−b)²，提出来。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">原式 = x(a−b)² − y·[−(a−b)³] = x(a−b)² + y(a−b)³</div>
+    <div class="mrow center">= (a−b)²·[x + y(a−b)] = <span class="ans">(a−b)²(x + ay − by)</span></div>
+    <p class="mnote">也可写成 (a−b)²[x + (a−b)y]，都对。</p>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>取 a = 2、b = 1：原式 = 2×1 − 1×(−1) = 3；分解式 = 1×(2+2−1) = 3 ✓。</p></div>
+</article>
+
+<article class="qcard" id="q15">
+  <div class="qtop"><span class="qnum">15</span>
+    <div class="qmain"><div class="qtext"><p>如果整式 4x² − mx + 25 是一个整式的平方，那么 m 的值是 ______</p></div></div>
+    <span class="badge">±20</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>4x² = (2x)²、25 = 5² —— 首尾都是<b>现成的平方</b>，中间项 ±2·(2x)·5 = ±20x；</li>
+      <li><b>完全平方有两个方向</b>：(2x+5)² 和 (2x−5)²，别只答一个！</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">(2x + 5)² = 4x² + 20x + 25 → −m = 20 → m = −20</div>
+    <div class="mrow">(2x − 5)² = 4x² − 20x + 25 → −m = −20 → m = 20</div>
+    <div class="mrow center">∴ <span class="ans">m = ±20</span></div>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span><p>「±」漏一半是本题最大失分点——题目只说「是某整式的平方」，加号减号都符合。</p></div>
+</article>
+
+<article class="qcard" id="q16">
+  <div class="qtop"><span class="qnum">16</span>
+    <div class="qmain"><div class="qtext"><p>计算（结果用幂的形式表示）：(x+y) · 2[(y+x)²]² + 3(−x−y)⁵ = ______</p></div></div>
+    <span class="badge">−(x+y)⁵</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>把 <b>(x+y) 当成一个「大字母」</b>整体处理（换元思想，不用真换）；</li>
+      <li>指数<b>层层相乘</b>再相加：[(y+x)²]² = (x+y)^(2×2) = (x+y)⁴，再乘前面的 (x+y)¹，总次数 1+4 = <b>5</b>；</li>
+      <li>(−x−y) = <b>−(x+y)</b>：5 是奇次幂，负号<b>提到外面</b>：3(−x−y)⁵ = −3(x+y)⁵；</li>
+      <li>两项都含 (x+y)⁵ → <b>系数直接相减</b>：2 − 3 = −1。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">(x+y)·2[(y+x)²]² = 2·(x+y)·(x+y)^(2×2) = 2(x+y)⁵</div>
+    <div class="mrow">3(−x−y)⁵ = 3·[−(x+y)]⁵ = −3(x+y)⁵</div>
+    <div class="mrow center">原式 = 2(x+y)⁵ − 3(x+y)⁵ = <span class="ans">−(x+y)⁵</span></div>
+    <p class="mnote">「结果用幂的形式表示」正是提示：最后能合成<b>一个幂</b>。若算出两项指数不同（如 (x+y)⁷ 与 (x+y)⁵），说明中途指数算错了——回头检查中括号外层的指数。</p>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span>
+    <p>本题最大的坑是<b>指数层级</b>：[(y+x)²]² 的总次数是 2×2 = 4（不是 2+2）；外层的 2 和内层的 2 都要发挥作用，加上前面 (x+y) 本身的 1 次，共 5 次。另一个坑：(−x−y)⁵ 的负号——奇次幂要把负号提出来。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q17">
+  <div class="qtop"><span class="qnum">17</span>
+    <div class="qmain"><div class="qtext"><p>已知 (x+1)ˣ⁺⁶ = 1，x 的值是 ______</p></div></div>
+    <span class="badge">0、−2、−6</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul><li>「幂等于 1」的<b>三种来源</b>：① 底数 = 1；② 底数 ≠ 0 且指数 = 0；③ 底数 = −1 且指数是<b>偶数</b>。</li></ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">① x + 1 = 1 → <span class="ans">x = 0</span>　（1⁶ = 1 ✓）</div>
+    <div class="mrow">② x + 6 = 0 且 x + 1 ≠ 0 → <span class="ans">x = −6</span>　（(−5)⁰ = 1 ✓）</div>
+    <div class="mrow">③ x + 1 = −1 → x = −2，此时指数 x + 6 = 4 是偶数 → (−1)⁴ = 1 ✓　<span class="ans">x = −2</span></div>
+    <p class="mnote">三种情况都检查到，一个不漏。</p>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span><p>绝大多数同学只想到「指数为 0」，漏掉 −1 的偶次幂（情况③）——这恰是命题人埋的采分点。</p></div>
+</article>
+
+<article class="qcard" id="q18">
+  <div class="qtop"><span class="qnum">18</span>
+    <div class="qmain"><div class="qtext"><p>（贾宪三角 / 开方作法本源图）按照它的构造规则可知：从左边数第 3 条斜线的第 m 个数是 ______（用含 m 的代数式表示）</p></div></div>
+    <span class="badge">m(m+1)/2</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>先<b>写出来再看</b>：第 3 条斜线上的数依次是 1, 3, 6, 10, 15, 21, …（图中汉字「三、六、十、十五」正好印证）；</li>
+      <li>看<b>增量</b>：+2, +3, +4, +5, …（依次多 1）→ 这是「三角形数」：第 m 个数 = 1+2+3+…+m。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <p>「从左边数」：第 1 条斜线全是 1；第 2 条是 1, 2, 3, 4, …；第 3 条从第 3 行开始，取每行<b>左起第 3 个</b>：</p>
+    <div class="mrow">第 3 条斜线：1，3，6，10，15，21，…</div>
+    <div class="mrow">增量：　　+2，+3，+4，+5，…（每次多加 1）</div>
+    <div class="mrow center">第 m 个数 = 1 + 2 + 3 + … + m = <span class="ans">m(m+1)/2</span></div>
+    <p class="mnote">等差数列求和（首尾配对）：1+m = 2+(m−1) = … 共 m/2 对 → 和 = m(m+1)/2。</p>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>m=2 → 3（图中「三」）✓；m=3 → 6（「六」）✓；m=4 → 10（「十」）✓；m=5 → 15（「十五」）✓。</p></div>
+  <div class="figbox"><div id="fig18"></div><div class="figcap">杨辉三角（贾宪三角）：金色为第 3 条斜线 1, 3, 6, 10, 15, 21, …</div></div>
+</article>
+
+<!-- ============ 三、简答题 ============ -->
+<div class="sechead"><span class="no">三</span><h2>简答题（共 40 分）</h2><span class="pts">19~22 每题 4 分 · 23~26 每题 6 分</span></div>
+
+<article class="qcard" id="q19">
+  <div class="qtop"><span class="qnum">19</span>
+    <div class="qmain"><div class="qtext"><p>在括号中填入每个步骤相应的数学依据，并归纳单项式与单项式相乘的法则：</p>
+      <div class="mrow">3ax⁵ · 6bx⁷ = 3×6 · a · b · x⁵ · x⁷　……（　　）</div>
+      <div class="mrow">= (3×6) · a · b · (x⁵ · x⁷)　……（　　）</div>
+      <div class="mrow">= 18abx¹²</div>
+      <p style="margin-top:8px">归纳：单项式与单项式相乘，把它们的 ______、______ 分别相乘。</p>
+    </div></div>
+    <span class="badge">见解析</span>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <p>第一空：因数<b>位置换了</b>（a、b、x⁵ 挪到一起）→ <span class="ans">乘法交换律</span></p>
+    <p>第二空：先把 3×6 算出来、把 x⁵·x⁷ <b>结合</b>成一组 → <span class="ans">乘法结合律</span></p>
+    <p>归纳（教材原文）：把它们的 <span class="ans">系数</span>、<span class="ans">同底数的幂</span> 分别相乘。</p>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span><p>写「乘法交换律」「乘法结合律」要带「乘法」二字；归纳空别写成「字母」——严格说法是「同底数的幂」。</p></div>
+</article>
+
+<article class="qcard" id="q20">
+  <div class="qtop"><span class="qnum">20</span>
+    <div class="qmain"><div class="qtext"><p>关于 x 的整式 x²+3x−a 与 x²+bx 相乘的积不含二次项和三次项，求 a 与 b 的值。</p></div></div>
+    <span class="badge">a=−9, b=−3</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>「不含某次项」<b>翻译</b>成：展开后该项<b>系数 = 0</b>；</li>
+      <li>先展开、再对照系数。只需盯住三次项和二次项。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">(x²+3x−a)(x²+bx) = x⁴ + bx³ + 3x³ + 3bx² − ax² − abx</div>
+    <div class="mrow center">= x⁴ + (b+3)x³ + (3b−a)x² − abx</div>
+    <div class="mrow">三次项系数：b + 3 = 0 → <span class="ans">b = −3</span></div>
+    <div class="mrow">二次项系数：3b − a = 0 → a = 3b = <span class="ans">−9</span></div>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>代回：积 = x⁴ − (−9)(−3)x = x⁴ − 27x，只有四次项和一次项 ✓。</p></div>
+</article>
+
+<article class="qcard" id="q21">
+  <div class="qtop"><span class="qnum">21</span>
+    <div class="qmain"><div class="qtext"><p>因式分解：x²y² − x² − y² + 1</p></div></div>
+    <span class="badge">(x+1)(x−1)(y+1)(y−1)</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>四项式 → <b>两两分组</b>提公因式；</li>
+      <li>分组后出现 (y²−1)，再用<b>平方差</b>连续拆到底。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">原式 = (x²y² − x²) − (y² − 1)　<span class="mnote">← 前两项有 x²，后两项凑 (y²−1)</span></div>
+    <div class="mrow">= x²(y² − 1) − (y² − 1)</div>
+    <div class="mrow">= (y² − 1)(x² − 1)　<span class="mnote">← 整体提公因式 (y²−1)</span></div>
+    <div class="mrow center">= <span class="ans">(y+1)(y−1)(x+1)(x−1)</span></div>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>取 x=2、y=3：原式 = 36 − 4 − 9 + 1 = 24；分解式 = 4×2×3×1 = 24 ✓。</p></div>
+  <div class="blk warn"><span class="blab">易错提醒</span><p>提公因式 (y²−1) 时，第二项前面是减号，(y²−1) 提走后<b>剩 1 不是剩 0</b>：−(y²−1) = −1·(y²−1)。</p></div>
+</article>
+
+<article class="qcard" id="q22">
+  <div class="qtop"><span class="qnum">22</span>
+    <div class="qmain"><div class="qtext"><p>已知 a(a+1−c) − a(a−c) − b = 4，求 (a²+b²)/2 − ab 的值。</p></div></div>
+    <span class="badge">8</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>条件别急着用——先<b>展开化简</b>，看它到底给了什么；</li>
+      <li>目标式是 a²、b²、ab 的组合 → 配方成 <b>(a−b)²</b> 的马甲。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <p><b>第一步：化简条件</b></p>
+    <div class="mrow">a(a+1−c) − a(a−c) − b = (a² + a − ac) − (a² − ac) − b = a − b</div>
+    <div class="mrow">∴ a − b = 4</div>
+    <p><b>第二步：改写目标</b>（配方）</p>
+    <div class="mrow center">(a² + b²)/2 − ab = (a² − 2ab + b²)/2 = (a − b)²/2</div>
+    <p><b>第三步：代入</b></p>
+    <div class="mrow center">= 4²/2 = <span class="ans">8</span></div>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span><p>别试图分别求 a、b —— 条件只有一个，求不出两个未知数；这类题的出路永远是「整体代换」。</p></div>
+</article>
+
+<article class="qcard" id="q23">
+  <div class="qtop"><span class="qnum">23</span>
+    <div class="qmain"><div class="qtext"><p>小明的因式分解过程如下，他做得正确吗？如果不正确，是从第几步出的错？请写出正确的因式分解过程。</p>
+      <div class="mrow">16 − a² + 4ab − 4b² = (16 − a²) + (4ab − 4b²)　……①</div>
+      <div class="mrow">= (4+a)(4−a) + 4b(a−b)　……②</div>
+      <div class="mrow">= 4b(1+a)(1−a)(a−b)　……③</div>
+    </div></div>
+    <span class="badge">第①步出错</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>分组分解法的成败手筋：<b>分组后各组能分解，且两组之间要有公因式</b>；</li>
+      <li>体检小明的分组：第①步分了 (16−a²) 和 (4ab−4b²) 两组，第②步各自分解为 (4+a)(4−a)、4b(a−b)——组内都没错，但两组之间<b>没有任何公因式</b>，往下走必然是死路；</li>
+      <li>所以错误的<b>根源在第①步：分组不当</b>（老师答案）。第③步「硬提 4b」只是死路的必然结果——两个没有公因式的式子相加，硬凑出 4b(1+a)(1−a)(a−b)，等号根本不成立。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <p><b>结论：不正确，从第①步（分组）就出了错（与老师参考答案一致）。</b></p>
+    <p>为什么分组错了？按小明的分法，(16−a²) 分解为 (4+a)(4−a)，(4ab−4b²) 分解为 4b(a−b)，两组之间没有公因式，无法继续分解——这样的分组从一开始就注定失败，第③步把两个没有公因式的式子硬凑成 4b(1+a)(1−a)(a−b)，等号已经不成立。</p>
+    <p><b>正确解法</b>：换一种分组——把后三项放一起，正好是完全平方：</p>
+    <div class="mrow">16 − a² + 4ab − 4b² = 16 − (a² − 4ab + 4b²)</div>
+    <div class="mrow">= 4² − (a − 2b)²　<span class="mnote">← 括号内配方：a² − 4ab + (2b)²</span></div>
+    <div class="mrow center">= [4 + (a − 2b)][4 − (a − 2b)] = <span class="ans">(4 + a − 2b)(4 − a + 2b)</span></div>
+    <p class="mnote">去括号时注意符号：4 − (a−2b) = 4 − a + 2b。与老师参考答案一致。</p>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>取 a=1、b=1：原式 = 16−1+4−4 = 15；分解式 = (4+1−2)(4−1+2) = 3×5 = 15 ✓。</p></div>
+  <div class="blk warn"><span class="blab">易错提醒</span>
+    <p>严谨地说：第①、②步的<b>等号本身</b>都还成立（分组、组内分解都没算错数），第③步的等号才真正不成立——所以「错在第几步」有两种说法：按「等式何时失效」是第③步；按「错误根源／分组策略」（老师的阅卷口径）是第①步。<b>考试作答以老师口径为准：第①步分组不当。</b>两种说法都指向同一个正确分组：16 − (a² − 4ab + 4b²)。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q24">
+  <div class="qtop"><span class="qnum">24</span>
+    <div class="qmain"><div class="qtext"><p>先因式分解，再求值：(x−1)² + (2x+1)(x−1) + 3x² − 3，其中 x = −0.5。</p></div></div>
+    <span class="badge">0</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>3x² − 3 = 3(x²−1) = 3(x−1)(x+1)——三项都藏着 <b>(x−1)</b>！</li>
+      <li>眼尖的话：x = −0.5 → 2x+1 = 0，答案可能「秒出」。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">原式 = (x−1)² + (2x+1)(x−1) + 3(x−1)(x+1)</div>
+    <div class="mrow">= (x−1)·[(x−1) + (2x+1) + 3(x+1)]　<span class="mnote">← 三项都有 (x−1)，提！</span></div>
+    <div class="mrow">= (x−1)(x−1+2x+1+3x+3) = (x−1)(6x+3)</div>
+    <div class="mrow center">= <span class="ans">3(x−1)(2x+1)</span></div>
+    <p><b>求值</b>：x = −0.5 → 2x+1 = 0</p>
+    <div class="mrow center">原式 = 3×(−1.5)×0 = <span class="ans">0</span></div>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span><p>「先因式分解再求值」是题目的<b>程序要求</b>，直接硬展开代入即使结果对也会被扣过程分。</p></div>
+</article>
+
+<article class="qcard" id="q25">
+  <div class="qtop"><span class="qnum">25</span>
+    <div class="qmain"><div class="qtext"><p>已知 x² − 3x + 1 = 0，求 x³ + 5x² − 23x + 2025 的值。（阅读材料给出了两种「降次代入」的方法示范）</p></div></div>
+    <span class="badge">2017</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>核心思想（材料的精髓）：<b>不求 x，用条件「降次」</b>——x² = 3x − 1，凡见到 x² 就替换；</li>
+      <li>x³ 也能降：x³ = x·x² = x(3x−1)，再把里面的 x² 换掉，一路降到「一次」。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析（法一：逐层降次）</span>
+    <p><b>第一步：先把 x³ 降到一次</b></p>
+    <div class="mrow">x³ = x·x² = x(3x − 1) = 3x² − x = 3(3x−1) − x = 8x − 3</div>
+    <p><b>第二步：整体代入</b>（x² → 3x−1，x³ → 8x−3）</p>
+    <div class="mrow">原式 = (8x − 3) + 5(3x − 1) − 23x + 2025</div>
+    <div class="mrow">= 8x − 3 + 15x − 5 − 23x + 2025</div>
+    <div class="mrow center">= 0·x + 2017 = <span class="ans">2017</span></div>
+    <p class="mnote">妙处：所有含 x 的项全部抵消，只剩常数——说明「不求 x」是完全正确的路线。</p>
+    <p><b>法二（整体凑形，更漂亮）</b>：由条件 x² − 3x = −1，把原式朝 (x²−3x) 的倍数凑：</p>
+    <div class="mrow">原式 = (x³ − 3x²) + (8x² − 24x) + x + 2025</div>
+    <div class="mrow">= x(x²−3x) + 8(x²−3x) + x + 2025 = −x − 8 + x + 2025 = <span class="ans">2017</span></div>
+  </div>
+</article>
+
+<article class="qcard" id="q26">
+  <div class="qtop"><span class="qnum">26</span>
+    <div class="qmain"><div class="qtext"><p>已知 2a² + 8a + 4b² − 12b + 17 = 0，求 −½a²b 的值。</p></div></div>
+    <span class="badge">−3</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>一个等式、两个未知数 → 大概率是「<b>平方和 = 0</b>」的配方题；</li>
+      <li>目标：把条件配成 <b>p·( )² + q·( )² = 0</b>，用「非负数之和为零 → 每个都为零」。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析</span>
+    <div class="mrow">2a² + 8a + 4b² − 12b + 17 = 0</div>
+    <p><b>配方</b>（8a = 2×2×2 → 补 2²；12b = 2×4×(3/2) → 补 (3/2)²）：</p>
+    <div class="mrow">2(a² + 4a + 4) + 4(b² − 3b + 9/4) + 17 − 8 − 9 = 0</div>
+    <div class="mrow center">2(a+2)² + 4(b − 3/2)² = 0</div>
+    <p>两个非负数之和为 0 → 每个 = 0：</p>
+    <div class="mrow">a + 2 = 0 → <span class="ans">a = −2</span>；　b − 3/2 = 0 → <span class="ans">b = 3/2</span></div>
+    <p><b>求值</b>：</p>
+    <div class="mrow center">−½a²b = −½ × (−2)² × 3/2 = −½ × 4 × 3/2 = <span class="ans">−3</span></div>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span><p>代回条件：2×4 + 8×(−2) + 4×2.25 − 12×1.5 + 17 = 8 − 16 + 9 − 18 + 17 = 0 ✓。</p></div>
+</article>
+
+<!-- ============ 四、解答题 ============ -->
+<div class="sechead"><span class="no">四</span><h2>解答题（共 18 分）</h2><span class="pts">第 27 题 9 分 · 第 28 题 9 分</span></div>
+
+<article class="qcard" id="q27">
+  <div class="qtop"><span class="qnum">27</span>
+    <div class="qmain"><div class="qtext">
+      <p>线段 BC 长度为 a，在线段 BC 上截取线段 CJ = b，再延长 BC 至 M，使 CM = b（a &gt; b &gt; 0），分别作正方形 ABCD、正方形 BMFN 和正方形 PBJO。</p>
+      <p><b>(1)</b> 分别计算图中长方形 PBMQ 和阴影部分图形的面积，可以发现一个乘法公式 ______；</p>
+      <p><b>(2)</b> 已知正方形 BMFN、正方形 PBJO 的面积分别是 7 和 3，计算长方形 KJME 的面积；</p>
+      <p><b>(3)</b> 分别联结 AG、AJ、QG、QJ，已知正方形 BMFN 的面积是 S₁、正方形 KOHD 的面积是 S₂，用含 S₁、S₂ 的代数式表示四边形 AJQG 的面积。</p>
+    </div></div>
+    <span class="badge">见下</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙（先把每个点翻译成边长）</span>
+    <ul>
+      <li>底边从左到右是 <b>B、J、C、M</b>：BJ = a−b，JC = b，CM = b，BM = a+b；</li>
+      <li>三个正方形边长：<b>ABCD = a</b>（以 BC 为边）、<b>BMFN = a+b</b>（以 BM 为边）、<b>PBJO = a−b</b>（以 BJ 为边）；</li>
+      <li>看图确认：P、O、H、Q 同高（高 a−b）；A、K、D、E 同高（高 a）；N、I、G、F 在顶边。小正方形 <b>KOHD 的边长恰为 b</b>（右上角空白块）。</li>
+    </ul>
+  </div>
+  <div class="figbox"><div id="fig27a"></div><div class="figcap">图 2 结构（示意取 a = 5、b = 2）：金色阴影 = 正方形 ABCD 挖去右上角小正方形 KOHD；虚线框为长方形 PBMQ</div></div>
+
+  <div class="blk sol"><span class="blab">分步解析 · 第(1)问</span>
+    <p><b>① 长方形 PBMQ 的面积</b>：长 = BM = a+b，宽 = PB = a−b：</p>
+    <div class="mrow center">S(PBMQ) = (a+b)(a−b)</div>
+    <p><b>② 阴影部分的面积</b>：看图，阴影 = 正方形 ABCD <b>挖去</b>右上角的小正方形 KOHD（边长 b）：</p>
+    <div class="mrow center">S(阴影) = a² − b²</div>
+    <p><b>③ 为什么两者相等？</b>把阴影里「PBJO 正上方的小竖条」（宽 a−b、高 b）剪下来转 90°，正好补进 PBMQ 右边缺的窄条（宽 b、高 a−b）——两块面积一样，形状能互相拼成！所以：</p>
+    <div class="mrow center"><span class="ans">(a + b)(a − b) = a² − b²</span>　（平方差公式）</div>
+    <div class="blk verify" style="margin-top:10px"><span class="blab">验算</span><p>取 a=5、b=2：(5+2)(5−2) = 21；5² − 2² = 25 − 4 = 21 ✓。</p></div>
+  </div>
+
+  <div class="figbox"><div id="fig27b"></div><div class="figcap">第(2)问：蓝色虚线框 = 长方形 KJME（宽 JM = 2b，高 JK = a）</div></div>
+  <div class="blk sol"><span class="blab">分步解析 · 第(2)问</span>
+    <p><b>① KJME 的面积（用 a、b 表示）</b>：宽 JM = JC + CM = 2b，高 JK = a（K 与 A 同高）：</p>
+    <div class="mrow center">S(KJME) = 2b · a = 2ab</div>
+    <p><b>② 翻译条件</b>：S(BMFN) = (a+b)² = 7，S(PBJO) = (a−b)² = 3</p>
+    <p><b>③ 两式相减</b>（正好用上第(1)问的平方差思想）：(a+b)² − (a−b)² = 4ab：</p>
+    <div class="mrow center">4ab = 7 − 3 = 4　→　ab = 1</div>
+    <p><b>④ 回代</b>：</p>
+    <div class="mrow center">S(KJME) = 2ab = 2 × 1 = <span class="ans">2</span></div>
+    <div class="blk verify" style="margin-top:10px"><span class="blab">验算</span><p>a+b = √7 ≈ 2.6458，a−b = √3 ≈ 1.7321 → a ≈ 2.1889、b ≈ 0.4568 → ab ≈ 1.0000 ✓，2ab ≈ 2 ✓。</p></div>
+  </div>
+
+  <div class="figbox"><div id="fig27c"></div><div class="figcap">第(3)问：红色四边形 AJQG 的四个顶点分别落在大正方形 BMFN 的四条边上，四角三角形即「要减去的部分」</div></div>
+  <div class="blk sol"><span class="blab">分步解析 · 第(3)问（补形法）</span>
+    <p><b>① 关键观察</b>：联结后，四边形 AJQG 的四个顶点正好「踩」在大正方形 BMFN 的<b>四条边</b>上（A 在左边、J 在下边、Q 在右边、G 在上边）。于是：</p>
+    <div class="mrow center">S(AJQG) = S(BMFN) − S(△ABJ) − S(△JMQ) − S(△QFG) − S(△GNA)</div>
+    <p><b>② 四个角三角形都是直角三角形</b>，两条直角边直接从图上读：</p>
+    <table class="mini">
+      <tr><th>三角形</th><th>两条直角边</th><th>面积</th></tr>
+      <tr><td>左下 △ABJ</td><td>AB = a，BJ = a−b</td><td>½a(a−b)</td></tr>
+      <tr><td>右下 △JMQ</td><td>JM = 2b，MQ = a−b</td><td>b(a−b)</td></tr>
+      <tr><td>右上 △QFG</td><td>QF = 2b，FG = b</td><td>b² = S₂</td></tr>
+      <tr><td>左上 △GNA</td><td>GN = a，NA = b</td><td>½ab</td></tr>
+    </table>
+    <p><b>③ 列式化简</b>（其中 S₁ = (a+b)²，S₂ = b²）：</p>
+    <div class="mrow">S(AJQG) = S₁ − ½a(a−b) − b(a−b) − S₂ − ½ab</div>
+    <div class="mrow">四个三角形合计 = ½a² − ½ab + ab − b² + b² + ½ab = ½a² + ab</div>
+    <div class="mrow">S(AJQG) = (a+b)² − ½a² − ab = ½a² + ab + b²</div>
+    <p><b>④ 凑成 S₁、S₂ 的组合</b>（朝平方的方向配）：</p>
+    <div class="mrow center">½a² + ab + b² = ½(a² + 2ab + b²) + ½b² = ½S₁ + ½S₂</div>
+    <div class="mrow center">∴ S(AJQG) = <span class="ans">(S₁ + S₂) / 2</span></div>
+    <div class="blk verify" style="margin-top:10px"><span class="blab">验算</span><p>取 a=5、b=2：S₁ = 49、S₂ = 4 → (S₁+S₂)/2 = 26.5；直接算四角三角形 7.5 + 6 + 4 + 5 = 22.5，49 − 22.5 = 26.5 ✓。</p></div>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span>
+    <p>① 别把 KJME 的高当成 a−b——K 与 A 同高（都在高度 a 处），高是 a；② 第(3)问化简时右上角三角形 QFG 的面积恰好等于 S₂（QF = 2b、FG = b，½×2b×b = b²），这是个可以「白捡」的观察；③ 最后一步要主动「凑」，把 ½a²+ab+b² 写成 ½(a²+2ab+b²)+½b²，题目要求的结果就自己浮出来了。</p>
+  </div>
+</article>
+
+<article class="qcard" id="q28">
+  <div class="qtop"><span class="qnum">28</span>
+    <div class="qmain"><div class="qtext">
+      <p><b>阅读材料</b>：如果当 x = a 时，一个整式的值等于 0，那么 (x−a) 就一定是这个整式的一个因式；反过来，如果 (x−a) 是整式的一个因式，那么当 x = a 时，这个整式的值一定等于 0。</p>
+      <p>已知整式 P = x⁴ − x³ − 7x² + 5x + 10：</p>
+      <p><b>(1)</b> 请判断 (x+1) 是否是整式 P 的一个因式；</p>
+      <p><b>(2)</b> 当整式 P 的一次项系数变为 k 时，(x+1) 仍是它的一个因式，求 k 的值；</p>
+      <p><b>(3)</b> 请尝试将整式 P 进行因式分解。</p>
+    </div></div>
+    <span class="badge">见下</span>
+  </div>
+  <div class="blk keys"><span class="blab">破题钥匙</span>
+    <ul>
+      <li>材料的核心（因式定理的七年级版）：<b>「代入 x = a 看值是否为 0」⇔「(x−a) 是不是因式」</b>；</li>
+      <li>判断 (x+1)：注意它对应 <b>x = −1</b>（令 x+1 = 0）；</li>
+      <li>第(3)问找因式：试 10 的因数 ±1、±2、±5、±10（常数项的因数是首选嫌疑人）。</li>
+    </ul>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析 · 第(1)问</span>
+    <p>(x+1) 对应 x = −1，把 x = −1 代入 P：</p>
+    <div class="mrow center">P(−1) = (−1)⁴ − (−1)³ − 7·(−1)² + 5·(−1) + 10 = 1 + 1 − 7 − 5 + 10 = 0</div>
+    <div class="mrow center">∴ (x+1) <span class="ans">是</span> 整式 P 的一个因式 ✓</div>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析 · 第(2)问</span>
+    <p>一次项系数变为 k：P′ = x⁴ − x³ − 7x² + kx + 10。(x+1) 仍是因式 → x = −1 时 P′ = 0：</p>
+    <div class="mrow center">P′(−1) = 1 + 1 − 7 − k + 10 = 5 − k = 0　→　<span class="ans">k = 5</span></div>
+    <p class="mnote">代回验证：k = 5 时 P′ 就是原来的 P，而 P(−1) = 0 ✓，自洽。</p>
+  </div>
+  <div class="blk sol"><span class="blab">分步解析 · 第(3)问</span>
+    <p><b>第一步：用材料的方法「抓嫌疑人」</b>——试常数项 10 的因数：</p>
+    <div class="mrow">x = 1：1 − 1 − 7 + 5 + 10 = 8 ≠ 0　✗</div>
+    <div class="mrow">x = 2：16 − 8 − 28 + 10 + 10 = 0　✓ → (x−2) 也是因式！</div>
+    <p><b>第二步：拆项分组，一次到位</b>（把 −7x² 拆成 −2x² − 5x²，前后各配出一个 (x²−x−2)）：</p>
+    <div class="mrow">P = x⁴ − x³ − 2x² − 5x² + 5x + 10</div>
+    <div class="mrow">= x²(x² − x − 2) − 5(x² − x − 2)</div>
+    <div class="mrow">= (x² − x − 2)(x² − 5)</div>
+    <div class="mrow center">= <span class="ans">(x + 1)(x − 2)(x² − 5)</span></div>
+    <p class="mnote">其中 x² − x − 2 = (x+1)(x−2)（十字相乘：1×(−2) = −2，1+(−2) = −1 ✓）。x² − 5 在七年级有理数范围内不能再分解。</p>
+    <p><b>另一条路</b>（用材料方法连贯做）：已知 (x+1)、(x−2) 是因式，可设 P = (x+1)(x−2)(x²+px+q)，对照系数解出 p = 0、q = −5，结果相同。</p>
+  </div>
+  <div class="blk verify"><span class="blab">验算</span>
+    <p>(x+1)(x−2) = x² − x − 2；(x²−x−2)(x²−5) = x⁴ − x³ − 2x² − 5x² + 5x + 10 = x⁴ − x³ − 7x² + 5x + 10 ✓ 与 P 完全一致。</p>
+  </div>
+  <div class="blk warn"><span class="blab">易错提醒</span>
+    <p>① 判断 (x+1) 时代入的是 <b>x = −1</b>（令括号 = 0 解出），别代成 x = 1；② 试根别从大数试起——常数项的因数从小往大试；③ 最后一步若答 (x²−5) 还能拆成 (x+√5)(x−√5)，注意七年级还没学无理数，<b>在有理数范围内分解到 (x²−5) 为止</b>。</p>
+  </div>
+</article>
+
+</div><!-- /wrap -->
+
+<footer>
+  <p>25学年七上数学期中卷（杨浦·新教材）· 全卷 28 题逐题详解</p>
+  <p>junior-math-lab · 初中数学演示实验室 · 打印时自动切换白底版式（Ctrl+P）</p>
+</footer>
+
+<script>
+(function(){
+'use strict';
+/* 主题由全站共享 theme.js 接管：右上角圆形按钮切换、localStorage(jml-theme) 记忆、跟随系统、?theme= 参数 */
+
+/* ---------- SVG 工具 ---------- */
+var NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent){
+  var e = document.createElementNS(NS, tag);
+  for(var k in attrs){ if(attrs.hasOwnProperty(k)) e.setAttribute(k, attrs[k]); }
+  if(parent) parent.appendChild(e);
+  return e;
+}
+function txt(parent, x, y, s, o){
+  o = o || {};
+  var t = el('text', {
+    x: x, y: y,
+    'font-size': o.size || 13,
+    fill: o.fill || 'currentColor',
+    'text-anchor': o.anchor || 'middle',
+    'font-weight': o.weight || '600',
+    'font-family': 'inherit'
+  }, parent);
+  if(o.cls) t.setAttribute('class', o.cls);
+  t.textContent = s;
+  return t;
+}
+function poly(svg, pts, cls){
+  var d = '';
+  for(var i = 0; i < pts.length; i++){ d += (i ? 'L' : 'M') + pts[i][0] + ' ' + pts[i][1] + ' '; }
+  return el('path', { d: d, 'class': cls }, svg);
+}
+function rect(svg, x, y, w, h, cls){
+  return el('rect', { x: x, y: y, width: w, height: h, 'class': cls }, svg);
+}
+
+/* ================= 图 27：几何拼图（示意 a=5, b=2） =================
+   数学坐标：B(0,0) J(3,0) C(5,0) M(7,0)
+             P(0,3) O(3,3) H(5,3) Q(7,3)
+             A(0,5) K(3,5) D(5,5) E(7,5)
+             N(0,7) I(3,7) G(5,7) F(7,7)                                      */
+function drawFig27(id, mode){
+  var host = document.getElementById(id);
+  if(!host) return 0;
+  host.textContent = '';
+  var U = 42, LX = 66, TY = 62;
+  var VW = 424, VH = 442;
+  var svg = el('svg', { viewBox: '0 0 ' + VW + ' ' + VH }, host);
+  function X(x){ return LX + x * U; }
+  function Y(y){ return TY + (7 - y) * U; }
+
+  var i;
+  /* 淡网格 */
+  for(i = 0; i <= 7; i++){
+    el('line', { x1: X(i), y1: Y(0), x2: X(i), y2: Y(7), 'class': 'fig-grid' }, svg);
+    el('line', { x1: X(0), y1: Y(i), x2: X(7), y2: Y(i), 'class': 'fig-grid' }, svg);
+  }
+
+  /* 模式相关填充 */
+  if(mode === 'p1'){
+    rect(svg, X(0), Y(5), 3*U, 5*U, 'f-shade');   /* ABJK = [0,3]x[0,5] */
+    rect(svg, X(3), Y(2), 2*U, 2*U, 'f-shade');   /* JCHO = [3,5]x[0,3]（修正：y从0到3） */
+  }
+  if(mode === 'p2'){
+    rect(svg, X(3), Y(5), 4*U, 5*U, 'f-hi2');     /* KJME = [3,7]x[0,5] */
+  }
+  if(mode === 'p3'){
+    poly(svg, [[X(0),Y(5)],[X(0),Y(0)],[X(3),Y(0)]], 'f-tri1');   /* △ABJ */
+    poly(svg, [[X(3),Y(0)],[X(7),Y(0)],[X(7),Y(3)]], 'f-tri2');   /* △JMQ */
+    poly(svg, [[X(7),Y(3)],[X(7),Y(7)],[X(5),Y(7)]], 'f-tri3');   /* △QFG */
+    poly(svg, [[X(5),Y(7)],[X(0),Y(7)],[X(0),Y(5)]], 'f-tri4');   /* △GNA */
+    poly(svg, [[X(0),Y(5)],[X(3),Y(0)],[X(7),Y(3)],[X(5),Y(7)]], 'f-quad'); /* AJQG */
+  }
+
+  /* 结构线 */
+  rect(svg, X(0), Y(7), 7*U, 7*U, 'f-out');       /* BMFN 大正方形 */
+  rect(svg, X(0), Y(5), 5*U, 5*U, 'f-mid');       /* ABCD */
+  rect(svg, X(0), Y(3), 3*U, 3*U, 'f-in');        /* PBJO */
+  rect(svg, X(3), Y(5), 2*U, 2*U, 'f-in');        /* KOHD = [3,5]x[3,5] */
+  /* 竖线 x=3 (J→I)、x=5 (C→G) */
+  el('line', { x1: X(3), y1: Y(0), x2: X(3), y2: Y(7), 'class': 'f-in' }, svg);
+  el('line', { x1: X(5), y1: Y(0), x2: X(5), y2: Y(7), 'class': 'f-in' }, svg);
+  /* 虚线 PQ（y=3，过 O、H）与 AE（y=5，A 到 E） */
+  el('line', { x1: X(0), y1: Y(3), x2: X(7), y2: Y(3), 'class': 'f-dash' }, svg);
+  el('line', { x1: X(0), y1: Y(5), x2: X(7), y2: Y(5), 'class': 'f-in' }, svg);
+  /* KJME 右边与上边（x=7 已有外框；KJME 上边 y=5 x 3..7 已含在 AE 线里） */
+
+  if(mode === 'p1'){
+    /* PBMQ 高亮虚线（红） */
+    el('rect', { x: X(0), y: Y(3), width: 7*U, height: 3*U,
+      fill: 'none', stroke: 'var(--red)', 'stroke-width': 2.2, 'stroke-dasharray': '7 5' }, svg);
+  }
+
+  /* 点与字母 */
+  var pts = {
+    B: [0,0,-13,17], J: [3,0,0,17], C: [5,0,0,17], M: [7,0,13,17],
+    P: [0,3,-13,4],  O: [3,3,-9,16], H: [5,3,10,16], Q: [7,3,13,4],
+    A: [0,5,-13,4],  K: [3,5,-11,-8], D: [5,5,11,-8], E: [7,5,13,4],
+    N: [0,7,-13,-6], I: [3,7,0,-9],  G: [5,7,0,-9],  F: [7,7,13,-6]
+  };
+  for(var name in pts){
+    if(!pts.hasOwnProperty(name)) continue;
+    var p = pts[name];
+    el('circle', { cx: X(p[0]), cy: Y(p[1]), r: 3.2, 'class': 'f-pt' }, svg);
+    txt(svg, X(p[0]) + p[2], Y(p[1]) + p[3], name, { size: 14, weight: '700' });
+  }
+
+  /* 底边标注：第一层 b、b（J-C、C-M），第二层 a（B-C） */
+  function dim(x1, x2, dy, label){
+    var y = Y(0) + dy;
+    el('line', { x1: X(x1), y1: y, x2: X(x2), y2: y, 'class': 'f-dim' }, svg);
+    el('line', { x1: X(x1), y1: y-4, x2: X(x1), y2: y+4, 'class': 'f-dim' }, svg);
+    el('line', { x1: X(x2), y1: y-4, x2: X(x2), y2: y+4, 'class': 'f-dim' }, svg);
+    txt(svg, (X(x1)+X(x2))/2, y+15, label, { size: 13, fill: 'var(--cyan)', weight: '700' });
+  }
+  dim(3, 5, 26, 'b');
+  dim(5, 7, 26, 'b');
+  dim(0, 5, 62, 'a');
+
+  /* 模式注记 */
+  if(mode === 'p1'){
+    txt(svg, X(1.5), Y(2.5), '阴影', { size: 12.5, fill: 'var(--gold)', weight: '700' });
+    txt(svg, X(1.5), Y(1.4), 'a²−b²', { size: 12.5, fill: 'var(--gold)', weight: '700' });
+    txt(svg, X(5.9), Y(1.5), 'PBMQ', { size: 11.5, fill: 'var(--red)', weight: '700' });
+    txt(svg, X(5.9), Y(0.6), '(a+b)(a−b)', { size: 11, fill: 'var(--red)', weight: '700' });
+    txt(svg, X(4), Y(4), 'KOHD', { size: 10.5, fill: 'var(--ink2)', weight: '600' });
+    txt(svg, X(4), Y(4.8), '边 b', { size: 10.5, fill: 'var(--ink2)', weight: '600' });
+    txt(svg, X(1.5), Y(6.2), 'ABJK', { size: 10, fill: 'var(--ink2)', weight: '600' });
+    txt(svg, X(4), Y(2.4), 'JCHO', { size: 10, fill: 'var(--ink2)', weight: '600' });
+  }
+  if(mode === 'p2'){
+    txt(svg, X(5), Y(2.5), 'KJME', { size: 13, fill: 'var(--blue)', weight: '700' });
+    txt(svg, X(5), Y(1.5), '宽 2b × 高 a', { size: 11.5, fill: 'var(--blue)', weight: '700' });
+    txt(svg, X(5), Y(0.5), '面积 = 2ab', { size: 11.5, fill: 'var(--blue)', weight: '700' });
+    txt(svg, X(2.4), Y(8.2), 'S(BMFN) = (a+b)² = 7', { size: 11.5, fill: 'var(--ink2)', anchor: 'start' });
+    txt(svg, X(1.5), Y(1.5), 'PBJO', { size: 10.5, fill: 'var(--ink2)', weight: '600' });
+    txt(svg, X(1.5), Y(0.6), '(a−b)² = 3', { size: 10.5, fill: 'var(--ink2)', weight: '600' });
+  }
+  if(mode === 'p3'){
+    txt(svg, X(3.1), Y(3.6), 'AJQG', { size: 12.5, fill: 'var(--red)', weight: '700' });
+    txt(svg, X(1), Y(1.9), '△ABJ', { size: 10, fill: 'var(--blue)', weight: '600' });
+    txt(svg, X(5), Y(1.2), '△JMQ', { size: 10, fill: 'var(--green)', weight: '600' });
+    txt(svg, X(6.3), Y(5.3), '△QFG', { size: 10, fill: 'var(--gold)', weight: '600' });
+    txt(svg, X(1.6), Y(6.4), '△GNA', { size: 10, fill: 'var(--red)', weight: '600' });
+    txt(svg, X(4), Y(4), 'S₂', { size: 11, fill: 'var(--ink2)', weight: '700' });
+    txt(svg, X(2.4), Y(8.2), 'S₁ = S(BMFN) = (a+b)²', { size: 11.5, fill: 'var(--ink2)', anchor: 'start' });
+  }
+  return svg.childNodes.length;
+}
+
+/* ================= 图 18：杨辉三角 ================= */
+function drawFig18(id){
+  var host = document.getElementById(id);
+  if(!host) return 0;
+  host.textContent = '';
+  var svg = el('svg', { viewBox: '0 0 470 348' }, host);
+  var rows = [
+    [1],
+    [1,1],
+    [1,2,1],
+    [1,3,3,1],
+    [1,4,6,4,1],
+    [1,5,10,10,5,1],
+    [1,6,15,20,15,6,1],
+    [1,7,21,35,35,21,7,1]
+  ];
+  var CX = 268, R = 16.5, SP = 34, RH = 33, TOP = 34;
+  function cx(r, k){ return CX + (k - (r+1)/2) * SP; }
+  function cy(r){ return TOP + (r-1) * RH; }
+
+  /* 三条斜线连线（先画线后画圈） */
+  var s1 = [], s2 = [], s3 = [];
+  var r, k;
+  for(r = 1; r <= 8; r++){
+    for(k = 1; k <= r; k++){
+      if(k === 1) s1.push([cx(r,k), cy(r)]);
+      if(k === 2 && r >= 2) s2.push([cx(r,k), cy(r)]);
+      if(k === 3 && r >= 3) s3.push([cx(r,k), cy(r)]);
+    }
+  }
+  function poly2(pts, cls){
+    var d = '';
+    for(var i = 0; i < pts.length; i++){ d += (i ? 'L' : 'M') + pts[i][0] + ' ' + pts[i][1] + ' '; }
+    el('path', { d: d, 'class': cls }, svg);
+  }
+  poly2(s1, 'f-s1');
+  poly2(s2, 'f-s2');
+  poly2(s3, 'f-s3');
+
+  /* 数字圈 */
+  for(r = 1; r <= 8; r++){
+    for(k = 1; k <= r; k++){
+      var cls = 'f-circ';
+      if(k === 1) cls = 'f-circL1';
+      else if(k === 2 && r >= 2) cls = 'f-circL2';
+      else if(k === 3 && r >= 3) cls = 'f-circH';
+      el('circle', { cx: cx(r,k), cy: cy(r), r: R, 'class': cls }, svg);
+      txt(svg, cx(r,k), cy(r)+4.5, String(rows[r-1][k-1]), { size: 12.5, weight: k===3&&r>=3 ? '700' : '600' });
+    }
+  }
+  /* 左侧斜线标注 */
+  txt(svg, 96, cy(4)+4, '第1条斜线（都是1）', { size: 11, fill: 'var(--blue)', anchor: 'start' });
+  el('line', { x1: 218, y1: cy(4), x2: cx(4,1)+R+2, y2: cy(4), 'class': 'f-s1' }, svg);
+  txt(svg, 96, cy(5)+4, '第2条斜线（1,2,3,4…）', { size: 11, fill: 'var(--green)', anchor: 'start' });
+  el('line', { x1: 218, y1: cy(5), x2: cx(5,2)-R-2, y2: cy(5), 'class': 'f-s2' }, svg);
+  txt(svg, 96, cy(6)+4, '第3条斜线（1,3,6,10…）', { size: 11, fill: 'var(--gold)', anchor: 'start', weight: '700' });
+  el('line', { x1: 218, y1: cy(6), x2: cx(6,3)-R-2, y2: cy(6), 'class': 'f-s3' }, svg);
+  /* 第3条斜线数值标注 */
+  txt(svg, CX, cy(8)+RH, '第3条斜线：1, 3, 6, 10, 15, 21, …  第m个数 = m(m+1)/2', { size: 11.5, fill: 'var(--gold)', weight: '700' });
+  /* 行号 */
+  for(r = 3; r <= 8; r++){
+    txt(svg, CX + (r/2)*SP + 26, cy(r)+4, '第'+r+'行', { size: 9.5, fill: 'var(--ink2)', anchor: 'start' });
+  }
+  return svg.childNodes.length;
+}
+
+/* ---------- 启动绘制 ---------- */
+var counts = {};
+counts.fig27a = drawFig27('fig27a', 'p1');
+counts.fig27b = drawFig27('fig27b', 'p2');
+counts.fig27c = drawFig27('fig27c', 'p3');
+counts.fig18  = drawFig18('fig18');
+window.__FIG_COUNTS__ = counts;
+})();
+</script>
+</body>
+</html>
