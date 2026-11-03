@@ -503,7 +503,8 @@ function soccerData(){
     const k=lo+'_'+hi+'_'+t;
     if(!map.has(k)){
       map.set(k,pts.length);
-      const P=[0,1,2].map(i=>iv[a][i]+(iv[b][i]-iv[a][i])*t/3);
+      /* 坐标必须按调用方向 a→b 的比例 third 计算；t 只是键的规范编号（两端互看时 1↔2） */
+      const P=[0,1,2].map(i=>iv[a][i]+(iv[b][i]-iv[a][i])*third/3);
       pts.push(P);
     }
     return map.get(k);
@@ -733,8 +734,27 @@ window.__MATH_CHECK={};
 function recordCheck(name,verts,edges,faces,expect){
   const r={V:verts.length,E:edges.length,F:faces.length,expect};
   r.ok=(r.V===expect.V&&r.E===expect.E&&r.F===expect.F);
+  r.geo=geometryCheck(verts,faces);
+  r.ok=r.ok&&r.geo.ok;
   window.__MATH_CHECK[name]=r;
   return r;
+}
+/* 位置级几何自检：顶点互不重合、各面严格共面（偏差<1e-9）、整体严格凸（无顶点冒出他面外侧） */
+function geometryCheck(verts,faces){
+  const seen=new Set(); let unique=0;
+  verts.forEach(p=>{const k=p[0].toFixed(9)+','+p[1].toFixed(9)+','+p[2].toFixed(9);
+    if(!seen.has(k)){seen.add(k);unique++;}});
+  let planar=0, viol=0;
+  faces.forEach(f=>{
+    const A=verts[f[0]], n=cross(sub(verts[f[1]],A),sub(verts[f[2]],A));
+    const ln=norm(n)||1;
+    f.forEach(x=>{const d=Math.abs(dot(n,sub(verts[x],A)))/ln; if(d>planar)planar=d;});
+    for(let i=0;i<verts.length;i++){
+      if(f.indexOf(i)>=0) continue;
+      const d=dot(n,sub(verts[i],A))/ln; if(d>viol)viol=d;
+    }
+  });
+  return {unique, planar, convexViol:viol, ok:(unique===verts.length&&planar<1e-9&&viol<1e-9)};
 }
 
 /* ============ 初始化 ============ */
@@ -747,7 +767,8 @@ function init(){
     {yaw:0.72,pitch:-0.34,auto:true,showDash:true});
   document.getElementById('figCheck').innerHTML=
     '几何自检（页面内实时计算）：实测 <b>V='+chk.V+'</b>、<b>E='+chk.E+'</b>、<b>F='+chk.F+
-    '</b>（'+(chk.ok?'与公式推导一致 ✓':'不一致 ✗')+'），V−E+F='+(chk.V-chk.E+chk.F)+'。';
+    '</b>，V−E+F='+(chk.V-chk.E+chk.F)+'；顶点互不重合、各面严格共面、凸性成立'+
+    (chk.ok?' ✓':' ✗')+'。';
 
   // 表格小图
   const miniOpts={tetra:{yaw:0.55,pitch:-0.34},cube:{yaw:0.58,pitch:-0.42},
@@ -776,8 +797,14 @@ function init(){
     return [...em.keys()].map(k=>k.split('_').map(Number));
   })();
   const sChk=recordCheck('soccer',sk.verts,sEdges,sk.faces,sk.expect);
+  /* 默认视角：让一个五边形正对观察者（经典足球视角），再略微偏转出立体感 */
+  const pn=cross(sub(sk.verts[sk.faces[0][1]],sk.verts[sk.faces[0][0]]),
+                 sub(sk.verts[sk.faces[0][2]],sk.verts[sk.faces[0][0]]));
+  const pLen=norm(pn), nX=pn[0]/pLen, nY=pn[1]/pLen, nZ=pn[2]/pLen;
+  const socYaw=Math.atan2(-nX,nZ)+0.30;
+  const socPitch=Math.atan2(nY,Math.hypot(nX,nZ))+0.34;
   soccerView=new SolidView(document.getElementById('cvSoccer'),sk.verts,sk.faces,{
-    yaw:0.7,pitch:-0.3,auto:true,spin:0.0028,
+    yaw:socYaw,pitch:socPitch,auto:true,spin:0.0028,
     faceStyle:(f,P,shade)=>{
       const pent=(f.length===5);
       if(pent) return P.dark?'hsl(222,30%,'+(8+14*shade).toFixed(1)+'%)':'hsl(222,26%,'+(16+16*shade).toFixed(1)+'%)';
@@ -785,8 +812,8 @@ function init(){
     }
   });
   document.getElementById('socCheck').innerHTML=
-    '几何自检：实测 <b style="color:var(--ok)">V='+sChk.V+'、E='+sChk.E+'、F='+sChk.F+
-    '</b>（'+(sChk.ok?'与公式推导一致 ✓':'不一致 ✗')+'）。';
+    '几何自检：实测 <b style="color:var(--ok)">V='+sChk.V+'（互不重合）、E='+sChk.E+'、F='+sChk.F+
+    '</b>，各面严格共面、整体严格凸'+(sChk.ok?' ✓':' ✗')+'。';
 }
 
 /* ============ 交互控件 ============ */
