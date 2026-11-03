@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>正十二面体专题 · 顶点棱面速算与欧拉公式</title>
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="正十二面体顶点/棱/面速算：先乘后除计数法、欧拉公式推广、可拖拽立体图、五种正多面体与足球C60实例">
+<script>(function(){try{var q=(location.search||'').match(/[?&]theme=(dark|light)/);var t=q?q[1]:(localStorage.getItem('jml-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();</script>
+<script src="theme.js" defer></script>
+<style>
+  :root{
+    --bg:#0e1116; --bg2:#12161d; --panel:#171d27; --panel2:#1d2532;
+    --ink:#e9edf4; --muted:#9aa7ba; --line:#2a3547;
+    --gold:#f0b34c; --gold-ink:#ffd98a; --teal2:#3fd0b6;
+    --ok:#5ad18a; --card-shadow:0 6px 24px rgba(0,0,0,.35);
+    --edge-front:#ffe3ad; --edge-back:rgba(154,167,186,.52);
+    --dot-front:#ffd98a; --dot-back:rgba(154,167,186,.6);
+    --mathfont:Georgia,'Times New Roman','STIX Two Math',serif;
+  }
+  html[data-theme="light"]{
+    --bg:#f6f7fa; --bg2:#eef0f4; --panel:#ffffff; --panel2:#f3f5f9;
+    --ink:#1d2430; --muted:#5c6879; --line:#d8dee8;
+    --gold:#b57e14; --gold-ink:#8a5f0a; --teal2:#0d9488;
+    --ok:#188a4c; --card-shadow:0 4px 16px rgba(28,36,48,.08);
+    --edge-front:#7a5a12; --edge-back:rgba(92,104,121,.55);
+    --dot-front:#8a5f0a; --dot-back:rgba(92,104,121,.55);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.75 "Segoe UI","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:26px 20px 60px}
+  header.top{display:flex; flex-wrap:wrap; align-items:flex-end; gap:10px 16px; margin-bottom:6px}
+  header.top h1{margin:0; font-size:27px; letter-spacing:.5px; flex:1 1 auto}
+  header.top h1 em{font-style:normal; color:var(--gold)}
+  .sub{color:var(--muted); font-size:13.5px; margin:2px 0 18px}
+
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:20px 22px; margin:18px 0; box-shadow:var(--card-shadow)}
+  h2{font-size:20px; margin:2px 0 12px; display:flex; align-items:center; gap:10px}
+  h2 .no{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px;
+    border-radius:9px; background:linear-gradient(135deg,var(--gold),#c8871f); color:#231a05;
+    font-size:15px; font-weight:700; flex:0 0 auto}
+  h3{font-size:16px; margin:14px 0 8px}
+  p{margin:8px 0}
+  .muted{color:var(--muted)}
+  .small{font-size:13px}
+
+  /* 数学排版 */
+  .mv{font-family:var(--mathfont); font-style:italic; font-size:1.06em}
+  .formula{font-family:var(--mathfont); font-size:1.12em; letter-spacing:.2px}
+  .frac{display:inline-flex; flex-direction:column; align-items:center; vertical-align:-0.7em;
+    line-height:1.1; margin:0 .18em}
+  .frac>span:first-child{padding:0 .3em .05em; border-bottom:1.6px solid currentColor}
+  .frac>span:last-child{padding:.05em .3em 0}
+  .hl{color:var(--gold-ink); font-weight:600}
+  .hl2{color:var(--teal2); font-weight:600}
+
+  /* 结局三卡 */
+  .hero{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px}
+  .stat{background:var(--panel2); border:1px solid var(--line); border-radius:14px;
+    padding:14px 16px; text-align:center}
+  .stat .k{color:var(--muted); font-size:13px}
+  .stat .n{font-family:var(--mathfont); font-size:38px; font-weight:700; color:var(--gold); line-height:1.15}
+  .stat .d{font-size:12.5px; color:var(--muted)}
+  .checkline{margin-top:12px; text-align:center; background:var(--panel2); border:1px solid var(--line);
+    border-radius:10px; padding:8px 10px; font-size:14.5px}
+
+  /* 三步 */
+  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px}
+  .step{background:var(--panel2); border:1px solid var(--line); border-radius:14px; padding:14px 16px}
+  .step .tag{display:inline-block; background:var(--gold); color:#231a05; font-weight:700;
+    border-radius:7px; padding:1px 9px; font-size:13px; margin-bottom:6px}
+  .step .big{font-family:var(--mathfont); font-size:20px; margin:6px 0 2px}
+  .step .why{font-size:13px; color:var(--muted)}
+  .koujue{margin-top:14px; border-left:4px solid var(--gold); background:var(--panel2);
+    border-radius:0 12px 12px 0; padding:10px 16px}
+  .koujue b{color:var(--gold-ink)}
+
+  /* 图区 */
+  .figbox{display:grid; grid-template-columns:minmax(0,1.6fr) minmax(230px,1fr); gap:16px}
+  @media (max-width:760px){.figbox{grid-template-columns:1fr}}
+  .stage{background:radial-gradient(120% 120% at 50% 42%, var(--panel2), var(--bg2));
+    border:1px solid var(--line); border-radius:14px; position:relative; overflow:hidden}
+  canvas.solid{display:block; width:100%; aspect-ratio:4/3; touch-action:none; cursor:grab}
+  canvas.solid:active{cursor:grabbing}
+  .stage .dragtip{position:absolute; right:10px; bottom:8px; font-size:12px; color:var(--muted);
+    pointer-events:none; background:color-mix(in srgb, var(--bg2) 75%, transparent);
+    padding:2px 8px; border-radius:7px}
+  .side{display:flex; flex-direction:column; gap:10px; min-width:0}
+  .seg{display:flex; border:1px solid var(--line); border-radius:11px; overflow:hidden; width:100%}
+  .seg button{flex:1 1 0; border:0; background:var(--panel2); color:var(--ink); padding:8px 4px;
+    font-size:13.5px; cursor:pointer; border-right:1px solid var(--line); white-space:nowrap}
+  .seg button:last-child{border-right:0}
+  .seg button.on{background:var(--gold); color:#231a05; font-weight:700}
+  .togglerow{display:flex; gap:8px; flex-wrap:wrap}
+  .tgl{border:1px solid var(--line); background:var(--panel2); color:var(--ink); border-radius:10px;
+    padding:6px 11px; font-size:13px; cursor:pointer}
+  .tgl.on{border-color:var(--teal2); color:var(--teal2); font-weight:600}
+  .hint{background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:10px 13px;
+    font-size:13.5px; min-height:64px}
+  .legend{font-size:13px; color:var(--muted)}
+  .legend .sw{display:inline-block; width:22px; height:0; border-top:2.5px solid var(--edge-front);
+    vertical-align:middle; margin:0 5px 2px 2px}
+  .legend .swd{display:inline-block; width:22px; height:0;
+    border-top:2.5px dashed var(--edge-back); vertical-align:middle; margin:0 5px 2px 2px}
+  .selfcheck{margin-top:6px; font-size:12.5px; color:var(--muted)}
+  .selfcheck b{color:var(--ok)}
+
+  /* 表格 */
+  table{border-collapse:collapse; width:100%; font-size:14px}
+  th,td{border:1px solid var(--line); padding:7px 9px; text-align:center}
+  th{background:var(--panel2); font-weight:600}
+  td.nm{text-align:left; font-weight:600; white-space:nowrap}
+  td .formula{font-size:1em}
+  .tbl-scroll{overflow-x:auto}
+  canvas.mini{display:block; width:96px; height:78px; touch-action:none; cursor:grab; margin:0 auto}
+  .duo{margin-top:10px; font-size:13.5px; color:var(--muted)}
+
+  /* 两招 */
+  .moves{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px}
+  .move{background:var(--panel2); border:1px solid var(--line); border-radius:14px; padding:14px 16px}
+  .move .k{font-weight:700; color:var(--gold-ink)}
+  .example{margin-top:14px; background:var(--panel2); border:1px solid var(--line); border-radius:14px;
+    padding:14px 16px}
+  .example .flow{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:8px 0;
+    font-family:var(--mathfont); font-size:17px}
+  .chip{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:3px 11px}
+  .socrow{display:grid; grid-template-columns:minmax(0,1fr) minmax(220px,0.9fr); gap:14px; align-items:center}
+  @media (max-width:700px){.socrow{grid-template-columns:1fr}}
+  canvas.soccer{display:block; width:100%; aspect-ratio:5/4; touch-action:none; cursor:grab}
+
+  /* 平面图 SVG */
+  .planrow{display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:center}
+  @media (max-width:700px){.planrow{grid-template-columns:1fr; justify-items:center}}
+  svg.plan{width:100%; max-width:430px; height:auto}
+  svg.plan .v{fill:var(--dot-front)}
+  svg.plan .e-t{stroke:var(--gold); stroke-width:3; fill:none}
+  svg.plan .e-a{stroke:var(--edge-back); stroke-width:2.4; stroke-dasharray:7 5; fill:none}
+  svg.plan text{fill:var(--muted); font-size:12.5px; font-family:'Segoe UI','Microsoft YaHei',sans-serif}
+  svg.plan text.f{fill:var(--ink); font-size:13.5px; font-weight:600}
+  svg.plan .reg{fill:var(--gold); fill-opacity:.1}
+
+  details{background:var(--panel2); border:1px solid var(--line); border-radius:13px;
+    padding:10px 16px; margin:10px 0}
+  details>summary{cursor:pointer; font-weight:600; color:var(--gold-ink); outline:none}
+  details[open]>summary{margin-bottom:6px}
+  .qa details{margin:8px 0}
+  .ans{border-left:3px solid var(--ok); padding:4px 12px; margin-top:6px; background:var(--panel);
+    border-radius:0 9px 9px 0}
+
+  footer{margin-top:26px; color:var(--muted); font-size:13px; line-height:1.8;
+    border-top:1px dashed var(--line); padding-top:14px}
+
+  /* 打印：恒白底 A4 */
+  @page{size:A4; margin:11mm 10mm}
+  @media print{
+    html{--bg:#fff; --bg2:#fff; --panel:#fff; --panel2:#f4f5f7; --ink:#1d2430; --muted:#5c6879;
+      --line:#c9d0da; --gold:#8a5f0a; --gold-ink:#8a5f0a; --teal2:#0d7f74; --ok:#188a4c;
+      --card-shadow:none;
+      --edge-front:#4a3a10; --edge-back:rgba(70,80,95,.75);
+      --dot-front:#4a3a10; --dot-back:rgba(70,80,95,.6)}
+    body{background:#fff}
+    .no-print{display:none !important}
+    .wrap{padding:0; max-width:none}
+    h2{break-after:avoid}
+    .hero,.steps,.moves{gap:8px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>正十二面体：<em>顶点、棱、面</em> 怎么快速数出来</h1>
+</header>
+<div class="sub">初中数学 · 立体图形专题 ｜ 双重计数（先乘后除）× 欧拉公式 ｜ 附可拖拽立体示意图</div>
+
+<!-- ===================== 结论速览 ===================== -->
+<section class="card">
+  <h2><span class="no">★</span>结论速览</h2>
+  <div class="hero">
+    <div class="stat"><div class="k">顶点数 <span class="mv">V</span></div><div class="n">20</div><div class="d">12×5 ÷ 3</div></div>
+    <div class="stat"><div class="k">棱数 <span class="mv">E</span></div><div class="n">30</div><div class="d">12×5 ÷ 2</div></div>
+    <div class="stat"><div class="k">面数 <span class="mv">F</span></div><div class="n">12</div><div class="d">十二个正五边形</div></div>
+  </div>
+  <div class="checkline">验算（欧拉公式）：<span class="formula"><span class="mv">V</span> − <span class="mv">E</span> + <span class="mv">F</span> = 20 − 30 + 12 = <b class="hl">2</b> ✓</span></div>
+</section>
+
+<!-- ===================== 一、三步速算 ===================== -->
+<section class="card" id="method">
+  <h2><span class="no">一</span>三步数出来：先整乘、再整除</h2>
+  <p>挨个数 20 个顶点、30 条棱，最容易漏数。快的方法是<span class="hl">「整乘再整除」</span>——先故意多数，再把重复的次数除掉：</p>
+  <div class="steps">
+    <div class="step">
+      <span class="tag">第 1 步</span>
+      <div><b>面数：名字直接给了</b></div>
+      <div class="big formula"><span class="mv">F</span> = 12</div>
+      <div class="why">「正十二面体」= 12 个面，每个面都是正五边形（5 条边、5 个顶点）。</div>
+    </div>
+    <div class="step">
+      <span class="tag">第 2 步</span>
+      <div><b>棱数：除以 2</b></div>
+      <div class="big formula"><span class="mv">E</span> = 12 × 5 ÷ 2 = 30</div>
+      <div class="why">12 个面各贡献 5 条边，共 60 条「面的边」；但<b>每条棱同时是 2 个面的公共边</b>，被数了 2 遍 → 除以 2。</div>
+    </div>
+    <div class="step">
+      <span class="tag">第 3 步</span>
+      <div><b>顶点数：除以 3</b></div>
+      <div class="big formula"><span class="mv">V</span> = 12 × 5 ÷ 3 = 20</div>
+      <div class="why">12 个面各贡献 5 个顶点，又是 60 个；但<b>每个顶点处有 3 个面相遇</b>，被数了 3 遍 → 除以 3。</div>
+    </div>
+  </div>
+  <div class="koujue">
+    <b>口诀：两个 60 —— 除 2 得棱，除 3 得顶点。</b><br>
+    重复几次，就除以几。其中「棱被数 2 次」对<b>任何</b>多面体都成立；「顶点被数几次」要看每个顶点处有几个面相遇（正十二面体恰好是 3）。
+  </div>
+</section>
+
+<!-- ===================== 二、立体示意图 ===================== -->
+<section class="card" id="fig">
+  <h2><span class="no">二</span>立体示意图（可拖拽旋转）</h2>
+  <div class="figbox">
+    <div class="stage">
+      <canvas id="cvMain" class="solid" aria-label="正十二面体立体示意图"></canvas>
+      <div class="dragtip no-print">拖动旋转</div>
+    </div>
+    <div class="side">
+      <div class="seg no-print" id="modeSeg">
+        <button data-mode="none" class="on" type="button">看整体</button>
+        <button data-mode="vertex" type="button">看顶点</button>
+        <button data-mode="face" type="button">看面</button>
+      </div>
+      <div class="togglerow no-print">
+        <button class="tgl on" id="dashBtn" type="button">虚线：被挡住的棱</button>
+        <button class="tgl on" id="spinBtn" type="button">自动旋转</button>
+      </div>
+      <div class="hint" id="figHint">
+        图中<b>实线</b>是看得见的棱，<b>虚线</b>是被身体挡住的棱。每个顶点处有 <span class="hl2">3 个面、3 条棱</span>；每个面有 <span class="hl">5 条棱、5 个顶点</span>。
+      </div>
+      <div class="legend">
+        <span class="sw"></span>可见棱（实线）<br>
+        <span class="swd"></span>被挡住的棱（虚线）<br>
+        亮色块 = 正对着你的面
+      </div>
+      <div class="selfcheck" id="figCheck">几何自检中…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 三、五种正多面体 ===================== -->
+<section class="card" id="platonic">
+  <h2><span class="no">三</span>五种正多面体：同一套方法全通吃</h2>
+  <p>设每个面是 <span class="mv">n</span> 边形、每个顶点处有 <span class="mv">m</span> 个面，则 <span class="formula"><span class="mv">E</span> = <span class="frac"><span><span class="mv">nF</span></span><span>2</span></span>，<span class="mv">V</span> = <span class="frac"><span><span class="mv">nF</span></span><span><span class="mv">m</span></span></span></span>（小图也可以拖动）：</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr>
+      <th>立体图</th><th>名称</th><th>每面边数 <span class="mv">n</span></th><th>每顶点面数 <span class="mv">m</span></th>
+      <th>面数 <span class="mv">F</span></th><th>棱数 <span class="mv">E</span></th><th>顶点数 <span class="mv">V</span></th><th><span class="mv">V</span>−<span class="mv">E</span>+<span class="mv">F</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><canvas class="mini" data-solid="tetra" aria-label="正四面体"></canvas></td><td class="nm">正四面体</td><td>3</td><td>3</td><td>4</td><td>6</td><td>4</td><td>2</td></tr>
+      <tr><td><canvas class="mini" data-solid="cube" aria-label="正六面体"></canvas></td><td class="nm">正六面体（立方体）</td><td>4</td><td>3</td><td>6</td><td>12</td><td>8</td><td>2</td></tr>
+      <tr><td><canvas class="mini" data-solid="octa" aria-label="正八面体"></canvas></td><td class="nm">正八面体</td><td>3</td><td>4</td><td>8</td><td>12</td><td>6</td><td>2</td></tr>
+      <tr><td><canvas class="mini" data-solid="dodeca" aria-label="正十二面体"></canvas></td><td class="nm">正十二面体</td><td>5</td><td>3</td><td>12</td><td>30</td><td>20</td><td>2</td></tr>
+      <tr><td><canvas class="mini" data-solid="icosa" aria-label="正二十面体"></canvas></td><td class="nm">正二十面体</td><td>3</td><td>5</td><td>20</td><td>30</td><td>12</td><td>2</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="duo">注意最后两行：正十二面体与正二十面体的 <span class="mv">V</span>、<span class="mv">F</span> 恰好互换（20↔12），棱数同为 30——它们互为<b>对偶多面体</b>（把一个的面中心连起来，就得到另一个）。为什么正多面体只有这 5 种？答案在文末彩蛋。</p>
+</section>
+
+<!-- ===================== 四、推广 ===================== -->
+<section class="card" id="general">
+  <h2><span class="no">四</span>推广：任意多面体怎么办？</h2>
+  <div class="moves">
+    <div class="move">
+      <div><span class="k">招式 A · 数棱（万能）</span></div>
+      <div class="formula" style="font-size:19px; margin:6px 0"><span class="mv">E</span> =（所有面的边数之和）÷ 2</div>
+      <div class="small muted">任何多面体的每条棱都<b>恰好属于 2 个面</b>，所以这条永远成立——只要看清它有哪些面，棱就不用数了。</div>
+    </div>
+    <div class="move">
+      <div><span class="k">招式 B · 欧拉公式（万能）</span></div>
+      <div class="formula" style="font-size:19px; margin:6px 0"><span class="mv">V</span> − <span class="mv">E</span> + <span class="mv">F</span> = 2</div>
+      <div class="small muted">对<b>简单多面体</b>成立（表面没有洞；一切凸多面体都算）。已知任意两个量，第三个直接算：<span class="formula"><span class="mv">V</span> = <span class="mv">E</span> + 2 − <span class="mv">F</span></span>。</div>
+    </div>
+  </div>
+  <p>两招配合的完整流程：先由各个面算出 <span class="mv">E</span>（招式 A），再由 <span class="mv">E</span>、<span class="mv">F</span> 反出 <span class="mv">V</span>（招式 B）——<b>顶点一个都不用挨个数</b>。</p>
+
+  <div class="example">
+    <h3 style="margin-top:0">经典应用：足球（截角二十面体）</h3>
+    <p style="margin:4px 0">足球表面由 12 块正五边形皮 + 20 块正六边形皮缝成：</p>
+    <div class="flow">
+      <span class="chip"><span class="mv">E</span> = (12×5 + 20×6) ÷ 2 = 90</span>
+      <span class="chip"><span class="mv">F</span> = 12 + 20 = 32</span>
+      <span class="chip"><span class="mv">V</span> = 90 + 2 − 32 = 60</span>
+    </div>
+    <p class="small muted" style="margin:4px 0">验算 60 − 90 + 32 = 2 ✓。这 60 个顶点正是 <span class="mv">C</span><sub>60</sub>「足球烯」分子的 60 个原子（1996 年诺贝尔化学奖）。</p>
+    <div class="socrow">
+      <canvas id="cvSoccer" class="soccer" aria-label="足球（截角二十面体）示意图"></canvas>
+      <div class="small muted" style="align-self:center">
+        图为按同一套坐标公式实时生成的足球：黑块 = 12 个五边形，浅块 = 20 个六边形，可拖动旋转。<br>
+        <span id="socCheck">几何自检中…</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>棱柱、棱锥速查（考试常用）</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th></th><th>面数 <span class="mv">F</span></th><th>顶点 <span class="mv">V</span></th><th>棱 <span class="mv">E</span></th><th>代回欧拉公式</th></tr></thead>
+    <tbody>
+      <tr><td class="nm"><span class="mv">n</span> 棱柱</td><td><span class="mv">n</span> + 2</td><td>2<span class="mv">n</span></td><td>3<span class="mv">n</span></td><td>2<span class="mv">n</span> − 3<span class="mv">n</span> + (<span class="mv">n</span>+2) = 2 ✓</td></tr>
+      <tr><td class="nm"><span class="mv">n</span> 棱锥</td><td><span class="mv">n</span> + 1</td><td><span class="mv">n</span> + 1</td><td>2<span class="mv">n</span></td><td>(<span class="mv">n</span>+1) − 2<span class="mv">n</span> + (<span class="mv">n</span>+1) = 2 ✓</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small muted" style="margin-top:6px">例：五棱柱 <span class="mv">F</span>=7、<span class="mv">V</span>=10、<span class="mv">E</span>=15；四棱锥 <span class="mv">F</span>=5、<span class="mv">V</span>=5、<span class="mv">E</span>=8。</p>
+</section>
+
+<!-- ===================== 五、为什么恒等于 2 ===================== -->
+<section class="card" id="why">
+  <h2><span class="no">五</span>为什么 <span class="mv">V</span> − <span class="mv">E</span> + <span class="mv">F</span> 恒等于 2？（选读）</h2>
+  <details id="whyDetails">
+    <summary>点开看：摊平 + 铺水管 + 补线，三步直观证明</summary>
+    <div class="planrow">
+      <canvas id="cvCubeSmall" class="mini" style="width:110px;height:92px" aria-label="立方体"></canvas>
+      <svg class="plan" viewBox="0 0 430 330" role="img" aria-label="立方体摊平后的平面连线图">
+        <!-- 5 块区域淡色底 -->
+        <polygon class="reg" points="120,100 260,100 260,220 120,220"/>
+        <polygon class="reg" points="40,40 340,40 260,100 120,100"/>
+        <polygon class="reg" points="340,40 340,280 260,220 260,100"/>
+        <polygon class="reg" points="340,280 40,280 120,220 260,220"/>
+        <polygon class="reg" points="40,280 40,40 120,100 120,220"/>
+        <!-- 生成树（水管）：外圈3条 + 内圈3条 + 左上连接1条 = V−1 = 7 条 -->
+        <polyline class="e-t" points="40,40 340,40 340,280 40,280"/>
+        <polyline class="e-t" points="120,100 260,100 260,220 120,220"/>
+        <line class="e-t" x1="40" y1="40" x2="120" y2="100"/>
+        <!-- 待补的 5 条（虚线）：每补 1 条，区域 +1 -->
+        <line class="e-a" x1="40" y1="280" x2="40" y2="40"/>
+        <line class="e-a" x1="120" y1="220" x2="120" y2="100"/>
+        <line class="e-a" x1="340" y1="40" x2="260" y2="100"/>
+        <line class="e-a" x1="340" y1="280" x2="260" y2="220"/>
+        <line class="e-a" x1="40" y1="280" x2="120" y2="220"/>
+        <!-- 顶点 -->
+        <g class="v">
+          <circle cx="40" cy="40" r="5"/><circle cx="340" cy="40" r="5"/>
+          <circle cx="340" cy="280" r="5"/><circle cx="40" cy="280" r="5"/>
+          <circle cx="120" cy="100" r="5"/><circle cx="260" cy="100" r="5"/>
+          <circle cx="260" cy="220" r="5"/><circle cx="120" cy="220" r="5"/>
+        </g>
+        <text x="190" y="88" text-anchor="middle">①底面</text>
+        <text x="190" y="30" text-anchor="middle">②前面</text>
+        <text x="352" y="165">③右面</text>
+        <text x="190" y="305" text-anchor="middle">④后面</text>
+        <text x="24" y="165">⑤左面</text>
+        <text x="10" y="12">最外面这块无穷大区域 = 被挖掉的顶面（第 6 块）</text>
+        <text class="f" x="215" y="160" text-anchor="middle">8 个点 − 12 条线 + 6 块区域 = 2</text>
+        <text x="215" y="182" text-anchor="middle" style="font-size:12px">粗线 = 铺好的 7 条「水管」（V−1 条）；虚线 = 待补的 5 条，每补 1 条区域多 1 块</text>
+      </svg>
+    </div>
+    <p>以立方体为例（其他多面体同理）：</p>
+    <p><b>第 1 步 · 摊平：</b>把表面想象成橡皮膜，<b>挖掉一个面</b>（比如顶面），剩下的摊平在桌面上，得到一张平面连线图。点还是 <span class="mv">V</span> 个、线还是 <span class="mv">E</span> 条；原来的 <span class="mv">F</span> 个面 = 摊平后的 <span class="mv">F</span> 块区域（被挖掉的面变成了最外面的无穷大区域，正好补位）。</p>
+    <p><b>第 2 步 · 铺水管（生成树）：</b>从 1 个点出发，每次接 1 条线、圈进 1 个新点，把 <span class="mv">V</span> 个点全部连通、又不围出任何圈——恰好需要 <span class="mv">V</span> − 1 条线。此时整张平面仍是 <b>1 块区域</b>：</p>
+    <p class="formula" style="text-align:center"><span class="mv">V</span> − (<span class="mv">V</span>−1) + 1 = 2 ✓</p>
+    <p><b>第 3 步 · 补线：</b>把剩下的 <span class="mv">E</span> − (<span class="mv">V</span>−1) 条线一条条补回去。补的线两端早已连通，一补上必然围出一块新区域——每补 1 条，<span class="mv">E</span> 和 <span class="mv">F</span> 同时 +1，所以 <span class="mv">V</span> − <span class="mv">E</span> + <span class="mv">F</span> 纹丝不动，始终是 2。补完时区域数 <span class="formula"><span class="mv">F</span> = 1 + [<span class="mv">E</span> − (<span class="mv">V</span>−1)] = <span class="mv">E</span> − <span class="mv">V</span> + 2</span>，整理即 <span class="formula"><span class="mv">V</span> − <span class="mv">E</span> + <span class="mv">F</span> = 2</span>。∎</p>
+  </details>
+</section>
+
+<!-- ===================== 六、彩蛋 ===================== -->
+<section class="card" id="eggs">
+  <h2><span class="no">六</span>两个彩蛋（选读，超出初中范围）</h2>
+  <details>
+    <summary>彩蛋 1：为什么正多面体只有 5 种？</summary>
+    <p>设每个面是 <span class="mv">n</span> 边形、每个顶点处 <span class="mv">m</span> 个面。把 <span class="formula"><span class="mv">E</span> = <span class="frac"><span><span class="mv">nF</span></span><span>2</span></span></span>、<span class="formula"><span class="mv">V</span> = <span class="frac"><span><span class="mv">nF</span></span><span><span class="mv">m</span></span></span></span> 代入欧拉公式并整理：</p>
+    <p class="formula" style="text-align:center"><span class="mv">F</span> · (2<span class="mv">n</span> + 2<span class="mv">m</span> − <span class="mv">nm</span>) = 4<span class="mv">m</span> &nbsp;⟹&nbsp; (<span class="mv">n</span>−2)(<span class="mv">m</span>−2) &lt; 4</p>
+    <p>又因为面至少 3 条边（<span class="mv">n</span> ≥ 3）、每个顶点至少 3 条棱（<span class="mv">m</span> ≥ 3），枚举只剩 5 组：<b>(3,3)、(4,3)、(3,4)、(5,3)、(3,5)</b>——正是上表那五种。柏拉图立体到此「封顶」。</p>
+  </details>
+  <details>
+    <summary>彩蛋 2：挖了洞的多面体怎么办？（拓扑学的起点）</summary>
+    <p>若表面有贯通的洞（像相框、甜甜圈），公式变为 <span class="formula"><span class="mv">V</span> − <span class="mv">E</span> + <span class="mv">F</span> = 2 − 2<span class="mv">g</span></span>（<span class="mv">g</span> = 洞数）。有 1 个贯通洞时结果恰为 0。</p>
+    <p>这说明欧拉公式的右边<b>只取决于「表面的连接方式像球还是像甜甜圈」，与棱长、角度完全无关</b>——研究这种「连接方式」的学问就是拓扑学。这个公式可追溯到欧拉 1750 年前后的工作（更早的笛卡尔手稿里已有类似想法），被公认为拓扑学的第一个定理。</p>
+  </details>
+</section>
+
+<!-- ===================== 七、自测 ===================== -->
+<section class="card qa" id="practice">
+  <h2><span class="no">七</span>自测 3 题（先自己算，再点开对答案）</h2>
+  <details>
+    <summary>Q1 · 正二十面体的每个面都是正三角形、每个顶点处有 5 个面。求 <span class="mv">V</span>、<span class="mv">E</span>、<span class="mv">F</span>。</summary>
+    <div class="ans"><span class="formula"><span class="mv">F</span> = 20；<span class="mv">E</span> = 20×3 ÷ 2 = 30；<span class="mv">V</span> = 20×3 ÷ 5 = 12</span>。验算 12 − 30 + 20 = 2 ✓</div>
+  </details>
+  <details>
+    <summary>Q2 · 某简单多面体的 8 个面全是三角形。求 <span class="mv">E</span> 和 <span class="mv">V</span>。</summary>
+    <div class="ans"><span class="formula"><span class="mv">E</span> = 8×3 ÷ 2 = 12</span>；再用欧拉公式 <span class="formula"><span class="mv">V</span> = 12 + 2 − 8 = 6</span>（它就是八面体）。</div>
+  </details>
+  <details>
+    <summary>Q3 · 一个棱柱共有 15 条棱，它是几棱柱？有几个面、几个顶点？</summary>
+    <div class="ans">棱数 <span class="formula">3<span class="mv">n</span> = 15 ⟹ <span class="mv">n</span> = 5</span>，是<b>五棱柱</b>；<span class="formula"><span class="mv">F</span> = 5+2 = 7</span>，<span class="formula"><span class="mv">V</span> = 2×5 = 10</span>。验算 10 − 15 + 7 = 2 ✓</div>
+  </details>
+</section>
+
+<footer>
+  口径提示：人教版初中教材把「欧拉公式」放在阅读与思考 / 拓展层面，校内考试以老师讲授为准；「先乘后除」的数法本身完全在初中知识范围内。<br>
+  纯原生 HTML/CSS/JS · 立体图由黄金比例坐标公式在浏览器内实时计算生成（非手绘贴图），打印恒为 A4 白底。2026-11-03。
+</footer>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+/* ============ 向量工具 ============ */
+const sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]];
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+const norm=a=>Math.hypot(a[0],a[1],a[2]);
+const PHI=(1+Math.sqrt(5))/2;
+
+/* ============ 顶点坐标（标准公式） ============ */
+function dodecaVerts(){
+  const v=[];
+  for(const x of[-1,1])for(const y of[-1,1])for(const z of[-1,1])v.push([x,y,z]);
+  for(const a of[-1,1])for(const b of[-1,1]){
+    v.push([0,a/PHI,b*PHI]); v.push([a/PHI,b*PHI,0]); v.push([a*PHI,0,b/PHI]);
+  }
+  return v; // 8 + 12 = 20
+}
+function icosaVerts(){
+  const v=[];
+  for(const a of[-1,1])for(const b of[-1,1]){
+    v.push([0,a,b*PHI]); v.push([a,b*PHI,0]); v.push([a*PHI,0,b]);
+  }
+  return v; // 12
+}
+const SOLIDS={
+  dodeca:{verts:dodecaVerts(), expect:{V:20,E:30,F:12}},
+  icosa:{verts:icosaVerts(), expect:{V:12,E:30,F:20}},
+  cube:{verts:(()=>{const v=[];for(const x of[-1,1])for(const y of[-1,1])for(const z of[-1,1])v.push([x,y,z]);return v;})(), expect:{V:8,E:12,F:6}},
+  octa:{verts:[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]], expect:{V:6,E:12,F:8}},
+  tetra:{verts:[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]], expect:{V:4,E:6,F:4}},
+};
+
+/* ============ 由距离求棱 ============ */
+function edgesByMinDist(verts){
+  let m=Infinity; const ds=[];
+  for(let i=0;i<verts.length;i++)for(let j=i+1;j<verts.length;j++){
+    const d=norm(sub(verts[i],verts[j])); ds.push([i,j,d]); if(d<m)m=d;
+  }
+  return ds.filter(p=>p[2]<m*1.05).map(p=>[p[0],p[1]]);
+}
+
+/* ============ 凸多面体面追踪（外法线、逆时针） ============ */
+function traceFaces(verts,edges){
+  const nbr=verts.map(()=>new Set());
+  edges.forEach(([a,b])=>{nbr[a].add(b); nbr[b].add(a);});
+  const key=(a,b)=>a+'>'+b;
+  const visited=new Set(); const faces=[];
+  function pickNext(prev,cur){
+    for(const c of nbr[cur]){
+      if(c===prev) continue;
+      const n=cross(sub(verts[cur],verts[prev]), sub(verts[c],verts[prev]));
+      let ok=true;
+      for(let i=0;i<verts.length;i++){
+        if(i===prev||i===cur||i===c) continue;
+        if(dot(n,sub(verts[i],verts[prev]))>1e-7){ok=false;break;}
+      }
+      if(ok) return c;
+    }
+    return null;
+  }
+  for(const [a,b] of edges){
+    for(const [u,w] of [[a,b],[b,a]]){
+      if(visited.has(key(u,w))) continue;
+      const face=[u]; let prev=u,cur=w;
+      while(cur!==u){
+        visited.add(key(prev,cur)); face.push(cur);
+        const next=pickNext(prev,cur);
+        if(next===null) throw new Error('face trace failed');
+        prev=cur; cur=next;
+      }
+      visited.add(key(prev,cur));
+      faces.push(face);
+    }
+  }
+  return faces;
+}
+
+/* ============ 足球（截角二十面体）：三等分点构造 ============ */
+function soccerData(){
+  const iv=icosaVerts();
+  const ie=edgesByMinDist(iv); // 30 条
+  const nbr=iv.map(()=>new Set());
+  ie.forEach(([a,b])=>{nbr[a].add(b); nbr[b].add(a);});
+  const pts=[]; const map=new Map();
+  function ept(a,b,third){ // third=1 → 从 a 走 1/3；=2 → 走 2/3
+    const lo=Math.min(a,b), hi=Math.max(a,b);
+    const t=(a<b)?third:(3-third);
+    const k=lo+'_'+hi+'_'+t;
+    if(!map.has(k)){
+      map.set(k,pts.length);
+      const P=[0,1,2].map(i=>iv[a][i]+(iv[b][i]-iv[a][i])*t/3);
+      pts.push(P);
+    }
+    return map.get(k);
+  }
+  const faces=[];
+  // 12 个五边形：绕每个原顶点，把 5 个邻居按绕轴角度排序
+  for(let i=0;i<iv.length;i++){
+    const a=iv[i];
+    let u=cross(a,[1,0,0]); if(norm(u)<1e-9)u=cross(a,[0,1,0]);
+    u=[u[0]/norm(u),u[1]/norm(u),u[2]/norm(u)];
+    const w=cross(a,u);
+    const ns=[...nbr[i]].map(n=>{
+      const d=sub(iv[n],iv[i]);
+      return {n, ang:Math.atan2(dot(d,w),dot(d,u))};
+    }).sort((p,q)=>p.ang-q.ang);
+    faces.push(ns.map(o=>ept(i,o.n,1)));
+  }
+  // 20 个六边形：每个原三角形面 → 6 个三等分点
+  const ifaces=traceFaces(iv,ie);
+  for(const [x,y,z] of ifaces){
+    faces.push([ept(x,y,1),ept(x,y,2),ept(y,z,1),ept(y,z,2),ept(z,x,1),ept(z,x,2)]);
+  }
+  return {verts:pts, faces, expect:{V:60,E:90,F:32}};
+}
+
+/* ============ 主题色 ============ */
+function palette(){
+  const dark=document.documentElement.dataset.theme!=='light';
+  const print=window.matchMedia && window.matchMedia('print').matches;
+  return {
+    dark, print,
+    faceHue:36,
+    faceL:dark?[17,44]:[74,93],
+    edgeFront:getVar('--edge-front'),
+    edgeBack:getVar('--edge-back'),
+    dotFront:getVar('--dot-front'),
+    dotBack:getVar('--dot-back'),
+    accent:getVar('--gold'),
+    accent2:getVar('--teal2'),
+    ink:getVar('--ink'),
+    panel:getVar('--panel2'),
+  };
+}
+function getVar(n){
+  return getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+}
+
+/* ============ 通用立体渲染器 ============ */
+const allViews=[];
+class SolidView{
+  constructor(canvas, verts, faces, opts={}){
+    this.cv=canvas; this.ctx=canvas.getContext('2d');
+    this.verts=verts; this.faces=faces; this.o=Object.assign({
+      yaw:0.62, pitch:-0.38, auto:false, spin:0.0035, showDash:true, mini:false,
+      faceStyle:null, drag:true,
+    },opts);
+    // 棱：来自面边界（每条棱恰属 2 个面）
+    const em=new Map();
+    faces.forEach((f,fi)=>{
+      for(let i=0;i<f.length;i++){
+        const a=f[i], b=f[(i+1)%f.length];
+        const k=Math.min(a,b)+'_'+Math.max(a,b);
+        if(!em.has(k))em.set(k,[]); em.get(k).push(fi);
+      }
+    });
+    this.edges=[...em.keys()].map(k=>k.split('_').map(Number));
+    this.edgeFaces=em;
+    // 外法线与重心（物体坐标系）
+    this.fN=faces.map(f=>{
+      const n=cross(sub(verts[f[1]],verts[f[0]]), sub(verts[f[2]],verts[f[0]]));
+      const l=norm(n); return [n[0]/l,n[1]/l,n[2]/l];
+    });
+    this.fC=faces.map(f=>{
+      const c=[0,0,0]; f.forEach(i=>{c[0]+=verts[i][0];c[1]+=verts[i][1];c[2]+=verts[i][2];});
+      return [c[0]/f.length,c[1]/f.length,c[2]/f.length];
+    });
+    this.maxR=Math.max(...verts.map(norm));
+    this.mode='none'; this._raf=null; this._print=null;
+    if(this.o.auto&&!matchMedia('(prefers-reduced-motion: reduce)').matches) this._loop();
+    if(this.o.drag){
+      let px=0,py=0,dragging=false;
+      canvas.addEventListener('pointerdown',e=>{dragging=true;px=e.clientX;py=e.clientY;canvas.setPointerCapture(e.pointerId);this.pause();});
+      canvas.addEventListener('pointermove',e=>{
+        if(!dragging)return;
+        this.o.yaw+=(e.clientX-px)*0.008; this.o.pitch=Math.max(-1.45,Math.min(1.45,this.o.pitch+(e.clientY-py)*0.008));
+        px=e.clientX;py=e.clientY; this.draw();
+      });
+      const end=()=>{dragging=false;this.resume();};
+      canvas.addEventListener('pointerup',end); canvas.addEventListener('pointercancel',end);
+    }
+    allViews.push(this);
+    this.draw();
+  }
+  pause(){if(this._raf){cancelAnimationFrame(this._raf);this._raf=null;}}
+  resume(){if(this.o.auto&&!this._raf&&!matchMedia('(prefers-reduced-motion: reduce)').matches)this._loop();}
+  _loop(){
+    const step=()=>{this.o.yaw+=this.o.spin; this.draw(); this._raf=requestAnimationFrame(step);};
+    this._raf=requestAnimationFrame(step);
+  }
+  setAuto(on){this.o.auto=on; if(on)this._loop(); else this.pause();}
+  setMode(m){this.mode=m; this.draw();}
+  draw(){
+    const cv=this.cv, ctx=this.ctx, dpr=Math.min(window.devicePixelRatio||1,2.5);
+    const w=cv.clientWidth||300, h=cv.clientHeight||220;
+    if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){
+      cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr);
+    }
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    const P=palette();
+    const s=(Math.min(w,h)/2-(this.o.mini?8:20))/this.maxR;
+    const cx=w/2, cy=h/2;
+    const ya=this.o.yaw, pa=this.o.pitch;
+    const c1=Math.cos(ya),s1=Math.sin(ya),cp=Math.cos(pa),sp=Math.sin(pa);
+    const rot=p=>{const x=p[0]*c1+p[2]*s1, z=-p[0]*s1+p[2]*c1, y=p[1];
+      return [x, y*cp-z*sp, y*sp+z*cp];};
+    const V=this.verts.map(rot), FN=this.fN.map(rot), FC=this.fC.map(rot);
+    const pr=p=>[cx+s*p[0], cy-s*p[1]];
+    const front=FN.map(n=>n[2]>0);
+    const lwF=this.o.mini?1.5:2.2, lwB=this.o.mini?1.2:1.7;
+    const light=[0.35,0.5,0.79];
+    // 1) 朝前的面：按深度排序填充（凸体不互相遮挡，排序求稳）
+    const order=FC.map((c,i)=>i).filter(i=>front[i]).sort((a,b)=>FC[a][2]-FC[b][2]);
+    for(const fi of order){
+      const f=this.faces[fi];
+      const shade=0.42+0.58*Math.max(0,dot(FN[fi],light));
+      let fill;
+      if(this.o.faceStyle){fill=this.o.faceStyle(this.faces[fi],P,shade);}
+      else{
+        const L=P.faceL[0]+(P.faceL[1]-P.faceL[0])*shade;
+        fill='hsl('+P.faceHue+',60%,'+L.toFixed(1)+'%)';
+      }
+      ctx.beginPath();
+      f.forEach((vi,k)=>{const q=pr(V[vi]); k?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]);});
+      ctx.closePath();
+      ctx.fillStyle=fill; ctx.globalAlpha=this.o.mini?0.96:0.93; ctx.fill(); ctx.globalAlpha=1;
+    }
+    // 2) 被挡住的棱（两侧面均背向）：虚线
+    if(this.o.showDash){
+      ctx.save(); ctx.setLineDash([7,6]); ctx.lineWidth=lwB; ctx.strokeStyle=P.edgeBack;
+      ctx.beginPath();
+      for(const [a,b] of this.edges){
+        const [f1,f2]=this.edgeFaces.get(Math.min(a,b)+'_'+Math.max(a,b));
+        if(!front[f1]&&!front[f2]){
+          const p1=pr(V[a]),p2=pr(V[b]); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]);
+        }
+      }
+      ctx.stroke(); ctx.restore();
+    }
+    // 3) 可见棱（至少一个邻面朝前，含轮廓）：实线
+    ctx.lineWidth=lwF; ctx.strokeStyle=P.edgeFront; ctx.lineJoin='round';
+    ctx.beginPath();
+    for(const [a,b] of this.edges){
+      const [f1,f2]=this.edgeFaces.get(Math.min(a,b)+'_'+Math.max(a,b));
+      if(front[f1]||front[f2]){
+        const p1=pr(V[a]),p2=pr(V[b]); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]);
+      }
+    }
+    ctx.stroke();
+    // 4) 高亮模式
+    if(this.mode==='vertex'){
+      let vi=0; for(let i=1;i<V.length;i++) if(V[i][2]>V[vi][2])vi=i;
+      const adj=this.edgeFaces?null:null;
+      const hf=this.faces.map((f,i)=>i).filter(i=>this.faces[i].includes(vi)&&front[i]);
+      ctx.save();
+      for(const fi of hf){
+        const f=this.faces[fi]; ctx.beginPath();
+        f.forEach((x,k)=>{const q=pr(V[x]); k?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]);});
+        ctx.closePath(); ctx.fillStyle=P.accent2; ctx.globalAlpha=0.4; ctx.fill(); ctx.globalAlpha=1;
+        ctx.lineWidth=lwF+1; ctx.strokeStyle=P.accent2; ctx.stroke();
+      }
+      const q=pr(V[vi]);
+      ctx.beginPath(); ctx.arc(q[0],q[1],this.o.mini?6:9,0,7); ctx.strokeStyle=P.accent2;
+      ctx.lineWidth=2.5; ctx.stroke();
+      if(!this.o.mini){
+        ctx.font='600 13.5px "Segoe UI","Microsoft YaHei",sans-serif';
+        const msg='3 个面在此相遇 → 顶点被数 3 次';
+        const tw=ctx.measureText(msg).width;
+        let lx=q[0]+16, ly=q[1]-18;
+        if(lx+tw+16>w) lx=q[0]-tw-30;
+        if(ly-18<0) ly=q[1]+26;
+        ctx.fillStyle=P.panel; ctx.strokeStyle=P.accent2; ctx.lineWidth=1;
+        if(ctx.roundRect){ctx.beginPath();ctx.roundRect(lx-8,ly-15,tw+16,24,7);ctx.fill();ctx.stroke();}
+        ctx.fillStyle=P.ink; ctx.fillText(msg,lx,ly+3);
+      }
+      ctx.restore();
+    }
+    if(this.mode==='face'){
+      let fi=-1;
+      for(let i=0;i<FC.length;i++) if(front[i]&&(fi<0||FC[i][2]>FC[fi][2]))fi=i;
+      if(fi>=0){
+        const f=this.faces[fi];
+        ctx.save(); ctx.beginPath();
+        f.forEach((x,k)=>{const q=pr(V[x]); k?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]);});
+        ctx.closePath(); ctx.fillStyle=P.accent; ctx.globalAlpha=0.42; ctx.fill(); ctx.globalAlpha=1;
+        ctx.lineWidth=lwF+1; ctx.strokeStyle=P.accent2; ctx.stroke();
+        const q=pr(FC[fi]);
+        ctx.font='600 13.5px "Segoe UI","Microsoft YaHei",sans-serif';
+        const msg='1 个面 = '+f.length+' 条边、'+f.length+' 个顶点';
+        const tw=ctx.measureText(msg).width;
+        let lx=q[0]-tw/2, ly=q[1]-f.length-16; if(ly<16)ly=q[1]+26;
+        lx=Math.max(6,Math.min(w-tw-22,lx));
+        ctx.fillStyle=P.panel; ctx.strokeStyle=P.accent; ctx.lineWidth=1;
+        if(ctx.roundRect){ctx.beginPath();ctx.roundRect(lx-8,ly-15,tw+16,24,7);ctx.fill();ctx.stroke();}
+        ctx.fillStyle=P.ink; ctx.fillText(msg,lx,ly+3);
+        ctx.restore();
+      }
+    }
+    // 5) 顶点圆点
+    for(let i=0;i<V.length;i++){
+      const q=pr(V[i]);
+      ctx.beginPath(); ctx.arc(q[0],q[1],this.o.mini?1.8:2.8,0,7);
+      if(V[i][2]>0){ctx.fillStyle=P.dotFront; ctx.fill();}
+      else{ctx.strokeStyle=P.dotBack; ctx.lineWidth=1.2; ctx.stroke();}
+    }
+  }
+}
+
+/* ============ 几何自检（程序化验证） ============ */
+function solidWithFaces(key){
+  const d=SOLIDS[key];
+  const edges=edgesByMinDist(d.verts);
+  const faces=traceFaces(d.verts,edges);
+  return {verts:d.verts, edges, faces, expect:d.expect};
+}
+window.__MATH_CHECK={};
+function recordCheck(name,verts,edges,faces,expect){
+  const r={V:verts.length,E:edges.length,F:faces.length,expect};
+  r.ok=(r.V===expect.V&&r.E===expect.E&&r.F===expect.F);
+  window.__MATH_CHECK[name]=r;
+  return r;
+}
+
+/* ============ 初始化 ============ */
+let mainView=null, soccerView=null;
+function init(){
+  // 主图：正十二面体
+  const d=solidWithFaces('dodeca');
+  const chk=recordCheck('dodecahedron',d.verts,d.edges,d.faces,d.expect);
+  mainView=new SolidView(document.getElementById('cvMain'),d.verts,d.faces,
+    {yaw:0.72,pitch:-0.34,auto:true,showDash:true});
+  document.getElementById('figCheck').innerHTML=
+    '几何自检（页面内实时计算）：实测 <b>V='+chk.V+'</b>、<b>E='+chk.E+'</b>、<b>F='+chk.F+
+    '</b>（'+(chk.ok?'与公式推导一致 ✓':'不一致 ✗')+'），V−E+F='+(chk.V-chk.E+chk.F)+'。';
+
+  // 表格小图
+  const miniOpts={tetra:{yaw:0.55,pitch:-0.34},cube:{yaw:0.58,pitch:-0.42},
+    octa:{yaw:0.5,pitch:-0.32},dodeca:{yaw:0.72,pitch:-0.34},icosa:{yaw:0.55,pitch:-0.36}};
+  document.querySelectorAll('canvas.mini[data-solid]').forEach(cv=>{
+    const k=cv.dataset.solid;
+    const d2=(k==='cube')?solidWithFaces('cube'):(k==='dodeca')?d:solidWithFaces(k);
+    recordCheck(k,d2.verts,d2.edges,d2.faces,d2.expect);
+    new SolidView(cv,d2.verts,d2.faces,Object.assign({mini:true},miniOpts[k]));
+  });
+  // 摊平示例的立方体
+  const cubeD=solidWithFaces('cube');
+  new SolidView(document.getElementById('cvCubeSmall'),cubeD.verts,cubeD.faces,
+    {mini:true,yaw:0.58,pitch:-0.42});
+
+  // 足球
+  const sk=soccerData();
+  const sEdges=(()=>{
+    const em=new Map();
+    sk.faces.forEach(f=>{
+      for(let i=0;i<f.length;i++){
+        const a=f[i],b=f[(i+1)%f.length],k=Math.min(a,b)+'_'+Math.max(a,b);
+        if(!em.has(k))em.set(k,[]); em.get(k).push(0);
+      }
+    });
+    return [...em.keys()].map(k=>k.split('_').map(Number));
+  })();
+  const sChk=recordCheck('soccer',sk.verts,sEdges,sk.faces,sk.expect);
+  soccerView=new SolidView(document.getElementById('cvSoccer'),sk.verts,sk.faces,{
+    yaw:0.7,pitch:-0.3,auto:true,spin:0.0028,
+    faceStyle:(f,P,shade)=>{
+      const pent=(f.length===5);
+      if(pent) return P.dark?'hsl(222,30%,'+(8+14*shade).toFixed(1)+'%)':'hsl(222,26%,'+(16+16*shade).toFixed(1)+'%)';
+      return P.dark?'hsl(220,10%,'+(46+30*shade).toFixed(1)+'%)':'hsl(45,60%,'+(80+12*shade).toFixed(1)+'%)';
+    }
+  });
+  document.getElementById('socCheck').innerHTML=
+    '几何自检：实测 <b style="color:var(--ok)">V='+sChk.V+'、E='+sChk.E+'、F='+sChk.F+
+    '</b>（'+(sChk.ok?'与公式推导一致 ✓':'不一致 ✗')+'）。';
+}
+
+/* ============ 交互控件 ============ */
+/* 主题由全站共享 theme.js 的浮动按钮切换：监听 data-theme 变化，重绘画布取色 */
+new MutationObserver(()=>redrawAll()).observe(document.documentElement,
+  {attributes:true, attributeFilter:['data-theme']});
+
+const HINTS={
+  none:'图中<b>实线</b>是看得见的棱，<b>虚线</b>是被身体挡住的棱。每个顶点处有 <span class="hl2">3 个面、3 条棱</span>；每个面有 <span class="hl">5 条棱、5 个顶点</span>。',
+  vertex:'<span class="hl2">青色</span> = 选定顶点周围的 3 个五边形。顶点被数 3 次 ⟹ <span class="formula">V = 12×5 ÷ 3 = 20</span>（拖动可换一个顶点看）。',
+  face:'<span class="hl">金色</span> = 选定的一个面。每条棱被 2 个面共用 ⟹ <span class="formula">E = 12×5 ÷ 2 = 30</span>（拖动可换一个面看）。',
+};
+document.querySelectorAll('#modeSeg button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#modeSeg button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const m=b.dataset.mode;
+    if(mainView)mainView.setMode(m);
+    document.getElementById('figHint').innerHTML=HINTS[m];
+  });
+});
+const dashBtn=document.getElementById('dashBtn');
+dashBtn.addEventListener('click',()=>{
+  const on=!dashBtn.classList.contains('on');
+  dashBtn.classList.toggle('on',on);
+  if(mainView){mainView.o.showDash=on; mainView.draw();}
+});
+const spinBtn=document.getElementById('spinBtn');
+spinBtn.addEventListener('click',()=>{
+  const on=!spinBtn.classList.contains('on');
+  spinBtn.classList.toggle('on',on);
+  if(mainView)mainView.setAuto(on);
+});
+
+/* ============ 全局重绘（主题 / 尺寸 / 打印） ============ */
+function redrawAll(){allViews.forEach(v=>v.draw());}
+let rsT=null;
+window.addEventListener('resize',()=>{clearTimeout(rsT);rsT=setTimeout(redrawAll,120);});
+if(window.matchMedia){
+  try{window.matchMedia('print').addEventListener('change',redrawAll);}catch(e){}
+}
+let printState=null;
+window.addEventListener('beforeprint',()=>{
+  printState={auto:[],open:[],yaw:mainView?mainView.o.yaw:0,pitch:mainView?mainView.o.pitch:0,
+    theme:document.documentElement.dataset.theme||'light'};
+  document.documentElement.dataset.theme='light'; /* 打印恒白底 */
+  allViews.forEach(v=>{printState.auto.push(v.o.auto); v.pause();});
+  if(mainView){mainView.o.yaw=0.72; mainView.o.pitch=-0.34; mainView.draw();}
+  document.querySelectorAll('details').forEach(d=>{if(d.open)printState.open.push(d); d.open=true;});
+});
+window.addEventListener('afterprint',()=>{
+  if(!printState)return;
+  if(printState.theme)document.documentElement.dataset.theme=printState.theme;
+  allViews.forEach((v,i)=>{if(printState.auto[i])v.resume();});
+  if(mainView){mainView.o.yaw=printState.yaw; mainView.o.pitch=printState.pitch; mainView.draw();}
+  document.querySelectorAll('details').forEach(d=>{if(!printState.open.includes(d))d.open=false;});
+  printState=null;
+});
+
+/* ============ 启动 ============ */
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+window.__views={get main(){return mainView;},get soccer(){return soccerView;}};
+})();
+</script>
+</body>
+</html>
