@@ -134,6 +134,15 @@
   @media (max-width:700px){.socrow{grid-template-columns:1fr}}
   canvas.soccer{display:block; width:100%; aspect-ratio:5/4; touch-action:none; cursor:grab}
 
+  /* 追问实验四连图 */
+  .cmpgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:14px 0 4px}
+  .cmpcard{background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:10px}
+  .cmpbox{border:1px solid var(--line); border-radius:9px; overflow:hidden;
+    background:radial-gradient(120% 120% at 50% 42%, var(--panel2), var(--bg2))}
+  canvas.cmp{display:block; width:100%; aspect-ratio:6/5; touch-action:none; cursor:grab}
+  .cmpcap{font-size:12.5px; margin-top:8px; line-height:1.65}
+  p.tight{line-height:1.9; margin:6px 0}
+
   /* 平面图 SVG */
   .planrow{display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:center}
   @media (max-width:700px){.planrow{grid-template-columns:1fr; justify-items:center}}
@@ -387,9 +396,26 @@
   </details>
 </section>
 
-<!-- ===================== 七、自测 ===================== -->
+<!-- ===================== 七、追问实验 ===================== -->
+<section class="card" id="halving">
+  <h2><span class="no">七</span>追问实验：每面切两半，能得「正四十面体」吗？</h2>
+  <p>设想：正二十面体每个面都是正三角形，而正三角形<b>三线合一</b>——作一边的中垂线恰好过对顶点，把面平分成两半。20×2 = <b>40 个面片</b>，这能叫「正四十面体」吗？<b>面片数对，但三关全灭，而且它根本不是新立体：</b></p>
+  <p class="tight">① <span class="hl">面不正</span>：切出的 40 个小面是 30°-60°-90° 直角三角形，三边比 <span class="formula">1 : √3 : 2</span>（半条棱、中线、整条棱），不是正三角形；<br>
+  ② <span class="hl">点不齐</span>：原来 12 个顶点仍是真「角」，而被切棱的中点处 4 个直角恰好拼成 <span class="formula">360°</span>——是摊平的「假顶点」；<br>
+  ③ <span class="hl">棱是假的</span>：新切线两侧的小面仍共处一个平面（二面角 180°），不是真正的棱。</p>
+  <p>数账（相邻面沿公共棱两两配对下刀的整齐切法）：<span class="formula"><span class="mv">V</span> = 12+10 = 22，<span class="mv">E</span> = 20+10×2+20 = 60，<span class="mv">F</span> = 40</span>，验算 <span class="formula">22−60+40 = 2 ✓</span>——欧拉公式照常成立，但「正」字三关全灭。何况正多面体只有 5 种（彩蛋 1），<b>「正四十面体」本就不存在</b>。</p>
+  <div class="cmpgrid">
+    <div class="cmpcard"><div class="cmpbox"><canvas id="cmpA" class="cmp" aria-label="正二十面体"></canvas></div><div class="cmpcap" id="cmpACap"></div></div>
+    <div class="cmpcard"><div class="cmpbox"><canvas id="cmpB" class="cmp" aria-label="每面切两半的四十面片"></canvas></div><div class="cmpcap" id="cmpBCap"></div></div>
+    <div class="cmpcard"><div class="cmpbox"><canvas id="cmpC" class="cmp" aria-label="截半二十面体"></canvas></div><div class="cmpcap" id="cmpCCap"></div></div>
+    <div class="cmpcard"><div class="cmpbox"><canvas id="cmpD" class="cmp" aria-label="测地细分八十面球"></canvas></div><div class="cmpcap" id="cmpDCap"></div></div>
+  </div>
+  <p class="small muted">四图<b>同步旋转</b>（拖任意一个）：第 ② 个与第 ① 个轮廓完全重合——在面上画线只是「细分」，表面一点没动，立体仍是正二十面体。想得到真正的新立体，必须让新点<b>离开原来的面</b>：第 ③ 图在棱中点切角（截半），第 ④ 图把新点外推到外接球（测地细分）。</p>
+</section>
+
+<!-- ===================== 八、自测 ===================== -->
 <section class="card qa" id="practice">
-  <h2><span class="no">七</span>自测 3 题（先自己算，再点开对答案）</h2>
+  <h2><span class="no">八</span>自测 3 题（先自己算，再点开对答案）</h2>
   <details>
     <summary>Q1 · 正二十面体的每个面都是正三角形、每个顶点处有 5 个面。求 <span class="mv">V</span>、<span class="mv">E</span>、<span class="mv">F</span>。</summary>
     <div class="ans"><span class="formula"><span class="mv">F</span> = 20；<span class="mv">E</span> = 20×3 ÷ 2 = 30；<span class="mv">V</span> = 20×3 ÷ 5 = 12</span>。验算 12 − 30 + 20 = 2 ✓</div>
@@ -530,6 +556,127 @@ function soccerData(){
   return {verts:pts, faces, expect:{V:60,E:90,F:32}};
 }
 
+/* ============ 追问实验：二十面体的三种「改造」 ============ */
+function icosaFacesData(){
+  const iv=icosaVerts();
+  const ie=edgesByMinDist(iv);
+  const faces=traceFaces(iv,ie);
+  return {iv,ie,faces};
+}
+function edgesFromFaces(faces){
+  const em=new Map();
+  faces.forEach(f=>{
+    for(let i=0;i<f.length;i++){
+      const a=f[i],b=f[(i+1)%f.length],k=Math.min(a,b)+'_'+Math.max(a,b);
+      if(!em.has(k))em.set(k,[]); em.get(k).push(0);
+    }
+  });
+  return [...em.keys()].map(k=>k.split('_').map(Number));
+}
+/* 每面切两半：20 个面沿公共棱两两配对（完美匹配）同时下刀 → 40 个面片 */
+function halvedIcosa(){
+  const {iv,faces}=icosaFacesData();
+  const ef=new Map();
+  faces.forEach((f,fi)=>{
+    for(let i=0;i<3;i++){
+      const a=f[i],b=f[(i+1)%3],k=Math.min(a,b)+'_'+Math.max(a,b);
+      if(!ef.has(k))ef.set(k,[]); ef.get(k).push(fi);
+    }
+  });
+  const adj=faces.map(()=>new Set());
+  faces.forEach((f,fi)=>{
+    for(let i=0;i<3;i++){
+      const a=f[i],b=f[(i+1)%3],k=Math.min(a,b)+'_'+Math.max(a,b);
+      ef.get(k).forEach(gj=>{if(gj!==fi)adj[fi].add(gj);});
+    }
+  });
+  const mate=new Map();
+  (function bt(){
+    let u=-1; for(let i=0;i<faces.length;i++){if(!mate.has(i)){u=i;break;}}
+    if(u<0)return true;
+    for(const v of adj[u]){
+      if(mate.has(v))continue;
+      mate.set(u,v); mate.set(v,u);
+      if(bt())return true;
+      mate.delete(u); mate.delete(v);
+    }
+    return false;
+  })();
+  if(mate.size!==faces.length)throw new Error('no perfect matching');
+  const verts=iv.map(p=>p.slice());
+  const midIdx=new Map(); const newFaces=[];
+  faces.forEach((f,fi)=>{
+    const g=faces[mate.get(fi)];
+    let pk=-1,qk=-1;
+    for(let i=0;i<3;i++){
+      const a=f[i],b=f[(i+1)%3];
+      if(g.includes(a)&&g.includes(b)){pk=a;qk=b;break;}
+    }
+    if(pk<0)throw new Error('pair edge not found');
+    const key=Math.min(pk,qk)+'_'+Math.max(pk,qk);
+    if(!midIdx.has(key)){
+      midIdx.set(key,verts.length);
+      verts.push([(iv[pk][0]+iv[qk][0])/2,(iv[pk][1]+iv[qk][1])/2,(iv[pk][2]+iv[qk][2])/2]);
+    }
+    const m=midIdx.get(key);
+    const r=f.find(x=>x!==pk&&x!==qk);
+    newFaces.push([pk,m,r],[qk,r,m]); // 沿父面逆时针方向剖分，外法线保持
+  });
+  return {verts,faces:newFaces,expect:{V:22,E:60,F:40}};
+}
+/* 截半二十面体：顶点=30 条棱的中点，面=20 三角 + 12 五边形 */
+function rectifiedIcosa(){
+  const {iv,ie,faces}=icosaFacesData();
+  const verts=[]; const mid=new Map();
+  function midOf(a,b){
+    const k=Math.min(a,b)+'_'+Math.max(a,b);
+    if(!mid.has(k)){
+      mid.set(k,verts.length);
+      verts.push([(iv[a][0]+iv[b][0])/2,(iv[a][1]+iv[b][1])/2,(iv[a][2]+iv[b][2])/2]);
+    }
+    return mid.get(k);
+  }
+  const out=[];
+  faces.forEach(([x,y,z])=>{ out.push([midOf(x,y),midOf(y,z),midOf(z,x)]); });
+  const nbr=iv.map(()=>new Set());
+  ie.forEach(([a,b])=>{nbr[a].add(b); nbr[b].add(a);});
+  for(let i=0;i<iv.length;i++){
+    const a=iv[i];
+    let u=cross(a,[1,0,0]); if(norm(u)<1e-9)u=cross(a,[0,1,0]);
+    u=[u[0]/norm(u),u[1]/norm(u),u[2]/norm(u)];
+    const w=cross(a,u);
+    const es=[...nbr[i]].map(n=>{
+      const d=sub(iv[n],iv[i]);
+      return {k:Math.min(i,n)+'_'+Math.max(i,n), ang:Math.atan2(dot(d,w),dot(d,u))};
+    }).sort((p,q)=>p.ang-q.ang);
+    out.push(es.map(e=>mid.get(e.k)));
+  }
+  return {verts,faces:out,expect:{V:30,E:60,F:32}};
+}
+/* 测地细分：每条棱 2 等分、每面 4 小三角形，新点外推到外接球 */
+function geodesicIcosa(){
+  const {iv,faces}=icosaFacesData();
+  const R=norm(iv[0]);
+  const verts=[]; const idx=new Map();
+  function vp(i){ if(!idx.has('v'+i)){idx.set('v'+i,verts.length); verts.push(iv[i].slice());} return idx.get('v'+i); }
+  function mp(a,b){
+    const k=Math.min(a,b)+'_'+Math.max(a,b);
+    if(!idx.has(k)){
+      idx.set(k,verts.length);
+      const m=[(iv[a][0]+iv[b][0])/2,(iv[a][1]+iv[b][1])/2,(iv[a][2]+iv[b][2])/2];
+      const l=R/norm(m);
+      verts.push([m[0]*l,m[1]*l,m[2]*l]); // 外推到外接球
+    }
+    return idx.get(k);
+  }
+  const out=[];
+  faces.forEach(([x,y,z])=>{
+    const A=vp(x),B=vp(y),C=vp(z),mAB=mp(x,y),mBC=mp(y,z),mCA=mp(z,x);
+    out.push([A,mAB,mCA],[B,mBC,mAB],[C,mCA,mBC],[mAB,mBC,mCA]);
+  });
+  return {verts,faces:out,expect:{V:42,E:120,F:80}};
+}
+
 /* ============ 主题色 ============ */
 function palette(){
   const dark=document.documentElement.dataset.theme!=='light';
@@ -559,7 +706,7 @@ class SolidView{
     this.cv=canvas; this.ctx=canvas.getContext('2d');
     this.verts=verts; this.faces=faces; this.o=Object.assign({
       yaw:0.62, pitch:-0.38, auto:false, spin:0.0035, showDash:true, mini:false,
-      faceStyle:null, drag:true,
+      faceStyle:null, drag:true, dots:true, sync:null, markFlat:false,
     },opts);
     // 棱：来自面边界（每条棱恰属 2 个面）
     const em=new Map();
@@ -582,17 +729,23 @@ class SolidView{
       return [c[0]/f.length,c[1]/f.length,c[2]/f.length];
     });
     this.maxR=Math.max(...verts.map(norm));
+    // 假棱识别（两侧面共面 → 二面角≈180°）：markFlat 开启时用细虚线弱化显示
+    this.flatEdge=new Set();
+    if(this.o.markFlat){
+      em.forEach((fs,k)=>{ if(fs.length===2&&dot(this.fN[fs[0]],this.fN[fs[1]])>0.999) this.flatEdge.add(k); });
+    }
     this.mode='none'; this._raf=null; this._print=null;
     if(this.o.auto&&!matchMedia('(prefers-reduced-motion: reduce)').matches) this._loop();
     if(this.o.drag){
       let px=0,py=0,dragging=false;
-      canvas.addEventListener('pointerdown',e=>{dragging=true;px=e.clientX;py=e.clientY;canvas.setPointerCapture(e.pointerId);this.pause();});
+      canvas.addEventListener('pointerdown',e=>{dragging=true;px=e.clientX;py=e.clientY;canvas.setPointerCapture(e.pointerId);this.pause(); if(this.o.sync)this.o.sync.forEach(u=>u.pause());});
       canvas.addEventListener('pointermove',e=>{
         if(!dragging)return;
         this.o.yaw+=(e.clientX-px)*0.008; this.o.pitch=Math.max(-1.45,Math.min(1.45,this.o.pitch+(e.clientY-py)*0.008));
         px=e.clientX;py=e.clientY; this.draw();
+        if(this.o.sync)this.o.sync.forEach(u=>{u.o.yaw=this.o.yaw; u.o.pitch=this.o.pitch; u.draw();});
       });
-      const end=()=>{dragging=false;this.resume();};
+      const end=()=>{dragging=false; if(this.o.sync)this.o.sync.forEach(u=>{if(u.o.auto)u.resume();}); if(this.o.auto)this.resume();};
       canvas.addEventListener('pointerup',end); canvas.addEventListener('pointercancel',end);
     }
     allViews.push(this);
@@ -600,8 +753,11 @@ class SolidView{
   }
   pause(){if(this._raf){cancelAnimationFrame(this._raf);this._raf=null;}}
   resume(){if(this.o.auto&&!this._raf&&!matchMedia('(prefers-reduced-motion: reduce)').matches)this._loop();}
+  _sync(){
+    if(this.o.sync)this.o.sync.forEach(u=>{u.o.yaw=this.o.yaw; u.o.pitch=this.o.pitch; u.draw();});
+  }
   _loop(){
-    const step=()=>{this.o.yaw+=this.o.spin; this.draw(); this._raf=requestAnimationFrame(step);};
+    const step=()=>{this.o.yaw+=this.o.spin; this.draw(); this._sync(); this._raf=requestAnimationFrame(step);};
     this._raf=requestAnimationFrame(step);
   }
   setAuto(on){this.o.auto=on; if(on)this._loop(); else this.pause();}
@@ -647,23 +803,40 @@ class SolidView{
       ctx.save(); ctx.setLineDash([7,6]); ctx.lineWidth=lwB; ctx.strokeStyle=P.edgeBack;
       ctx.beginPath();
       for(const [a,b] of this.edges){
-        const [f1,f2]=this.edgeFaces.get(Math.min(a,b)+'_'+Math.max(a,b));
+        const k=Math.min(a,b)+'_'+Math.max(a,b);
+        if(this.o.markFlat&&this.flatEdge.has(k)) continue;
+        const [f1,f2]=this.edgeFaces.get(k);
         if(!front[f1]&&!front[f2]){
           const p1=pr(V[a]),p2=pr(V[b]); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]);
         }
       }
       ctx.stroke(); ctx.restore();
     }
-    // 3) 可见棱（至少一个邻面朝前，含轮廓）：实线
+    // 3) 可见棱（至少一个邻面朝前，含轮廓）：实线；假棱另用细虚线
     ctx.lineWidth=lwF; ctx.strokeStyle=P.edgeFront; ctx.lineJoin='round';
     ctx.beginPath();
     for(const [a,b] of this.edges){
-      const [f1,f2]=this.edgeFaces.get(Math.min(a,b)+'_'+Math.max(a,b));
+      const k=Math.min(a,b)+'_'+Math.max(a,b);
+      if(this.o.markFlat&&this.flatEdge.has(k)) continue;
+      const [f1,f2]=this.edgeFaces.get(k);
       if(front[f1]||front[f2]){
         const p1=pr(V[a]),p2=pr(V[b]); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]);
       }
     }
     ctx.stroke();
+    if(this.o.markFlat){
+      ctx.save(); ctx.setLineDash([4,5]); ctx.lineWidth=1.1; ctx.strokeStyle=P.edgeBack;
+      ctx.beginPath();
+      for(const [a,b] of this.edges){
+        const k=Math.min(a,b)+'_'+Math.max(a,b);
+        if(!this.flatEdge.has(k)) continue;
+        const [f1,f2]=this.edgeFaces.get(k);
+        if(front[f1]||front[f2]){
+          const p1=pr(V[a]),p2=pr(V[b]); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]);
+        }
+      }
+      ctx.stroke(); ctx.restore();
+    }
     // 4) 高亮模式
     if(this.mode==='vertex'){
       let vi=0; for(let i=1;i<V.length;i++) if(V[i][2]>V[vi][2])vi=i;
@@ -714,11 +887,13 @@ class SolidView{
       }
     }
     // 5) 顶点圆点
-    for(let i=0;i<V.length;i++){
-      const q=pr(V[i]);
-      ctx.beginPath(); ctx.arc(q[0],q[1],this.o.mini?1.8:2.8,0,7);
-      if(V[i][2]>0){ctx.fillStyle=P.dotFront; ctx.fill();}
-      else{ctx.strokeStyle=P.dotBack; ctx.lineWidth=1.2; ctx.stroke();}
+    if(this.o.dots!==false){
+      for(let i=0;i<V.length;i++){
+        const q=pr(V[i]);
+        ctx.beginPath(); ctx.arc(q[0],q[1],this.o.mini?1.8:2.8,0,7);
+        if(V[i][2]>0){ctx.fillStyle=P.dotFront; ctx.fill();}
+        else{ctx.strokeStyle=P.dotBack; ctx.lineWidth=1.2; ctx.stroke();}
+      }
     }
   }
 }
@@ -814,12 +989,50 @@ function init(){
   document.getElementById('socCheck').innerHTML=
     '几何自检：实测 <b style="color:var(--ok)">V='+sChk.V+'（互不重合）、E='+sChk.E+'、F='+sChk.F+
     '</b>，各面严格共面、整体严格凸'+(sChk.ok?' ✓':' ✗')+'。';
+
+  // 追问实验：四连对比（同步旋转）
+  const cmpViews=[];
+  const cmpDefs=[
+    {id:'cmpA',name:'icosa-proto',build:()=>solidWithFaces('icosa'),style:null,dots:true,flat:false,
+     title:'① 正二十面体（原型）',
+     verdict:'每个面是正三角形、每个顶点 5 个面'},
+    {id:'cmpB',name:'icosa-halved',build:halvedIcosa,style:null,dots:true,flat:true,
+     title:'② 你的切法：每面切两半',
+     verdict:'轮廓与 ① 完全相同！小面是 30-60-90 直角三角形；细虚线 = 新「棱」，两侧共面（二面角 180°）——体没变，只是画了线'},
+    {id:'cmpC',name:'icosa-rectified',build:rectifiedIcosa,
+     style:(f,P,shade)=>{
+       if(f.length===5) return P.dark?'hsl(36,60%,'+(17+27*shade).toFixed(1)+'%)':'hsl(38,75%,'+(76+15*shade).toFixed(1)+'%)';
+       return P.dark?'hsl(172,42%,'+(16+26*shade).toFixed(1)+'%)':'hsl(172,55%,'+(72+18*shade).toFixed(1)+'%)';
+     },dots:true,flat:false,
+     title:'③ 截半二十面体（棱中点切角）',
+     verdict:'真新立体：20 正三角形 + 12 正五边形，每点「2 三 + 2 五」交替——半正多面体（阿基米德体）'},
+    {id:'cmpD',name:'icosa-geodesic',build:geodesicIcosa,style:null,dots:false,flat:false,
+     title:'④ 测地细分（外推到外接球）',
+     verdict:'新点真的离开原面了：每面 4 等分共 80 面，整体近似球面——穹顶与地球仪网格的原理'},
+  ];
+  cmpDefs.forEach((def,i)=>{
+    const s=def.build();
+    const ck=recordCheck(def.name,s.verts,edgesFromFaces(s.faces),s.faces,s.expect);
+    const v=new SolidView(document.getElementById(def.id),s.verts,s.faces,{
+      auto:(i===0),spin:0.0035,yaw:0.62,pitch:-0.38,
+      faceStyle:def.style,dots:def.dots,markFlat:def.flat});
+    cmpViews.push(v);
+    document.getElementById(def.id+'Cap').innerHTML=
+      '<b>'+def.title+'</b><br><span class="formula">V='+ck.V+'、E='+ck.E+'、F='+ck.F+
+      (ck.ok?' ✓':' ✗')+'</span><br>'+def.verdict;
+  });
+  cmpViews.forEach(v=>{v.o.sync=cmpViews.filter(u=>u!==v);});
+  window.__cmpViews=cmpViews;
 }
 
 /* ============ 交互控件 ============ */
 /* 主题由全站共享 theme.js 的浮动按钮切换：监听 data-theme 变化，重绘画布取色 */
 new MutationObserver(()=>redrawAll()).observe(document.documentElement,
   {attributes:true, attributeFilter:['data-theme']});
+/* 折叠面板展开后重绘其中的画布（闭合时画布尺寸为 0，展开时需按新尺寸重画） */
+document.querySelectorAll('details').forEach(d=>{
+  d.addEventListener('toggle',()=>{ if(d.open) requestAnimationFrame(redrawAll); });
+});
 
 const HINTS={
   none:'图中<b>实线</b>是看得见的棱，<b>虚线</b>是被身体挡住的棱。每个顶点处有 <span class="hl2">3 个面、3 条棱</span>；每个面有 <span class="hl">5 条棱、5 个顶点</span>。',
