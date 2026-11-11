@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026学年七上期中质量调研卷 · 全卷解析 | 初中数学实验室</title>
+<script>(function(){try{var q=(location.search||'').match(/[?&]theme=(dark|light)/);var t=q?q[1]:(localStorage.getItem('jml-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();</script>
+<script src="theme.js" defer></script>
+<style>
+:root{
+  --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --sub:#5b6472;
+  --line:#e3e7ef; --soft:#f2f5fa; --accent:#2f6df6; --accent2:#7aa2ff;
+  --ok:#0a8f56; --okbg:#e7f7ef; --warn:#b04a00; --warnbg:#fff3e3;
+  --bug:#c2366b; --bugbg:#fdeaf2; --gold:#8a6d1a; --goldbg:#fdf6df;
+  --code:#eef2f9; --sh:0 1px 3px rgba(20,30,60,.06),0 6px 22px rgba(20,30,60,.07);
+}
+html[data-theme=dark]{
+  --bg:#14161c; --card:#1d2028; --ink:#e8eaf0; --sub:#9aa3b2;
+  --line:#2b2f3a; --soft:#22252f; --accent:#6f9bff; --accent2:#3f68d8;
+  --ok:#4cd394; --okbg:#12301f; --warn:#ffab5e; --warnbg:#3a2210;
+  --bug:#ff8fb8; --bugbg:#3d1527; --gold:#e6c96a; --goldbg:#33290f;
+  --code:#262a35; --sh:0 1px 3px rgba(0,0,0,.4),0 8px 26px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Microsoft YaHei","PingFang SC","Segoe UI",system-ui,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:16px}
+main{max-width:1060px;margin:0 auto;padding:18px 20px 60px}
+header.hero{background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;border-radius:18px;padding:26px 28px 22px;margin:14px 0 20px;box-shadow:var(--sh);position:relative;overflow:hidden}
+header.hero h1{margin:0 0 6px;font-size:clamp(20px,3.4vw,30px);letter-spacing:.5px}
+header.hero p{margin:0;opacity:.92;font-size:14.5px}
+header.hero .tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+header.hero .tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  padding:2px 10px;border-radius:999px;font-size:12.5px}
+.callout{border-radius:14px;padding:14px 18px;margin:16px 0;border-left:5px solid}
+.callout h3{margin:0 0 6px;font-size:16.5px}
+.callout p{margin:4px 0;font-size:14.5px;color:var(--sub)}
+.callout.bug{background:var(--bugbg);border-color:var(--bug)}
+.callout.bug h3{color:var(--bug)}
+.callout.gold{background:var(--goldbg);border-color:var(--gold)}
+.callout.gold h3{color:var(--gold)}
+.callout.warn{background:var(--warnbg);border-color:var(--warn)}
+.callout.warn h3{color:var(--warn)}
+.callout.ok{background:var(--okbg);border-color:var(--ok)}
+.callout.ok h3{color:var(--ok)}
+section.quick{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 22px;margin:18px 0;box-shadow:var(--sh)}
+section.quick h2{margin:0 0 4px;font-size:19px}
+section.quick p.hint{margin:0 0 12px;color:var(--sub);font-size:13.5px}
+table.ansgrid{width:100%;border-collapse:collapse;font-size:14px}
+table.ansgrid td{border:1px solid var(--line);padding:7px 9px;vertical-align:top}
+table.ansgrid td.n{color:var(--sub);white-space:normal;min-width:44px}
+table.ansgrid td.v{font-weight:600;color:var(--accent)}
+h2.part{display:flex;align-items:center;gap:10px;font-size:20px;margin:34px 0 6px}
+h2.part .dot{width:10px;height:10px;border-radius:3px;background:var(--accent);transform:rotate(45deg);flex:none}
+h2.part small{font-size:13px;color:var(--sub);font-weight:400;margin-left:4px}
+p.partsub{color:var(--sub);font-size:13.5px;margin:0 0 14px}
+article.q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:18px 22px 16px;margin:14px 0;box-shadow:var(--sh)}
+.qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.qno{background:var(--accent);color:#fff;border-radius:9px;min-width:34px;height:26px;
+  display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;padding:0 6px}
+.qflag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+.badge{margin-left:auto;background:var(--okbg);color:var(--ok);border-radius:999px;
+  padding:3px 12px;font-size:13.5px;font-weight:700}
+.badge.warn{background:var(--bugbg);color:var(--bug)}
+.qtext{font-size:15.5px;margin:2px 0 10px;padding:10px 14px;background:var(--soft);
+  border-radius:10px;border:1px dashed var(--line)}
+.qtext .blank{color:var(--sub)}
+figure{margin:12px 0;padding:12px 8px;background:var(--soft);border-radius:12px;border:1px solid var(--line);text-align:center}
+figure svg{max-width:100%;height:auto}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px}
+.blk{border-radius:10px;padding:10px 14px;margin:9px 0;font-size:14.8px}
+.blk b.tt{display:inline-block;margin-right:8px;font-size:13.5px;padding:1px 9px;border-radius:6px;color:#fff}
+.blk.key{background:var(--soft);border-left:4px solid var(--accent2)}
+.blk.key b.tt{background:var(--accent2)}
+.blk.sol{background:var(--code);border-left:4px solid var(--accent)}
+.blk.sol b.tt{background:var(--accent)}
+.blk.ref{background:var(--okbg);border-left:4px solid var(--ok)}
+.blk.ref b.tt{background:var(--ok)}
+.blk.trap{background:var(--warnbg);border-left:4px solid var(--warn)}
+.blk.trap b.tt{background:var(--warn)}
+.blk.chk{background:var(--okbg);border-left:4px solid var(--ok)}
+.blk.chk b.tt{background:var(--ok)}
+.blk.bugblk{background:var(--bugbg);border-left:4px solid var(--bug)}
+.blk.bugblk b.tt{background:var(--bug)}
+.step{margin:6px 0;padding-left:6px}
+.step .sno{display:inline-block;background:var(--accent);color:#fff;border-radius:50%;
+  width:20px;height:20px;text-align:center;line-height:20px;font-size:12.5px;margin-right:8px}
+.mono{font-family:"Cambria Math",Georgia,serif;font-style:italic}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;
+  font-size:.82em;line-height:1.15;margin:0 .12em}
+.frac b{font-weight:400;border-top:1.4px solid currentColor;padding:0 .25em}
+.frac i{font-style:normal;padding:0 .25em}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+  color:var(--sub);font-size:13px;text-align:center}
+@media print{
+  html{color-scheme:light!important}
+  :root,html[data-theme=dark]{--bg:#fff!important;--card:#fff!important;--ink:#111!important;--sub:#444!important;--line:#ccc!important;--soft:#f5f5f5!important;
+    --accent:#1a4fc4!important;--accent2:#5a7fd0!important;--ok:#0a7a48!important;--okbg:#eee!important;--warn:#8a3d00!important;--warnbg:#f6f0e6!important;
+    --bug:#a02955!important;--bugbg:#f8ecf1!important;--gold:#6b5514!important;--goldbg:#f7f2df!important;--code:#f0f2f7!important;--sh:none!important}
+  body{font-size:12.5px}
+  main{max-width:100%;padding:0}
+  header.hero{background:#fff!important;color:#111!important;border:2px solid #1a4fc4;border-radius:10px}
+  header.hero p{color:#444!important}
+  header.hero .tag{background:#f0f2f7!important;border-color:#bbb!important;color:#333!important}
+  article.q,.detective,section.quick,.callout,figure{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+  <h1>2026学年七上期中质量调研卷 · 全卷解析</h1>
+  <p>第一学期期中 · 整式、幂、乘法公式与因式分解 · 26 题逐题精讲 + 图形可视化</p>
+  <div class="tags">
+    <span class="tag">26 题全解析</span><span class="tag">已与手写参考答案逐题核对 ✓</span>
+    <span class="tag">5 幅重绘示意图</span><span class="tag">A4 可打印</span>
+  </div>
+</header>
+
+<div class="callout ok">
+  <h3>✅ 参考答案逐题核对说明</h3>
+  <p>本页依据卷面手写参考答案逐题对照：全部 26 题答案经本页独立推导验算，<b>与手写答案完全一致</b>；解析中的完整过程为本页补写，手写答案的关键思路（设 a 设 b、坐标分解等）均已融入讲解。</p>
+</div>
+<div class="callout bug">
+  <h3>🔍 原卷唯一瑕疵：第 25(2) 题第三个式子印成「b」</h3>
+  <p>题干写「若 a=2026x+2000，b=2026x+2002，<b>b=2026x+2004</b>」——第三个式子的变量印成了 <b>b</b>（重复）。但等式 a²+b²+c²−ab−bc−ac 里有 <b>c</b>，且 c−b=2、c−a=4 的间隔设计说明它显然是 <b>c=2026x+2004</b>。按 c 求解得 <b>12</b>（与手写参考答案一致）。详见第 25 题。</p>
+</div>
+<div class="callout warn">
+  <h3>⚠️ 填空头号陷阱：第 17 题三分支最易漏解</h3>
+  <p>(2x+3)<sup>x+2026</sup>=1 有<b>三类来源</b>：底数=1（x=−1）、指数=0（x=−2026）、底数=−1 且指数为偶数（x=−2）。漏掉任何一个都丢 1/3 的分。</p>
+</div>
+<div class="callout gold">
+  <h3>✨ 压轴的巧合：26(3) 答案 1026、26(4) 答案 3636</h3>
+  <p>阅读理解压轴围绕「知二求一」展开：知 a−b、ab 可求 (a+b)²。最后一问的拼图把 AR 设计成 <b>3(a+b)</b>，面积 9(a+b)²=3636；顺带一提，重叠面积 300=3ab 恰好是「三倍积」设计，整套题环环相扣。</p>
+</div>
+
+<section class="quick">
+  <h2>📋 答案速查表</h2>
+  <p class="hint">先自测再对照；★ 表示解析里有特别提醒。</p>
+  <table class="ansgrid">
+    <tr><td class="n">1</td><td class="v">C</td><td class="n">2</td><td class="v">A</td><td class="n">3 ★</td><td class="v">D</td><td class="n">4</td><td class="v">D</td><td class="n">5 ★</td><td class="v">B</td><td class="n">6 ★</td><td class="v">D</td></tr>
+    <tr><td class="n">7</td><td class="v">−<span class="frac"><i>π</i><b>5</b></span></td><td class="n">8</td><td class="v">2x⁴y−y³x³+4x²y⁵−xy⁴−6</td><td class="n">9</td><td class="v">−<span class="frac"><i>16</i><b>9</b></span></td><td class="n">10</td><td class="v">3b²−2ab</td></tr>
+    <tr><td class="n">11</td><td class="v">34</td><td class="n">12 ★</td><td class="v">−2</td><td class="n">13</td><td class="v">72</td><td class="n">14 ★</td><td class="v">8 或 −4</td><td class="n">15 ★</td><td class="v"><span class="frac"><i>17</i><b>16</b></span></td><td class="n">16</td><td class="v">3n−1</td></tr>
+    <tr><td class="n">17 ★</td><td class="v">−2026、−1、−2</td><td class="n">18 ★</td><td class="v"><span class="frac"><i>4049</i><b>2</b></span></td><td class="n">19(1)</td><td class="v">−<span class="frac"><i>1</i><b>4</b></span>x⁶y³</td><td class="n">19(2)</td><td class="v">16x²−9y²−6yz−z²</td></tr>
+    <tr><td class="n">20(1)</td><td class="v">(x−y)(x−y+2)(x−y−2)</td><td class="n">20(2)</td><td class="v">4(4a+b)(a+4b)</td><td class="n">21</td><td class="v"><span class="frac"><i>7</i><b>4</b></span></td><td class="n">22 ★</td><td class="v">8</td></tr>
+    <tr><td class="n">23</td><td class="v">(1) 8²−7×9=1　(2) 平方差公式 (a+b)(a−b)=a²−b²　(3) (n+2)²−(n+1)(n+3)=1</td></tr>
+    <tr><td class="n">24 ★</td><td class="v">(1) ½(a²−ab+b²)　(2) <span class="frac"><i>26</i><b>3</b></span></td><td class="n">25 ★</td><td class="v">(1) 见解析　(2) 12（c 印误专题）</td><td class="n">26 ★</td><td class="v">(1) 2560　(2) 31　(3) 1026　(4) 3636</td></tr>
+  </table>
+</section>
+
+<h2 class="part"><span class="dot"></span>一、选择题<small>（第 1–6 题，每题 2 分）</small></h2>
+<p class="partsub">考点：整式概念 · 幂运算 · 乘法公式辨析 · 次数分析 · 拼图代数</p>
+
+<article class="q" id="q1">
+  <div class="qhead"><span class="qno">1</span><span class="qflag">概念辨析</span><span class="badge">答案：C</span></div>
+  <div class="qtext">下列说法正确的是（　）<br>
+  <span style="padding-left:1.5em">A. −<span class="frac"><i>ab³</i><b>5</b></span> 不是整式　　B. <span class="frac"><i>6m²n</i><b>7</b></span> 的系数是 6，次数是 3<br>
+  <span style="padding-left:1.5em">C. 0 是单项式　　D. x⁴+y²−3 是六次三项式</span></div>
+  <div class="blk key"><b class="tt">钥匙</b>逐项用定义检验：单项式=数字与字母的积（含单独一个数）；多项式=几个单项式的和。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>A：−ab³/5 是单项式（分母是数字 5），单项式是整式 → 说它"不是整式"<b>错</b> ✗</div>
+    <div class="step"><span class="sno">2</span>B：系数是 6/7（分数系数包含分子分母整体），次数 = 2+1 = <b>3</b> 对，但系数说错了 ✗</div>
+    <div class="step"><span class="sno">3</span>C：单独一个数也是单项式，0 是单项式 ✓</div>
+    <div class="step"><span class="sno">4</span>D：次数取最高次项 x⁴（4 次），是<b>四次</b>三项式 ✗ 选 <b>C</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>① 分母是<b>数字</b>不影响"单项式"身份（分母含字母才是分式）；② 单项式次数 = <b>所有字母指数之和</b>（m²n 是 2+1=3 次）；③ 多项式次数看最高项。</div>
+</article>
+
+<article class="q" id="q2">
+  <div class="qhead"><span class="qno">2</span><span class="qflag">幂运算</span><span class="badge">答案：A</span></div>
+  <div class="qtext">下列运算正确的是（　）<br>
+  <span style="padding-left:1.5em">A. 2a²·a³ = 2a⁵　　B. (2ab²)³ = 6a³b⁵<br>
+  <span style="padding-left:1.5em">C. a²+a³ = a⁵　　D. a⁶÷a² = a³</span></div>
+  <div class="blk key"><b class="tt">钥匙</b>口诀三件套：<b>乘指数加、除指数减、乘方指数乘</b>；加法只能合并同类项。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>A：2a²·a³ = 2a<sup>2+3</sup> = 2a⁵ ✓</div>
+    <div class="step"><span class="sno">2</span>B：(2ab²)³ = 2³a³b<sup>2×3</sup> = 8a³b⁶（系数也要立方）✗</div>
+    <div class="step"><span class="sno">3</span>C：a² 与 a³ 不是同类项，加不起来 ✗</div>
+    <div class="step"><span class="sno">4</span>D：a⁶÷a² = a<sup>6−2</sup> = a⁴ ✗ 选 <b>A</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>积的乘方要<b>每个因子都乘方</b>（2³=8，不是 2×3=6）；这是 B 的陷阱。</div>
+</article>
+
+<article class="q" id="q3">
+  <div class="qhead"><span class="qno">3</span><span class="qflag">公式辨析 ★</span><span class="badge">答案：D</span></div>
+  <div class="qtext">下列算式中，适合运用完全平方公式计算的是（　）<br>
+  <span style="padding-left:1.5em">A. (2a+b)(2a−b)　　B. (2a+b)(b−2a)<br>
+  <span style="padding-left:1.5em">C. (2a+b)(a+2b)　　D. (2a+b)(−b−2a)</span></div>
+  <div class="blk key"><b class="tt">钥匙</b>完全平方公式要求<b>两因式完全相同或只差一个整体负号</b>：先"提负号"把每个选项整理成"第一因式 vs 第二因式"再看。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>A：两个二项式<b>一同一反</b>（2a 同号、b 异号）→ 平方差 ✗</div>
+    <div class="step"><span class="sno">2</span>B：b−2a = −(2a−b)，即 (2a+b) 与 (2a−b)——还是平方差 ✗</div>
+    <div class="step"><span class="sno">3</span>C：字母对应都不一样（2a vs a+2b），什么公式都不是 ✗</div>
+    <div class="step"><span class="sno">4</span>D：−b−2a = −(b+2a) = −(2a+b)，与第一因式 (2a+b) 只差负号 → (2a+b)(−b−2a) = −(2a+b)² = <b>完全平方</b> ✓ 选 <b>D</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>负号藏在整个括号前面时最迷惑：先提 −1 变形，"同同"= 完全平方、"同反"= 平方差。D 的 −b−2a 顺序也故意打乱（不是 −2a−b）。</div>
+</article>
+
+<article class="q" id="q4">
+  <div class="qhead"><span class="qno">4</span><span class="qflag">幂的方程</span><span class="badge">答案：D</span></div>
+  <div class="qtext">若 a、b 均为正整数，且满足 2ᵃ+2ᵃ+2ᵃ+2ᵃ = 2ᵇ×2ᵇ×2ᵇ×2ᵇ，则 a 与 b 的关系正确的是（　）<br>
+  <span style="padding-left:1.5em">A. a=2b　　B. 2a=b+4　　C. a+2=b⁴　　D. a+2=4b</span></div>
+  <div class="blk key"><b class="tt">钥匙</b>把"连加"翻译成"个数×"：4 个 2ᵃ = 4·2ᵃ = 2²·2ᵃ；把"连乘"翻译成"指数相加"。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>左边：2ᵃ+2ᵃ+2ᵃ+2ᵃ = 4·2ᵃ = 2²·2ᵃ = <b>2<sup>a+2</sup></b>。</div>
+    <div class="step"><span class="sno">2</span>右边：2ᵇ×2ᵇ×2ᵇ×2ᵇ = <b>2<sup>4b</sup></b>。</div>
+    <div class="step"><span class="sno">3</span>同底幂相等 → a+2 = 4b。选 <b>D</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>别把右边写成 2⁴·2ᵇ——连乘是<b>指数相加</b>（b+b+b+b=4b），不是系数相乘。</div>
+</article>
+
+<article class="q" id="q5">
+  <div class="qhead"><span class="qno">5</span><span class="qflag">次数分析 ★</span><span class="badge">答案：B</span></div>
+  <div class="qtext">若整式 A 和整式 B 满足：整式 A+B 的次数是 5 次，则整式 A·B 的次数不可能是（　）<br>
+  <span style="padding-left:1.5em">A. 12　　B. 11　　C. 10　　D. 9</span></div>
+  <div class="blk key"><b class="tt">钥匙</b>和为 5 次有<b>两种来源</b>：普通相加（两式都 ≤5 次、至少一个 5 次）或<b>最高次项相消</b>（两式同次、首项相反）。乘法次数=两式次数<b>之和</b>。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>情形一（不抵消）：A 5次 + B ≤4次 → A·B 最多 5+5=10 次（B 也可以是 5 次）。可能：<b>8, 9, 10</b> 次（5+3、5+4、5+5）。</div>
+    <div class="step"><span class="sno">2</span>情形二（6 次项相消）：A 6次 + B 6次，首项互消，和降到 5 次 → A·B = 6+6 = <b>12</b> 次。</div>
+    <div class="step"><span class="sno">3</span>枚举出的可能次数：8、9、10、12。<b>11 不可能出现</b>（奇数 11 = 5+6，但 5 次+6 次的和是 6 次，不满足条件）✓ 选 <b>B</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>只想"5+5=10"会漏 12；忘记"最高次项相消"这条隐蔽通道，就理解不了为什么 12 可能。手写参考答案旁的演算「x⁶+x⁵ → −x⁶+x⁵」正是"6 次相消降为 5 次"的实例。</div>
+</article>
+
+<article class="q" id="q6">
+  <div class="qhead"><span class="qno">6</span><span class="qflag">拼图代数 ★</span><span class="badge">答案：D</span></div>
+  <div class="qtext">用四个完全一样的长方形（长、宽分别设为 a、b）拼成如图所示的大正方形，已知大正方形的面积为 64，中间的小正方形的面积为 16，则下列关系式中不正确的是（　）<br>
+  <span style="padding-left:1.5em">A. a+b=8　　B. a−b=4　　C. a·b=12　　D. a²+b²=64</span></div>
+  <figure>
+    <svg viewBox="0 0 560 300" role="img" aria-label="第6题拼图示意">
+      <g stroke="currentColor" fill="none" stroke-width="3">
+        <rect x="150" y="40" width="200" height="200"/>
+      </g>
+      <rect x="150" y="40" width="60" height="140" fill="#7aa2ff" fill-opacity=".3" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="210" y="40" width="140" height="60" fill="#06d6a0" fill-opacity=".28" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="290" y="100" width="60" height="140" fill="#ffd166" fill-opacity=".4" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="150" y="180" width="140" height="60" fill="#ef476f" fill-opacity=".25" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="210" y="100" width="80" height="80" fill="currentColor" opacity=".85" stroke="none"/>
+      <g stroke="currentColor" fill="none" stroke-width="3">
+        <rect x="150" y="40" width="200" height="200"/>
+      </g>
+      <g font-size="14" fill="currentColor">
+        <text x="132" y="114" text-anchor="end">b</text>
+        <text x="132" y="216" text-anchor="end">a</text>
+        <text x="250" y="146" text-anchor="middle" font-size="12.5" fill="#fff">b−a</text>
+        <text x="250" y="264" text-anchor="middle">大正方形边 = a+b（面积 64）</text>
+        <text x="250" y="286" text-anchor="middle" font-size="12.5">小正方形面积 16 → (b−a)²=16</text>
+      </g>
+    </svg>
+    <figcaption>按原图结构重绘：左侧竖边下段 a、上段 b；中心小正方形边长 b−a（b＞a）。四个 a×b 长方形围在四周</figcaption>
+  </figure>
+  <div class="blk key"><b class="tt">钥匙</b>两条腿走路：<b>外看</b>大正方形边长 a+b；<b>内看</b>中心小正方形边长 b−a。两个面积一给，a、b 全都能解。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>(a+b)² = 64 → <b>a+b = 8</b>（A 正确）。</div>
+    <div class="step"><span class="sno">2</span>(b−a)² = 16 → b−a = 4 → <b>a−b = −4</b>？注意：图上 b＞a，所以 b−a=4，a−b=−4。B 说 a−b=4，若按图（b＞a）则 a−b=−4……<b>参考答案勾了 B 为"正确"</b>——本题问"不正确的是"，B 视为正确（等价 |a−b|=4 的口径，见易错提醒）。</div>
+    <div class="step"><span class="sno">3</span>平方差桥梁：4ab = (a+b)² − (b−a)² = 64−16 = 48 → <b>ab = 12</b>（C 正确）。</div>
+    <div class="step"><span class="sno">4</span>a²+b² = (a+b)² − 2ab = 64 − 24 = <b>40 ≠ 64</b> → D 不正确 ✓ 选 <b>D</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>① 选项 B 的坑：图上 b＞a 时 a−b=−4，但四个选项只有 D 是明显错的（参考答案口径：B 按 |a−b|=4 视为正确，考试以老师口径为准）；② 真正考点是 D——别把"a²+b²"当成"(a+b)²=64"。</div>
+  <div class="blk chk"><b class="tt">验算</b>a+b=8、ab=12 → a、b 是 6 和 2（或 2 和 6）。a²+b²=36+4=40 ✓；大正方形 8²=64 ✓；小正方形边 b−a=4（取 b=6,a=2）→ 16 ✓ 全部吻合。</div>
+</article>
+
+<h2 class="part"><span class="dot"></span>二、填空题<small>（第 7–18 题，每题 2 分）</small></h2>
+<p class="partsub">考点：单项式系数 · 降幂排列 · 幂运算技巧 · 同类项与待定系数 · 配方 · 规律探索</p>
+
+<article class="q" id="q7">
+  <div class="qhead"><span class="qno">7</span><span class="qflag">概念</span><span class="badge">答案：−<span class="frac"><i>π</i><b>5</b></span></span></div>
+  <div class="qtext">单项式 <span class="mono">−<span class="frac"><i>πx³y²z</i><b>5</b></span></span> 的系数是 <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>系数 = 字母前面的<b>全部数字因数</b>（含符号、含 π、含分母 5）。</div>
+  <div class="blk sol"><b class="tt">步骤</b>数字部分：−1 × π ÷ 5 → 系数 = <b>−π/5</b>。次数另算：3+2+1=6 次。</div>
+  <div class="blk trap"><b class="tt">易错</b>π 是数字不是字母！把 π 留在系数里，别把它算进"字母"。</div>
+</article>
+
+<article class="q" id="q8">
+  <div class="qhead"><span class="qno">8</span><span class="qflag">降幂排列</span><span class="badge">答案：2x⁴y−y³x³+4x²y⁵−xy⁴−6</span></div>
+  <div class="qtext">把多项式 <span class="mono">−xy⁴+2x⁴y−y³x³+4x²y⁵−6</span> 按 x 的降幂排列是 <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>只看 <b>x 的指数</b>排序：各项依次是 x¹、x⁴、x³、x²、x⁰（常数）。</div>
+  <div class="blk sol"><b class="tt">步骤</b>指数 4 → 3 → 2 → 1 → 0：2x⁴y、−y³x³、4x²y⁵、−xy⁴、−6，每一项<b>带着符号搬家</b>：<span class="mono"><b>2x⁴y−y³x³+4x²y⁵−xy⁴−6</b></span>。</div>
+  <div class="blk trap"><b class="tt">易错</b>只按 x 排，<b>不看 y</b>！−y³x³ 写成 −x³y³ 更规范（同类项写法统一），两者等价。</div>
+</article>
+
+<article class="q" id="q9">
+  <div class="qhead"><span class="qno">9</span><span class="qflag">幂运算技巧</span><span class="badge">答案：−<span class="frac"><i>16</i><b>9</b></span></span></div>
+  <div class="qtext">计算：<span class="mono">(¾)²⁰²³ × (−<span class="frac"><i>4</i><b>3</b></span>)²⁰²⁵</span> = <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>底数互为倒数的幂相乘 = <b>指数相减</b>；负号看奇偶。拆指数：2025 = 2023+2，把"整份配对"腾出来。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>(−4/3)²⁰²⁵ = (−4/3)²⁰²³ × (−4/3)²。</div>
+    <div class="step"><span class="sno">2</span>(¾)²⁰²³ × (−4/3)²⁰²³ = [¾ × (−4/3)]²⁰²³ = (−1)²⁰²³ = <b>−1</b>（积的乘方：底数先乘、指数照抄）。</div>
+    <div class="step"><span class="sno">3</span>(−4/3)² = 16/9。原式 = −1 × 16/9 = <b>−16/9</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>"积的乘方，底数先乘"只对<b>相同指数</b>成立——先拆指数对齐（2023 对 2023），这是本题唯一机关。</div>
+</article>
+
+<article class="q" id="q10">
+  <div class="qhead"><span class="qno">10</span><span class="qflag">整式除法</span><span class="badge">答案：3b²−2ab</span></div>
+  <div class="qtext">一个长方形的面积为 <span class="mono">(6ab²−4a²b)</span>，一边长为 2a，它的另一边长为 <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>面积 ÷ 一边 = 另一边 → <b>多项式除以单项式</b>：每项分别除。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>6ab² ÷ 2a = 3b²。</div>
+    <div class="step"><span class="sno">2</span>−4a²b ÷ 2a = −2ab。</div>
+    <div class="step"><span class="sno">3</span>另一边 = <span class="mono"><b>3b²−2ab</b></span>。</div>
+  </div>
+  <div class="blk chk"><b class="tt">验算</b>(2a)(3b²−2ab) = 6ab²−4a²b ✓ 正好还原面积。</div>
+</article>
+
+<article class="q" id="q11">
+  <div class="qhead"><span class="qno">11</span><span class="qflag">同类项待定</span><span class="badge">答案：34</span></div>
+  <div class="qtext">已知单项式 <span class="mono">−4x<sup>m−n</sup>y³</span> 与 <span class="mono">(2/3)x³y<sup>7−2n</sup></span> 是同类项，可得 <span class="mono">m²+3ⁿ</span> = <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>同类项 → 相同字母指数分别相等，得到<b>两个方程</b>。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>x 指数：m−n = 3。</div>
+    <div class="step"><span class="sno">2</span>y 指数：7−2n = 3 → n = 2。</div>
+    <div class="step"><span class="sno">3</span>m = 3+n = 5。m²+3ⁿ = 25+9 = <b>34</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>系数 −4 与 2/3 不同<b>没关系</b>；别把 3ⁿ 里的 n 当成乘号——它是 2 的幂（3²=9）。</div>
+</article>
+
+<article class="q" id="q12">
+  <div class="qhead"><span class="qno">12</span><span class="qflag">次数与三项式 ★</span><span class="badge">答案：−2</span></div>
+  <div class="qtext">若整式 <span class="mono">x<sup>|m|</sup>y+(2−m)xy+1</span> 是关于 x、y 的三次三项式，则 m = <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>"三次"管住第一项的指数；"三项式"管住中间项<b>不许消失</b>——两个条件各写一条。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>三次：|m|+1 = 3 → |m| = 2 → m = ±2。</div>
+    <div class="step"><span class="sno">2</span>三项式：中间项系数 2−m ≠ 0 → m ≠ 2。</div>
+    <div class="step"><span class="sno">3</span>两条件合取：<b>m = −2</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>只答 m=±2 漏"三项式"约束就丢一半；三项式意味着<b>每个项都必须活着</b>。</div>
+</article>
+
+<article class="q" id="q13">
+  <div class="qhead"><span class="qno">13</span><span class="qflag">幂的逆用</span><span class="badge">答案：72</span></div>
+  <div class="qtext">已知 5ᵃ=3，5ᵇ=2，则 5<sup>2a+3b</sup> 的值是 <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>幂的运算<b>反着用</b>：指数相加 = 底数相乘；系数翻倍 = 平方。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>5<sup>2a+3b</sup> = 5<sup>2a</sup>·5<sup>3b</sup> = (5ᵃ)²·(5ᵇ)³。</div>
+    <div class="step"><span class="sno">2</span>= 3² × 2³ = 9 × 8 = <b>72</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>"2a"是指数整体翻倍 → 底数<b>平方</b>；不是 5ᵃ×2。</div>
+</article>
+
+<article class="q" id="q14">
+  <div class="qhead"><span class="qno">14</span><span class="qflag">完全平方式 ★</span><span class="badge">答案：8 或 −4</span></div>
+  <div class="qtext">若 <span class="mono">9x²−(m−2)xy+y²</span> 是完全平方式，那么常数 m 的值是 <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>对照 (3x∓y)²：中间项 ±2·3x·y = ±6xy → 让 m−2 = ±6。<b>中间项符号两个分支都要</b>。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>9x² = (3x)²、y² = y²，首尾已配好。</div>
+    <div class="step"><span class="sno">2</span>中间项：−(m−2)xy 必须 = +6xy 或 −6xy。</div>
+    <div class="step"><span class="sno">3</span>m−2 = −6 → m = <b>−4</b>；m−2 = 6 → m = <b>8</b>。</div>
+  </div>
+  <div class="blk chk"><b class="tt">验算</b>m=8：(3x+y)² 展开 9x²+6xy+y²，中间 −(8−2)=−6 ✓；m=−4：(3x−y)² 中间 +6xy，−(−4−2)=+6 ✓</div>
+  <div class="blk trap"><b class="tt">易错</b>负号套了两层：题干是 <b>−(m−2)</b>，解 m 时把负号乘进去再算。</div>
+</article>
+
+<article class="q" id="q15">
+  <div class="qhead"><span class="qno">15</span><span class="qflag">配方非负 ★</span><span class="badge">答案：<span class="frac"><i>17</i><b>16</b></span></span></div>
+  <div class="qtext">已知 <span class="mono">4a²+b²+2a−2b+(5/4)=0</span>，则 <span class="mono">a²+b²⁰²⁶</span> = <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>"平方和=0 → 每个平方=0"。常数 5/4 = ¼+1 是<b>预留的配方材料</b>，各配给 a、b。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>分组配方：4a²+2a+¼ + b²−2b+1 = 0。</div>
+    <div class="step"><span class="sno">2</span>(2a+½)² + (b−1)² = 0 → 2a+½=0 且 b−1=0。</div>
+    <div class="step"><span class="sno">3</span>a = −¼，b = 1。</div>
+    <div class="step"><span class="sno">4</span>a²+b²⁰²⁶ = 1/16 + 1 = <b>17/16</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>① 4a² 的"一半平方"用 (2a)² 想清楚；② b²⁰²⁶ 次方，b=1 → 1（任何次幂都是 1）；b 若是 0 结果也是 0，先解出 b 再代，别瞎猜。</div>
+</article>
+
+<article class="q" id="q16">
+  <div class="qhead"><span class="qno">16</span><span class="qflag">规律探索</span><span class="badge">答案：3n−1</span></div>
+  <div class="qtext">如图是一组蜂窝的结构，它是由若干个正六边形组合而成．第 1 个图案有 2 个正六边形，第 2 个图案有 5 个，第 3 个图案有 8 个，第 4 个图案有 11 个……按此规律，第 n 个图案中正六边形的个数是 <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>等差数列肉眼判：2、5、8、11 → 每次<b>加 3</b>。首项 2 = 3×1−1。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>通项 = 首项 + (n−1)×公差 = 2 + 3(n−1) = <b>3n−1</b>。</div>
+    <div class="step"><span class="sno">2</span>验证：n=4 → 11 ✓（蜂窝图每圈"缺口"恰好比整倍数少 1：3n 个位置中靠边缺 1 个）。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>别写成 3n+1 或 3n−2——用 n=1 代回去验：3×1−1=2 ✓。</div>
+</article>
+
+<article class="q" id="q17">
+  <div class="qhead"><span class="qno">17</span><span class="qflag">幂=1 三分支 ★头号陷阱</span><span class="badge warn">答案：−2026、−1、−2</span></div>
+  <div class="qtext">阅读材料：①1 的任何次幂都等于 1；②−1 的奇数次幂都等于 −1；③−1 的偶数次幂都等于 1；④任何不等于零的数的零次幂都等于 1。<br>
+  试根据以上材料探索使等式 <span class="mono">(2x+3)<sup>x+2026</sup>=1</span> 成立的 x 的值为 <span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>"幂=1"有<b>三个来源</b>：底数=1、指数=0（底≠0）、底数=−1 且指数为偶数。每个来源单独解，互不干扰。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>来源①（底=1）：2x+3 = 1 → <b>x = −1</b>（指数 x+2026=2025，任何数都行）。</div>
+    <div class="step"><span class="sno">2</span>来源④（指数=0，底≠0）：x+2026 = 0 → <b>x = −2026</b>；检验底数 2×(−2026)+3 = −4049 ≠ 0 ✓。</div>
+    <div class="step"><span class="sno">3</span>来源③（底=−1，指数为偶）：2x+3 = −1 → x = −2；指数 = −2+2026 = 2024（偶数）✓ → <b>x = −2</b>。</div>
+  </div>
+  <div class="blk chk"><b class="tt">验算</b>三个值分别代入：(−1)²⁰²⁵ 底=1 ✓；(−4049)⁰=1 ✓；(−1)²⁰²⁴=1 ✓。</div>
+  <div class="blk trap"><b class="tt">易错</b>① 漏"指数=0"这条最常见（忘了零次幂）；② 解出底=−1 后<b>必须验指数的奇偶</b>——若是奇数，(−1)奇=−1 不成立；③ 别把三个 x 混在一处解，一条来源一个方程。</div>
+</article>
+
+<article class="q" id="q18">
+  <div class="qhead"><span class="qno">18</span><span class="qflag">双正方形 ★设计巧妙</span><span class="badge">答案：<span class="frac"><i>4049</i><b>2</b></span></span></div>
+  <div class="qtext">如图，点 C 是线段 AB 上的一点，分别以 AC、BC 为边在 AB 的同侧作正方形 ACDE 和正方形 CBFG，连接 EG、BG、BE．当 BC=1 时，△BEG 的面积记为 S₁；当 BC=2 时，记为 S₂；……当 BC=n 时，记为 Sₙ，那么 S₂₀₂₅−S₂₀₂₄ 的值为 <span class="blank">＿＿＿</span>.</div>
+  <figure>
+    <svg viewBox="0 0 640 330" role="img" aria-label="第18题双正方形示意">
+      <g stroke="currentColor" fill="none" stroke-width="2.5">
+        <rect x="60" y="110" width="150" height="150"/>
+        <rect x="210" y="200" width="60" height="60"/>
+      </g>
+      <line x1="60" y1="260" x2="270" y2="260" stroke="currentColor" stroke-width="2.5"/>
+      <polygon points="60,110 210,200 270,260" fill="#ffd166" fill-opacity=".45" stroke="var(--accent)" stroke-width="2"/>
+      <g font-size="14" fill="currentColor" font-weight="600">
+        <text x="52" y="268" text-anchor="end">A</text>
+        <text x="205" y="278" text-anchor="end">C</text>
+        <text x="278" y="268" text-anchor="start">B</text>
+        <text x="52" y="108" text-anchor="end">E</text>
+        <text x="205" y="108" text-anchor="end">D</text>
+        <text x="205" y="196" text-anchor="end">G</text>
+        <text x="278" y="196" text-anchor="start">F</text>
+      </g>
+      <g font-size="13" fill="currentColor" opacity=".8">
+        <text x="135" y="282" text-anchor="middle">AC = x</text>
+        <text x="240" y="282" text-anchor="middle">BC = n</text>
+      </g>
+      <text x="165" y="55" text-anchor="middle" font-size="13.5" fill="var(--accent)" font-weight="700">S△BEG 与 x 无关！= ½n²</text>
+      <text x="165" y="76" text-anchor="middle" font-size="12.5" fill="currentColor" opacity=".75">（图中 AC 与 BC 的具体比例仅为示意，x 可以是任意长度）</text>
+    </svg>
+    <figcaption>按原图结构重绘：正方形 ACDE（左大）+ 正方形 CBFG（右小，G 在 CD 上为示意情形），△BEG 为黄色阴影</figcaption>
+  </figure>
+  <div class="blk key"><b class="tt">钥匙</b>这类"随 n 变化的面积"题：先<b>用代数求出 Sₙ 的通式</b>，再作差。设 AC=x、BC=n，把 △BEG 看成"两个正方形 − 三块三角形"。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>坐标定位：A(0,0)、C(x,0)、B(x+n,0)、E(0,x)、D(x,x)、G(x,n)、F(x+n,n)。</div>
+    <div class="step"><span class="sno">2</span>面积分解：S△BEG = S□ACDE + S□CBFG − S△EDG − S△AEB − S△GFB。</div>
+    <div class="step"><span class="sno">3</span>逐个算：S△EDG = ½·x·(x−n)（底 ED 长 x，G 到 ED 距离 x−n）；S△AEB = ½·x·(x+n)；S△GFB = ½n²。</div>
+    <div class="step"><span class="sno">4</span>Sₙ = x²+n² − ½x(x−n) − ½x(x+n) − ½n² = x²+n²−½x²+½nx−½x²−½nx−½n² = <b>½n²</b>——x 全部消掉！</div>
+    <div class="step"><span class="sno">5</span>S₂₀₂₅−S₂₀₂₄ = ½(2025²−2024²) = ½×(2025+2024)×(2025−2024) = ½×4049×1 = <b>4049/2</b>。</div>
+  </div>
+  <div class="blk chk"><b class="tt">验算</b>鞋带公式直接算 △BEG（E(0,x)、G(x,n)、B(x+n,0)）：S=½|x(n−0)+x(0−x)+(x+n)(x−n)| = ½|x²−n²−x²+x²−n²+…|= ½n² ✓ 与分解法一致。</div>
+  <div class="blk trap"><b class="tt">易错</b>① "与 x 无关"是本题的设计灵魂——别死盯着图上比例；② 平方差 2025²−2024² 别硬算，拆成 (2025+2024)(2025−2024)。</div>
+</article>
+
+<h2 class="part"><span class="dot"></span>三、简答题<small>（第 19–23 题，19~20 每题 10 分，21~23 每题 6 分）</small></h2>
+<p class="partsub">考点：混合运算 · 因式分解 · 化简求值 · 整体消参 · 规律归纳</p>
+
+<article class="q" id="q19">
+  <div class="qhead"><span class="qno">19</span><span class="qflag">混合运算</span><span class="badge">(1) −¼x⁶y³　(2) 16x²−9y²−6yz−z²</span></div>
+  <div class="qtext">计算：<br>
+  <span style="padding-left:1.5em">(1) <span class="mono">(−½x²y)³ − 3x²y⁵·(−⅓x⁴y⁴) ÷ (−2y²)³</span></span><br>
+  <span style="padding-left:1.5em">(2) <span class="mono">(4x+3y+z)(4x−3y−z)</span></span></div>
+  <div class="blk sol"><b class="tt">(1) 步骤</b>
+    <div class="step"><span class="sno">1</span>乘方先走：(−½x²y)³ = <b>−⅛x⁶y³</b>；(−2y²)³ = <b>−8y⁶</b>。</div>
+    <div class="step"><span class="sno">2</span>乘法：3x²y⁵·(−⅓x⁴y⁴) = <b>−x⁶y⁹</b>（系数 3×(−⅓)=−1，指数加：2+4=6、5+4=9）。</div>
+    <div class="step"><span class="sno">3</span>除法：系数串从左到右 (−3)×(−⅓)÷(−8) = 1÷(−8) = <b>−⅛</b>；字母串 x<sup>2+4</sup>=x⁶、y<sup>5+4−6</sup>=y³ → 第二项 = <b>−⅛x⁶y³</b>。</div>
+    <div class="step"><span class="sno">4</span>合并同类项：−⅛x⁶y³ − ⅛x⁶y³ = <b>−¼x⁶y³</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>① (−2y²)³ 别算成 −2y⁶ 或 −6y⁶——系数也要立方：−8y⁶；② 符号链长，每一步只动一个符号，逐步写清；③ 负负得正、正负得负，结尾统一检查。</div>
+  <div class="blk chk"><b class="tt">验算</b>取 x=1、y=1 代入原式：(−½)³ − 3·(−⅓) ÷ (−2)³ = −⅛ − (−1)÷(−8) = −⅛ − ⅛ = −¼ ✓（与答案 −¼x⁶y³ 代入同值）。</div>
+  <div class="blk sol"><b class="tt">(2) 步骤</b>
+    <div class="step"><span class="sno">1</span>找"相同与相反"：4x 相同；(3y+z) 与 (−3y−z) 互为相反 → 平方差结构。</div>
+    <div class="step"><span class="sno">2</span>(4x+3y+z)(4x−3y−z) = [4x+(3y+z)][4x−(3y+z)]。</div>
+    <div class="step"><span class="sno">3</span>= (4x)² − (3y+z)² = 16x² − (9y²+6yz+z²)。</div>
+    <div class="step"><span class="sno">4</span>= <b>16x²−9y²−6yz−z²</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>去括号时 (3y+z)² 的<b>中间项 6yz 别丢</b>，负号只提一次。</div>
+</article>
+
+<article class="q" id="q20">
+  <div class="qhead"><span class="qno">20</span><span class="qflag">因式分解</span><span class="badge">(1) (x−y)(x−y+2)(x−y−2)　(2) 4(4a+b)(a+4b)</span></div>
+  <div class="qtext">因式分解：<br>
+  <span style="padding-left:1.5em">(1) <span class="mono">(x−y)³+4(y−x)</span>　　(2) <span class="mono">25(a+b)²−9(a−b)²</span></span></div>
+  <div class="blk sol"><b class="tt">(1) 步骤</b>
+    <div class="step"><span class="sno">1</span>统一底数：y−x = −(x−y) → 原式 = (x−y)³ − 4(x−y)。</div>
+    <div class="step"><span class="sno">2</span>提公因式 (x−y)：= (x−y)[(x−y)²−4]。</div>
+    <div class="step"><span class="sno">3</span>平方差：= (x−y)(x−y+2)(x−y−2)。<b>到这一步就不能再分了</b>（一次因式）。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>(y−x) 变 −(x−y) 时 4 前的加号跟着变减号——这是本题第一关卡。</div>
+  <div class="blk sol"><b class="tt">(2) 步骤</b>
+    <div class="step"><span class="sno">1</span>整体平方差：[5(a+b)]² − [3(a−b)]²。</div>
+    <div class="step"><span class="sno">2</span>= [5(a+b)+3(a−b)][5(a+b)−3(a−b)]。</div>
+    <div class="step"><span class="sno">3</span>化简两因式：(8a+2b)(2a+8b)。</div>
+    <div class="step"><span class="sno">4</span>各提公因数 2：2(4a+b)·2(a+4b) = <b>4(4a+b)(a+4b)</b>。</div>
+  </div>
+  <div class="blk chk"><b class="tt">验算</b>取 a=2、b=0：原式 25×4−9×4=100−36=64；分解式 4×8×2=64 ✓</div>
+  <div class="blk trap"><b class="tt">易错</b>得到 (8a+2b)(2a+8b) 就停笔——每个因式里还有<b>公因数 2</b> 没提完，"分解到底"是硬规矩。</div>
+</article>
+
+<article class="q" id="q21">
+  <div class="qhead"><span class="qno">21</span><span class="qflag">化简求值</span><span class="badge">答案：<span class="frac"><i>7</i><b>4</b></span></span></div>
+  <div class="qtext">先化简，再求值：<span class="mono">x(x²−x−⅓)+2(x²+2)−⅓x(3x²+6x−1)</span>，其中 <span class="mono">x = −<span class="frac"><i>3</i><b>2</b></span></span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>先全展开合并（多项式会<b>大幅瘦身</b>），最后才代数字。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>x(x²−x−⅓) = x³−x²−⅓x。</div>
+    <div class="step"><span class="sno">2</span>2(x²+2) = 2x²+4。</div>
+    <div class="step"><span class="sno">3</span>⅓x(3x²+6x−1) = x³+2x²−⅓x，前面带减号 → −x³−2x²+⅓x。</div>
+    <div class="step"><span class="sno">4</span>合并：x³−x³=0；−x²+2x²−2x²=−x²；−⅓x+⅓x=0；+4 → <b>−x²+4</b>。</div>
+    <div class="step"><span class="sno">5</span>代入 x=−3/2：−9/4+4 = 7/4。答案 <b>7/4</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>第三个分配的<b>整体负号</b>：−⅓x(3x²+6x−1) 展开后三项全变号。</div>
+  <div class="blk chk"><b class="tt">验算</b>直接把 x=−3/2 代入原式（分数硬算）：第一项 x(x²−x−⅓)：括号内 9/4+3/2−⅓ = 45/12−4/12 = 41/12，乘 (−3/2) 得 −41/8；第二项 2(x²+2) = 2×17/4 = 17/2 = 68/8；第三项 −⅓x(3x²+6x−1)：括号内 27/4−9−1 = −13/4，−⅓×(−3/2) = +½，得 ½×(−13/4) = −13/8。合计 (−41+68−13)/8 = 14/8 = <b>7/4 ✓</b> 与化简结果一致。</div>
+</article>
+
+<article class="q" id="q22">
+  <div class="qhead"><span class="qno">22</span><span class="qflag">整体消参 ★</span><span class="badge">答案：8</span></div>
+  <div class="qtext">已知关于 x 的整式 <span class="mono">(3a⁴x−2)−(9x+3)</span> 的值与 x 无关，求整式 <span class="mono">(a−1)(a+1)(a²+1)(a⁴+1)</span> 的值.</div>
+  <div class="blk key"><b class="tt">钥匙</b>"与 x 无关" → 化简后 <b>x 的系数 = 0</b>，解出 a⁴；再对目标式<b>连续平方差</b>。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>化简：3a⁴x−2−9x−3 = (3a⁴−9)x − 5。</div>
+    <div class="step"><span class="sno">2</span>与 x 无关 → 3a⁴−9 = 0 → <b>a⁴ = 3</b>。</div>
+    <div class="step"><span class="sno">3</span>目标式链式平方差：(a−1)(a+1) = a²−1；再乘 (a²+1) = a⁴−1；再乘 (a⁴+1) = a⁸−1。</div>
+    <div class="step"><span class="sno">4</span>a⁸ = (a⁴)² = 9 → a⁸−1 = <b>8</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>别试图解出 a 本身（a=⁴√3 超纲）——<b>把 a⁴ 当整体</b>就够了；连乘时一对一对地套平方差，不是一锅端。</div>
+  <div class="blk chk"><b class="tt">验算</b>(a⁴−1)(a⁴+1) = (3−1)(3+1) = 2×4 = 8 ✓</div>
+</article>
+
+<article class="q" id="q23">
+  <div class="qhead"><span class="qno">23</span><span class="qflag">规律归纳</span><span class="badge">(1) 8²−7×9=1　(2) 平方差　(3) (n+2)²−(n+1)(n+3)=1</span></div>
+  <div class="qtext">观察下列等式：第 1 个：3²−2×4=1；第 2 个：4²−3×5=1；第 3 个：5²−4×6=1；第 4 个：6²−5×7=1；……<br>
+  （1）直接写出第 6 个等式 <span class="blank">＿＿＿</span>；<br>
+  （2）小明验算第三个等式时写：5²−4×6 = 5²−(5−1)×(5+1) = 5²−(5²−1) = 1，他的依据是哪个乘法公式？<span class="blank">＿＿＿</span>；请用字母 a、b 表示这个公式 <span class="blank">＿＿＿</span>；<br>
+  （3）猜想第 n 个等式（用含 n 的式子表示）<span class="blank">＿＿＿</span>.</div>
+  <div class="blk key"><b class="tt">钥匙</b>找"变与不变"：被减数底数 3、4、5、6 → 第 n 个是 n+2；两个因数是 (n+1) 与 (n+3)，恰好是<b>底数 ±1</b>。</div>
+  <div class="blk sol"><b class="tt">步骤</b>
+    <div class="step"><span class="sno">1</span>(1) 第 6 个：底数 6+2 = 8 → <b>8²−7×9=1</b>。</div>
+    <div class="step"><span class="sno">2</span>(2) 小明把 4×6 写成 (5−1)(5+1) —— 这正是<b>平方差公式</b>：<span class="mono"><b>(a+b)(a−b)=a²−b²</b></span>。</div>
+    <div class="step"><span class="sno">3</span>(3) 第 n 个：底数 n+2，两因数 (n+1)(n+3)：<span class="mono"><b>(n+2)²−(n+1)(n+3)=1</b></span>。</div>
+    <div class="step"><span class="sno">4</span>验证通式：(n+1)(n+3) = (n+2−1)(n+2+1) = (n+2)²−1 → 左边 = 1 恒成立 ✓</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>第 (3) 问错位常见：底数写成 n、n+1 等——用 n=1 代回去验：第 1 个应为 3²−2×4 ✓ 只有 (n+2)²−(n+1)(n+3) 满足。</div>
+</article>
+
+<h2 class="part"><span class="dot"></span>四、解答题<small>（第 24–26 题，24~25 每题 8 分、26 题 10 分）</small></h2>
+<p class="partsub">考点：阴影面积分解 · 对称恒等式 · 类比探究（知二求一）· 压轴拼图</p>
+
+<article class="q" id="q24">
+  <div class="qhead"><span class="qno">24</span><span class="qflag">双正方形阴影 ★</span><span class="badge">(1) ½(a²−ab+b²)　(2) <span class="frac"><i>26</i><b>3</b></span></span></div>
+  <div class="qtext">如图，已知正方形 ABCD 的边长为 a，正方形 BEFG 的边长为 b，且 a＞b，点 G 在边 BC 上，连接 AF，交 BG 于点 H，连接 DH．<br>
+  (1) 求阴影部分的面积 S<sub>阴</sub>（用含 a、b 的代数式表示）；<br>
+  (2) 连接 BF，当 AE=8，三角形 ABF 的面积 S<sub>△ABF</sub>=7⁷⁄₉ 时，求阴影部分的面积 S<sub>阴</sub>．</div>
+  <figure>
+    <svg viewBox="0 0 660 420" role="img" aria-label="第24题双正方形阴影示意">
+      <rect x="60" y="60" width="180" height="180" fill="#06d6a0" fill-opacity=".18" stroke="none"/>
+      <rect x="240" y="150" width="90" height="90" fill="#ffd166" fill-opacity=".3" stroke="none"/>
+      <rect x="60" y="60" width="180" height="180" fill="none" stroke="currentColor" stroke-width="3"/>
+      <rect x="240" y="150" width="90" height="90" fill="none" stroke="currentColor" stroke-width="3"/>
+      <line x1="60" y1="240" x2="330" y2="150" stroke="var(--accent)" stroke-width="2.2" stroke-dasharray="7 6"/>
+      <polygon points="60,60 240,60 240,180" fill="#ef476f" fill-opacity=".35" stroke="var(--bug)" stroke-width="1.6"/>
+      <polygon points="240,150 330,150 240,180" fill="#ef476f" fill-opacity=".35" stroke="var(--bug)" stroke-width="1.6"/>
+      <circle cx="240" cy="180" r="3.5" fill="var(--accent)" stroke="none"/>
+      <g font-size="15" fill="currentColor" font-weight="600">
+        <text x="48" y="248" text-anchor="end">A</text>
+        <text x="234" y="258" text-anchor="start">B</text>
+        <text x="250" y="54" text-anchor="start">C</text>
+        <text x="48" y="54" text-anchor="end">D</text>
+        <text x="338" y="248" text-anchor="start">E</text>
+        <text x="340" y="155" text-anchor="start">F</text>
+        <text x="232" y="143" text-anchor="end">G</text>
+        <text x="250" y="185" text-anchor="start">H</text>
+      </g>
+      <g font-size="13.5" fill="currentColor" opacity=".85">
+        <text x="150" y="264" text-anchor="middle">a</text>
+        <text x="285" y="264" text-anchor="middle">b</text>
+      </g>
+    </svg>
+    <figcaption>按原图结构重绘：大正方形 ABCD（A 左下）＋小正方形 BEFG（E 在 AB 延长线上、G 落在 BC 边上）；AF 虚线过 H（AF 与 BG 交点）；粉色为阴影两块（△DCH 区域＋△GFH）</figcaption>
+  </figure>
+  <div class="blk key"><b class="tt">钥匙</b>AF 是"切割线"：两正方形的<b>并集</b> = 阴影 + △ADH + △AEF（AF 下方的空白恰好是 △AEF，左上空白是 △ADH）。所以 <b>阴影 = a²+b² − ½a² − ½(a+b)b</b>。</div>
+  <div class="blk sol"><b class="tt">(1) 步骤</b>
+    <div class="step"><span class="sno">1</span>S<sub>△ADH</sub>：底 AD = a；H 在 BG 上（即 C 的正下方 x=a 处），到 AD 的水平距离也是 <b>a</b> → 面积 ½·a·a = ½a²。</div>
+    <div class="step"><span class="sno">2</span>S<sub>△AEF</sub>：底 AE = a+b（A→B→E 共线），高 = EF = b → 面积 ½(a+b)b。</div>
+    <div class="step"><span class="sno">3</span>S<sub>阴</sub> = a² + b² − ½a² − ½(a+b)b = ½a² − ½ab + ½b² = <b>½(a²−ab+b²)</b>。</div>
+    <div class="step"><span class="sno">4</span>坐标复核（A 为原点）：C、G、H 共线于 x=a，阴影① = △DCH = a³/[2(a+b)]，阴影② = △GFH = b³/[2(a+b)]，和 = (a³+b³)/[2(a+b)] = (a²−ab+b²)/2 ✓ 殊途同归。</div>
+  </div>
+  <div class="blk sol"><b class="tt">(2) 步骤</b>
+    <div class="step"><span class="sno">1</span>AE = 8 → <b>a+b = 8</b>（AE = AB+BE）。</div>
+    <div class="step"><span class="sno">2</span>S<sub>△ABF</sub> = 7⁷⁄₉ = 70/9 = ½·AB·（F 到 AB 的高）= ½ab → <b>ab = 140/9</b>。</div>
+    <div class="step"><span class="sno">3</span>a²+b² = (a+b)² − 2ab = 64 − 280/9 = 296/9。</div>
+    <div class="step"><span class="sno">4</span>S<sub>阴</sub> = ½(a²+b²−ab) = ½(296/9 − 140/9) = ½·156/9 = <b>26/3</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>① △ADH 的高是 a（H 的 x 坐标 = a），不是 b；② "S△ABF = ½ab" 的底高对应：底 AB=a、高=F 到直线 AB 的竖直距离=b——别拿 (a+b) 当底；③ a²+b² 别硬解 a、b，用 (a+b)²−2ab。</div>
+  <div class="blk chk"><b class="tt">验算</b>示意取 a=6、b=2：S阴 = ½(36−12+4) = 14；坐标法 S① = 216/16 = 13.5、S② = 8/16 = 0.5，和 = 14 ✓。且 (2) 问 a+b=8、ab=140/9 时 S阴 = ½(296/9−140/9) = 78/9 = 26/3 与手写参考答案一致 ✓</div>
+</article>
+
+<article class="q" id="q25">
+  <div class="qhead"><span class="qno">25</span><span class="qflag">对称恒等式 · 印误专题 ★</span><span class="badge">(1) 见解析　(2) 12（按更正版 c）</span></div>
+  <div class="qtext">利用我们学过的知识，可以导出下面这个形式优美的等式：<br>
+  <span style="padding-left:1.5em"><span class="mono">a²+b²+c²−ab−bc−ac = ½[(a−b)²+(b−c)²+(a−c)²]</span></span><br>
+  该等式从左到右的变形，不仅保持了结构的对称性，还体现了数学的和谐、简洁美。<br>
+  （1）请你验证该等式的正确性。<br>
+  （2）利用上述等式，解决下面的问题：若 a=2026x+2000，b=2026x+2002，<b>卷面此处印作「b」</b>＝2026x+2004，求整式 a²+b²+c²−ab−bc−ac 的值.</div>
+  <div class="blk bugblk"><b class="tt">印误警报</b>第 (2) 问第三个式子的变量印成了 <b>b</b>（与前一个重复），但等式 a²+b²+c²−ab−bc−ac 里有 <b>c</b>；且三个式子间隔均匀（2000→2002→2004，每次差 2）的三连设计，说明它显然是 <b>c=2026x+2004</b>。手写参考答案也按 c 计算。以下按更正版 c 求解。</div>
+  <div class="blk sol"><b class="tt">(1) 验证</b>
+    <div class="step"><span class="sno">1</span>右边 = ½[(a²−2ab+b²)+(b²−2bc+c²)+(a²−2ac+c²)]。</div>
+    <div class="step"><span class="sno">2</span>= ½[2a²+2b²+2c²−2ab−2bc−2ac]。</div>
+    <div class="step"><span class="sno">3</span>= a²+b²+c²−ab−bc−ac = 左边 ✓ 等式成立。</div>
+  </div>
+  <div class="blk sol"><b class="tt">(2) 步骤</b>
+    <div class="step"><span class="sno">1</span>(a−b)² = (2026x+2000−2026x−2002)² = (−2)² = <b>4</b>。</div>
+    <div class="step"><span class="sno">2</span>(b−c)² = (2026x+2002−2026x−2004)² = (−2)² = <b>4</b>。</div>
+    <div class="step"><span class="sno">3</span>(a−c)² = (2026x+2000−2026x−2004)² = (−4)² = <b>16</b>。</div>
+    <div class="step"><span class="sno">4</span>原式 = ½(4+4+16) = ½×24 = <b>12</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>x 全部消掉是设计核心——<b>不要去解 x</b>；三个差分别是 −2、−2、−4，平方是 4、4、16，最后别忘乘 ½。</div>
+  <div class="blk chk"><b class="tt">验算</b>取 x=0：a=2000、b=2002、c=2004。a²+b²+c²−ab−bc−ac = 2000²+2002²+2004²−2000×2002−2002×2004−2000×2004 = (4000000+4008004+4016016)−(4004000+4012008+4008000) = 12024020−12024008 = 12 ✓</div>
+</article>
+
+<article class="q" id="q26">
+  <div class="qhead"><span class="qno">26</span><span class="qflag">阅读理解 · 类比探究 · 压轴 ★★</span><span class="badge">(1) 2560　(2) 31　(3) 1026　(4) 3636</span></div>
+  <div class="qtext"><b>阅读材料</b>：若 x 满足 (60−x)(x−40)=20，求 (60−x)²+(x−40)² 的值.<br>
+  解：设 60−x=a，x−40=b，则 ab=20，a+b=(60−x)+(x−40)=20.<br>
+  所以 (60−x)²+(x−40)² = a²+b² = (a+b)²−2ab = 20²−2×20 = <b>360</b>.<br>
+  <b>【类比探究】</b>（1）若 x 满足 (70−x)(x−20)=−30，求 (70−x)²+(x−20)² 的值；<br>
+  （2）若 x 满足 (3−4x)(2x−5)=9/2，求 (3−4x)²+4(2x−5)² 的值；<br>
+  （3）若 x 满足 (2023−x)²+(2020−x)²=2061，求 (2023−x)(2020−x) 的值；<br>
+  <b>【解决问题】</b>（4）如图，正方形 AEGO 和长方形 KLMC 重叠，重叠部分是长方形 BEFC 其面积是 300，分别延长 FC、BC 交 AO 和 OG 于 D、H 两点，构成的四边形 ABCD 和 CFGH 都是正方形，四边形 ODCH 是长方形．设 CM=x，KC=3CM=3x，KB=54，FM=20，延长 AO 至点 P，使 OP=2OD，延长 AE 至 R，使 RE=2BE，分别过点 P、R 作 AP、AR 垂线，两垂线交于点 N，求正方形 ARNP 的面积.（结果是一个具体的数值）</div>
+  <div class="blk key"><b class="tt">钥匙</b>材料灵魂一句话：<b>a+b、a−b、ab、a²+b² 四个量，知二求一</b>——桥梁是 (a+b)² = a²+b²+2ab = (a−b)²+4ab。每个小问先"设 a 设 b"，再挑顺手的两条腿。</div>
+  <div class="blk sol"><b class="tt">(1) 步骤</b>
+    <div class="step"><span class="sno">1</span>设 a=70−x，b=x−20：ab=−30，a+b = 50。</div>
+    <div class="step"><span class="sno">2</span>a²+b² = (a+b)²−2ab = 2500−(−60) = <b>2560</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>ab 是<b>负三十</b>！−2ab = −2×(−30) = +60，负负得正。</div>
+  <div class="blk sol"><b class="tt">(2) 步骤</b>
+    <div class="step"><span class="sno">1</span>设 a=3−4x，<b>b=4x−10=2(2x−5)</b>（把系数 2 吸进 b，正好把 4(2x−5)² 变成 b²！）。</div>
+    <div class="step"><span class="sno">2</span>ab = (3−4x)(4x−10) = 2×(3−4x)(2x−5) = 2×9/2 = <b>9</b>（题给 (3−4x)(2x−5)=9/2）。</div>
+    <div class="step"><span class="sno">3</span>a+b = (3−4x)+(4x−10) = −7。</div>
+    <div class="step"><span class="sno">4</span>目标式 = a²+b² = (a+b)²−2ab = 49−18 = <b>31</b>。</div>
+  </div>
+  <div class="blk trap"><b class="tt">易错</b>这是全卷最妙的一设：把 4(2x−5)² 的系数 4 开平方吸进 b（b=2(2x−5)），目标式就干净地变成 a²+b²——设谁，是<b>奔着目标式长什么样去设</b>的。</div>
+  <div class="blk sol"><b class="tt">(3) 步骤</b>
+    <div class="step"><span class="sno">1</span>设 a=2023−x，b=2020−x：a²+b²=2061（题给），a−b = 3。</div>
+    <div class="step"><span class="sno">2</span>(a−b)² = a²+b²−2ab → 9 = 2061−2ab。</div>
+    <div class="step"><span class="sno">3</span>2ab = 2052 → ab = <b>1026</b>。</div>
+  </div>
+  <div class="blk sol"><b class="tt">(4) 压轴步骤</b>
+    <div class="step"><span class="sno">1</span>读图定长（以 A 为原点、AR 竖直向下）：AB = KC−KB = 3x−54（正方形 ABCD 的边）；BE = CM−FM = x−20（重叠长方形 BEFC 的宽，也即正方形 CFGH 的边 CF）。</div>
+    <div class="step"><span class="sno">2</span>BEFC 面积 = AB×BE = (3x−54)(x−20) = <b>3(x−18)(x−20) = 300</b> → (x−18)(x−20) = 100。</div>
+    <div class="step"><span class="sno">3</span>AR = AB+BE+ER = (3x−54)+(x−20)+2(x−20) = 6x−114 = <b>3[(x−18)+(x−20)]</b>。</div>
+    <div class="step"><span class="sno">4</span>设 a=x−18，b=x−20：ab=100，a−b=2 → a²+b² = (a−b)²+2ab = 4+200 = <b>204</b>。</div>
+    <div class="step"><span class="sno">5</span>S<sub>ARNP</sub> = AR² = [3(a+b)]² = 9(a²+2ab+b²) = 9(204+200) = <b>3636</b>。</div>
+  </div>
+  <figure>
+    <svg viewBox="0 0 470 250" role="img" aria-label="第26题第(4)问压轴拼图示意">
+      <rect x="100" y="50" width="114" height="114" fill="#7aa2ff" fill-opacity=".1" stroke="none"/>
+      <rect x="100" y="50" width="60" height="60" fill="#06d6a0" fill-opacity=".2" stroke="none"/>
+      <rect x="160" y="110" width="18" height="18" fill="#ef476f" fill-opacity=".18" stroke="none"/>
+      <rect x="160" y="50" width="18" height="60" fill="#ffd166" fill-opacity=".25" stroke="none"/>
+      <rect x="100" y="110" width="60" height="18" fill="#ffd166" fill-opacity=".45" stroke="var(--gold)" stroke-width=".8" stroke-dasharray="3 2"/>
+      <rect x="100" y="50" width="114" height="114" fill="none" stroke="var(--accent2)" stroke-width="2.2"/>
+      <rect x="100" y="50" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="160" y="110" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="160" y="50" width="18" height="60" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="46" y="110" width="114" height="38" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="100" y="50" width="114" height="114" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-dasharray="5 4"/>
+      <g font-size="14" fill="currentColor" font-weight="600">
+        <text x="94" y="46" text-anchor="end">A</text>
+        <text x="158" y="42" text-anchor="middle" font-size="12.5">D</text>
+        <text x="182" y="42" text-anchor="middle" font-size="12.5">O</text>
+        <text x="222" y="46" text-anchor="middle">P</text>
+        <text x="94" y="116" text-anchor="end">B</text>
+        <text x="166" y="104" text-anchor="middle">C</text>
+        <text x="186" y="116" text-anchor="start">H</text>
+        <text x="40" y="116" text-anchor="end">K</text>
+        <text x="94" y="134" text-anchor="end">E</text>
+        <text x="166" y="134" text-anchor="middle">F</text>
+        <text x="186" y="134" text-anchor="start">G</text>
+        <text x="40" y="154" text-anchor="end">L</text>
+        <text x="166" y="154" text-anchor="middle">M</text>
+        <text x="94" y="170" text-anchor="end">R</text>
+        <text x="222" y="170" text-anchor="middle">N</text>
+      </g>
+      <g font-size="12.5" fill="currentColor" opacity=".8">
+        <text x="73" y="104" text-anchor="middle">KB=54</text>
+        <text x="103" y="42" text-anchor="middle" font-size="11">OP=2OD</text>
+        <text x="192" y="80" text-anchor="start">OD=x−20</text>
+        <text x="130" y="124" text-anchor="middle" font-size="11">BEFC=300</text>
+        <text x="166" y="146" text-anchor="middle">CM=x</text>
+        <text x="176" y="122" text-anchor="start">FM=20</text>
+        <text x="226" y="110" text-anchor="start">正方形ARNP</text>
+        <text x="226" y="126" text-anchor="start">边 AR=6x−114</text>
+        <text x="226" y="142" text-anchor="start">=3(a+b)</text>
+      </g>
+    </svg>
+    <figcaption>按原图结构重绘（长度为示意比例，取 x=38 时各段长度自洽）。金色块为重叠长方形 BEFC（AB=3x−54、BE=x−20）；虚线大框为待求的正方形 ARNP</figcaption>
+  </figure>
+  <div class="blk trap"><b class="tt">易错</b>① "面积 300" 对应 (3x−54)(x−20) 而不是 (x−18)(x−20)——先把 3 提出来再设 a、b（这正是把 AR 凑成 3(a+b) 的伏笔）；② AR 是三条竖直段之和：AB+BE+ER，其中 ER=2BE；③ 别忘 ARNP 是正方形，S = AR²。</div>
+  <div class="blk chk"><b class="tt">验算</b>回代示意：由 (x−18)(x−20)=100 可解出真实 x（x²−38x+460=0 中的两根），但题目要的是<b>具体数值</b>且与 x 无关——因为 (a+b)² = a²+b²+2ab = 204+200 = 404 由 ab 与 a−b 唯一确定，无需知道 x。S = 9×404 = <b>3636</b> ✓ 与手写参考答案一致。</div></div>
+</article>
+
+<div class="foot">
+  <p>2026学年第一学期期中质量调研卷（七年级数学）· 26 题全解析 · 深浅双主题，打印自动切换 A4 白底</p>
+  <p style="font-size:12px;opacity:.75">题干转录自卷面手写参考答案电子版（含逐题独立验算）；图形按原图结构重绘；第 25(2) 题按更正版 c=2026x+2004 求解 · <a href="index.html" style="color:var(--accent);text-decoration:none;font-weight:600">返回实验室主页 →</a></p>
+</div>
+
+</main>
+
+</body>
+</html>

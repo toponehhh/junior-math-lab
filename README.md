@@ -13,6 +13,7 @@
 | [absolute-value-a4.html](absolute-value-a4.html) | 绝对值练习（第 3、4 题）A4 打印版，附参考答案与逐步解析（含数轴示意图、选项陷阱拆解） |
 | [midterm-yangpu-2025.html](midterm-yangpu-2025.html) | 25学年七上期中卷（杨浦新教材）全卷 28 题逐题详解：答案速查＋四模块解析＋SVG 图解，已与老师参考答案核对 |
 | [midterm-yangpu-2024.html](midterm-yangpu-2024.html) | 期中综合卷3（2024 杨浦）全卷 30 题逐题详解：答案速查＋四模块解析；第 27 题排印瑕疵侦探专题、第 7 题立方差反例陷阱、压轴答案 2024 彩蛋、拼图/几何双 SVG |
+| [midterm-2026.html](midterm-2026.html) | 2026学年七上期中质量调研卷 26 题逐题详解：手写参考答案逐题核对；幂=1三分支、双正方形面积规律、阴影分解、类比探究压轴（3636）；第25(2)题印误 b→c 专题；四幅 SVG 图解 |
 | [dodecahedron.html](dodecahedron.html) | 正十二面体顶点/棱/面速算与欧拉公式：先乘后除计数、可拖拽立体图、五种正多面体对照、足球 C₆₀ 实例、欧拉公式直观证明 |
 | [theme.js](theme.js) | 全站共享主题脚本：亮/暗双主题切换按钮、localStorage 记忆、跟随系统、SVG 图形重着色 |
 
